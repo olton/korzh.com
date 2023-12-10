@@ -1,0 +1,25 @@
+---
+import PageLayout from "../layouts/PageLayout.astro"
+import MoreQuestions from "../components/MoreQuestions.astro"
+import {Image} from "astro:assets"
+import img404 from "../images/404.png"
+---
+<PageLayout title="PAGE NOT FOUND :: Korzh.com - Tools from Developers for Developers">
+    <br/>
+    <br/>
+    <br/>
+    <section class="container-fluid">
+        <div class="container">
+            <div class="d-flex flex-align-center flex-justify-center flex-column">
+                <Image src={img404} alt="Not found" style="width: 500px; max-width: 90%"/>
+                <div class="h2">Page not found</div>
+                <div>The page you are looking doesn't exist or another error occurred.</div>
+                <div>Go back, or head over to <a href="/">Korzh.com</a> to choose a new direction</div>
+            </div>
+        </div>
+    </section>
+    <br/>
+    <br/>
+    <br/>
+    <MoreQuestions />
+</PageLayout>

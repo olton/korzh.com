@@ -1,0 +1,385 @@
+---
+import PageLayout from "../layouts/PageLayout.astro"
+import {Image} from "astro:assets"
+import logoHP from "../images/logos/hp_logo.png"
+import logoAstonMartin from "../images/logos/astonmartin_logo.png"
+import logoSymantec from "../images/logos/symantec_logo.png"
+import logoIris from "../images/logos/irs_logo.png"
+import logoMotorola from "../images/logos/motorola_logo.png"
+import logoLM from "../images/logos/lm_logo.png"
+import logoBobCat from "../images/logos/bobcat_logo.png"
+import logoDell from "../images/logos/dell_logo.png"
+import logoBosch from "../images/logos/bosch_logo.png"
+import logoIPLabs from "../images/logos/iplabs_logo.png"
+import logoMicrolink from "../images/logos/microlink_logo.png"
+import logoOTP from "../images/logos/otpbank_logo.png"
+import imgHero from "../images/collage5.png"
+import imgEasyquery01 from "../images/asp-net-mvc.png"
+import imgEasyquery02 from "../images/reporting.png"
+import imgEasyquery03 from "../images/easy-report-01.jpg"
+import imgLocalizer01 from "../images/localizer_sshot03.png"
+import imgLocalizer02 from "../images/localizer_sshot04.png"
+import imgLocalizer03 from "../images/localizer_sshot04.png"
+import imgMetro01 from "../images/pandora.jpg"
+import imgMetro02 from "../images/mirohost.jpg"
+import imgMetro03 from "../images/minataur.png"
+---
+<PageLayout title="Korzh.com - Tools from Developers to Developers">
+    <section class="container-fluid hero-section hero-block">
+        <div class="container">
+            <div class="row">
+                <div class="cell-lg-6">
+                    <div class="h-100 d-flex flex-column flex-justify-center">
+                        <h1 class="hero-section__header">Korzh.com</h1>
+                        <h2 class="mt-0">Increase your coding productivity</h2>
+                        <p class="text-leader2">
+                            with our components for .NET, WEB, and DELPHI developers: EASYQUERY, LOCALIZER, and METRO UI
+                        </p>
+                        <hr class="thin w-100 mt-6 mb-6 bg-light"/>
+                        <div class="text-bold h2">
+                            <span class="enlarge-4">3K+</span> happy customers
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="cell-lg-1"></div>
+
+                <div class="cell-lg-5 d-none d-flex-lg flex-column flex-justify-center hero-images">
+                    <Image src={imgHero} alt="Hero Image"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/>
+    <br/>
+
+    <section class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="cell-lg-5 d-flex flex-column flex-justify-center">
+                    <h1 class="hero-section__header text-light">EASY<span>QUERY</span></h1>
+                    <p class="hero-section__subheader">
+                        EasyQuery is a component library that becomes exceptionally handy when you're developing a web application on .NET or JavaScript that involves various tasks that require database operations.
+                        In such cases, EasyQuery serves as an invaluable asset.
+                    </p>
+                    <div class="mt-10">
+                        <a href="/easyquery" class="button info">Learn more...</a>
+                        <a href="#" onclick="getTrial()" class="button success">Try EASYQUERY</a>
+                        <a href="/easyquery#licensing" class="button alert">Purchase</a>
+                    </div>
+                </div>
+                <div class="cell-lg-1"></div>
+                <div class="cell-lg-6">
+                    <div id="easyquery">
+                        <div class="row" data-role="lightbox" data-cls-close="bg-red fg-white" data-icon-close="<span class='mif-cross'>">
+                            <div class="cell-4 p-1">
+                                <div class="image-preview border bd-default">
+                                    <Image src={imgEasyquery01} width="600" data-original={imgEasyquery01.src} alt=""/>
+                                </div>
+                            </div>
+                            <div class="cell-4 p-1">
+                                <div class="image-preview border bd-default">
+                                    <Image src={imgEasyquery02} width="600" data-original={imgEasyquery02.src} alt=""/>
+                                </div>
+                            </div>
+                            <div class="cell-4 p-1">
+                                <div class="image-preview border bd-default">
+                                    <Image src={imgEasyquery03} width="600" data-original={imgEasyquery03.src} alt=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-role="accordion" data-material="true" class="border bd-default mt-4">
+                            <div class="frame active">
+                                <div class="heading h5 m-0">ADHOC REPORTING</div>
+                                <div class="content">
+                                    <div class="p-2">
+                                        EasyQuery components will be a useful addition to any project that requires some data searching/filtering functionality.
+                                        You can setup it to process an advanced search form, small data-filtering element on your page with tabular data or as some ad-hoc reporting solution.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <div class="heading h5 m-0">DIFFERENT PLATFORMS</div>
+                                <div class="content">
+                                    <div class="p-2">
+                                        EasyQuery can be used both in desktop or web-applications built on .NET platform.
+                                        We support ASP.NET (MVC or WebForms), WPF, Windows Forms and Silverlight.
+                                        Additionally we have a pure JavaScript JavaScript edition that can be applied (with some restrictions) on other platforms like PHP or NodeJS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <div class="heading h5 m-0">ANY DATA STORAGE</div>
+                                <div class="content">
+                                    <div class="p-2">
+                                        EasyQuery can work with all kind of SQL databases supported on .NET platform: MS SQL Server, Oracle, MySQL, Access and others.
+                                        NoSQL databases (like MongoDB) are also supported via LINQ drivers.
+                                        You access your data directly (via ADO.NET) or use some ORM solution like Entity Framework.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/>
+    <br/>
+
+    <section class="container-fluid bg-light pt-10 pb-10">
+        <div class="container">
+            <div class="row">
+                <div class="cell-lg-6">
+                    <div id="localizer">
+                        <div class="row" data-role="lightbox" data-cls-close="bg-red fg-white" data-icon-close="<span class='mif-cross'>">
+                            <div class="cell-4 p-1">
+                                <div class="image-preview border bd-default">
+                                    <Image src={imgLocalizer01} width="600" data-original={imgLocalizer01.src} alt=""/>
+                                </div>
+                            </div>
+                            <div class="cell-4 p-1">
+                                <div class="image-preview border bd-default">
+                                    <Image src={imgLocalizer02} width="600" data-original={imgLocalizer02.src} alt=""/>
+                                </div>
+                            </div>
+                            <div class="cell-4 p-1">
+                                <div class="image-preview border bd-default">
+                                    <Image src={imgLocalizer03} width="600" data-original={imgLocalizer03.src} alt=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-role="accordion" data-material="true"  class="border bd-default mt-4 bg-white">
+                            <div class="frame active">
+                                <div class="heading h5 m-0">ONE .EXE - MANY LANGUAGES</div>
+                                <div class="content">
+                                    <div class="p-2">
+                                        You will not need to recompile your project each time when you need to change some translation.
+                                        New languages can be added without recompilation as well and even without the involvement of the developer team (if desired).
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <div class="heading h5 m-0">MINIMAL FOOTPRINT</div>
+                                <div class="content">
+                                    <div class="p-2">
+                                        Localizer requires minimum addition of code or does not require it at all. So the size of your application will not grow essentially.
+                                        It does not change your project: no additional components on the forms, function calls instead of your string constants and so on.
+                                        You can compile you project without Localizer installed and it will work fine.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <div class="heading h5 m-0">SUPPORT FOR THIRD-PARTY</div>
+                                <div class="content">
+                                    <div class="p-2">
+                                        Localizer works well with the resources from both standard VCL or any third-party components.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-lg-1"></div>
+                <div class="cell-lg-5 d-flex flex-column flex-justify-center">
+                    <h1 class="hero-section__header text-light">LOCAL<span>IZER</span></h1>
+                    <p class="hero-section__subheader">
+                        Localizer is a set of Delphi wizards and components which make your applications really multilingual and helps you to translate your programs to other languages.
+                    </p>
+                    <div class="mt-10">
+                        <a href="/localizer" class="button info">Learn more...</a>
+                        <a href="/download/locsetup.exe" class="button success">Try LOCALIZER</a>
+                        <a href="/localizer#licensing" class="button alert">Purchase</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/>
+    <br/>
+
+    <section class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="cell-lg-5 d-flex flex-column flex-justify-center">
+                    <h1 class="hero-section__header text-light">METRO<span>UI</span></h1>
+                    <div class="hero-section__subheader">
+                        Metro UI is an open-source frontend toolkit inspired by Microsoft Fluent (formerly Metro) design principles.
+                    </div>
+                    <div>MetroUI includes more than 100 reusable frontend components and about 500 icons, along with numerous useful JavaScript plugins.</div>
+                    <div class="mt-10">
+                        <a href="/metroui" class="button info">Learn more...</a>
+                        <a href="https://github.com/olton/Metro-UI-CSS" class="button success">Try Metro UI</a>
+                        <a href="/metroui#licensing" class="button alert">Buy Support</a>
+                    </div>
+                </div>
+                <div class="cell-lg-1"></div>
+                <div class="cell-lg-6">
+                    <div id="metroui">
+                        <div class="row" data-role="lightbox" data-cls-close="bg-red fg-white" data-icon-close="<span class='mif-cross'>">
+                            <div class="cell-4 p-1">
+                                <div class="image-preview border bd-default">
+                                    <Image src={imgMetro01} width="600" data-original={imgMetro01.src} alt=""/>
+                                </div>
+                            </div>
+                            <div class="cell-4 p-1">
+                                <div class="image-preview border bd-default">
+                                    <Image src={imgMetro02} width="600" data-original={imgMetro02.src} alt=""/>
+                                </div>
+                            </div>
+                            <div class="cell-4 p-1">
+                                <div class="image-preview border bd-default">
+                                    <Image src={imgMetro03} width="600" data-original={imgMetro03.src} alt=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-role="accordion" data-material="true" class="border bd-default mt-4">
+                            <div class="frame active">
+                                <div class="heading">100+ COMPONENTS</div>
+                                <div class="content">
+                                    <div class="p-2">
+                                        MetroUI includes more than 100 reusable frontend components, about 500 icons and a lot of useful JavaScript plugins.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <div class="heading">NO DEPENDENCIES</div>
+                                <div class="content">
+                                    <div class="p-2">
+                                        MetroUI includes everything you may need. You don't need to worry about version compatibility or possible issues with third-party code.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame">
+                                <div class="heading">PREMIUM SUPPORT</div>
+                                <div class="content">
+                                    <div class="p-2">
+                                        Questions? Suggestions? Bugs? Our support team is here and ready to help.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/>
+    <br/>
+
+    <section class="container-fluid why-box">
+        <div class="container">
+            <h2 class="text-center text-bold">WHY KORZH.COM?</h2>
+            <div class="row">
+                <div class="cell-md-4 p-2">
+                    <div class="h-100 m-4 p-4 text-center">
+                        <h4 class="text-bold">01. EXPERIENCE</h4>
+                        <p class="h5 text-light mt-2">
+                            More than 15 years we develop the tools for developers. We use it ourselves. We know your needs inside out.
+                        </p>
+                    </div>
+                </div>
+                <div class="cell-md-4 p-2">
+                    <div class="h-100 m-4 p-4 text-center">
+                        <h4 class="text-bold">02. SUPPORT</h4>
+                        <p class="h5 text-light mt-2">
+                            We pride ourselves on our level of customer support and responsiveness to client's requests.
+                        </p>
+                    </div>
+                </div>
+                <div class="cell-md-4 p-2">
+                    <div class="h-100 m-4 p-4 text-center">
+                        <h4 class="text-bold">03. CLEAR PRICING</h4>
+                        <p class="h5 text-light mt-2">
+                            Simple pricing model. Per-developer licenses. No hidden fees. No deployment limitations. Annual subscription for new versions and support costs about 25% of license price.
+                        </p>
+                    </div>
+                </div>
+                <div class="cell-md-4 p-2">
+                    <div class="h-100 m-4 p-4 text-center">
+                        <h4 class="text-bold">04. CUSTOMERS</h4>
+                        <p class="h5 text-light mt-2">
+                            We have more than 3000 satisfied customers using our products.
+                        </p>
+                    </div>
+                </div>
+                <div class="cell-md-4 p-2 text-center">
+                    <div class="h-100 m-4 p-4 d-flex flex-justify-center flex-align-start">
+                        <h4 class="text-center">PROVIDING THE BEST POSSIBLE PRODUCTS AND SERVICE TO OUR CUSTOMERS IS OUR MISSION</h4>
+                    </div>
+                </div>
+                <div class="cell-md-4 p-2">
+                    <div class="h-100 m-4 p-4 text-center">
+                        <h4 class="text-bold">05. LIFETIME LICENSES</h4>
+                        <p class="h5 text-light mt-2">
+                            Your licenses are perpetual. Even having the subscription expired you will be able to use the "outdated" version of the product. Forever.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid customers-box">
+        <div class="container">
+            <h2 class="text-center text-bold fg-gray">OUR CUSTOMERS</h2>
+            <hr/>
+            <div class="row">
+                <div class="cell-sm-3">
+                    <Image src={logoHP} alt="HP logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoAstonMartin} alt="AstonMartin logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoSymantec} alt="Symantec logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoIris} alt="Iris logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoMotorola} alt="Motorola logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoLM} alt="LM logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoBobCat} alt="BobCat logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoDell} alt="Dell logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoBosch} alt="Bosch logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoIPLabs} alt="IPLabs logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoMicrolink} alt="Microlink logo"/>
+                </div>
+                <div class="cell-sm-3">
+                    <Image src={logoOTP} alt="OTP Bank logo"/>
+                </div>
+            </div>
+        </div>
+    </section>
+</PageLayout>
+
+<style is:global lang="less">
+    .app-bar .app-bar-menu > li a:hover, .app-bar .app-bar-menu li:not(.no-hover):hover {
+        background-color: rgba(41,124,255, 1)!important;
+        color: #ffffff;
+        &::before {
+            border-color: #fff;
+        }
+    }
+    .app-bar-menu .d-menu li {
+        background: #fff!important;
+    }
+</style>

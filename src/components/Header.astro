@@ -1,0 +1,37 @@
+---
+import {Image} from "astro:assets"
+import logo from "../images/korzh_logo.png"
+---
+<section class="container-fluid bg-white fg-dark pos-fixed z-fixed" style="top: 0; left:0; right: 0;">
+    <nav class="container bg-transparent pos-relative" data-role="appbar" data-expand-point="xl" >
+        <a href="/" class="brand no-hover"><Image src={logo} alt="Logo"/></a>
+
+        <ul class="app-bar-menu ml-auto">
+            <li>
+                <a href="#" class="dropdown-toggle">EASYQUERY</a>
+                <ul class="d-menu place-right" data-role="dropdown">
+                    <li><a href="/easyquery">EASYQUERY.NET</a></li>
+                    <li><a href="/easyquery/javascript">EASYQUERY.JS</a></li>
+                    <li><a href="/easy-report-starter-kit">EASYREPORT STARTER KIT</a></li>
+                </ul>
+            </li>
+            <li><a href="/metroui">METRO UI</a></li>
+            <li><a href="/localizer">LOCALIZER</a></li>
+            <li><a href="/blog">BLOG</a></li>
+            <li><a href="/support" slow-loading>SUPPORT</a></li>
+            <li>
+                <a href="#" class="dropdown-toggle">DOCS</a>
+                <ul class="d-menu place-right" data-role="dropdown">
+                    <li><a href="/easyquery/docs" slow-loading>EASYQUERY.NET</a></li>
+                    <li><a href="/easyquery/javascript/docs" slow-loading>EASYQUERY.JS</a></li>
+                    <li><a href="/easy-report-starter-kit/docs" slow-loading>EASY REPORT STARTER KIT</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/localizer/docs" slow-loading>LOCALIZER</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://metroui.org.ua/intro.html">METRO UI</a></li>
+                </ul>
+            </li>
+            <li><a href="/account" slow-loading><span class="mif-user mr-2"></span>ACCOUNT</a></li>
+        </ul>
+    </nav>
+</section>

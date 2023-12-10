@@ -1,0 +1,25 @@
+---
+import "../styles/index.less"
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+
+const { title } = Astro.props
+---
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{title}</title>
+</head>
+<body class="m4-cloak">
+    <Header/>
+    <slot/>
+    <Footer/>
+    <script>
+        import "../scripts/metro.js"
+        import "../scripts/slow-loading.js"
+    </script>
+</body>
+</html>

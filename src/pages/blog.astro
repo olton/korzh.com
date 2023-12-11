@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import PageLayout from "../layouts/PageLayout.astro"
 import BlogPostCard from "../components/BlogPostCard.astro"
 import AuthorLinks from "../components/AuthorLinks.astro";
+import PostLinks from "../components/PostLinks.astro";
 
 const allPosts = (await Astro.glob("/src/pages/blog/**/*.md"))
 allPosts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date))
@@ -27,9 +28,23 @@ console.log(authors)
                     <div class="sidebar border-left bd-default pl-4 pr-4">
                         <h1 class="">Blog</h1>
 
-                        <div class="text-bold border-bottom bd-default">Team</div>
-                        <div>
-                            <AuthorLinks authors={authors}/>
+                        <div class="sidebar-group">
+                            <div class="text-bold border-bottom bd-default">Total Posts</div>
+                            <div class="h1 text-center">{allPosts.length}</div>
+                        </div>
+
+                        <div class="sidebar-group">
+                            <div class="text-bold border-bottom bd-default">Popular Posts</div>
+                            {
+                                allPosts.length === 0 ? <div class="reduce-1 text-muted">No posts</div> : <PostLinks posts={allPosts}/>
+                            }
+                        </div>
+
+                        <div class="sidebar-group">
+                            <div class="text-bold border-bottom bd-default">Team</div>
+                            <div>
+                                <AuthorLinks authors={authors}/>
+                            </div>
                         </div>
                     </div>
                 </div>

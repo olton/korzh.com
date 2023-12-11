@@ -11,12 +11,17 @@ allPosts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatte
     <section class="container-fluid">
         <div class="container">
             <div class="row">
-                <div class="cell-md-8">
-                    {
-                        allPosts.map( (post) => <BlogPostCard {post} />)
-                    }
+                <div class="cell-md-9">
+                    <div class="pr-10">
+                        {
+                            allPosts.map( (post) => <BlogPostCard {post} />)
+                        }
+                    </div>
                 </div>
-                <div class="cell-md-4">
+                <div class="cell-md-3">
+                    <div class="sidebar border-left bd-default pl-4 pr-4">
+                        Sidebar
+                    </div>
                 </div>
             </div>
         </div>

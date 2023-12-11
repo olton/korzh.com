@@ -7,9 +7,9 @@ image: {
     url: "/images/computer-coffee-01.jpg",
     alt: "Image alternate text"
 }
-description: Post description
+description: We welcome you on the our Blog!
 draft: false
-category: Category name
+category: No category
 tags: ["welcome"]
 time: 1 min
 ---

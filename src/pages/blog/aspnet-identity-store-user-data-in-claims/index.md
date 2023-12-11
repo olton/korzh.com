@@ -7,7 +7,7 @@ image: {
     url: "/images/auth-claims-01.png",
     alt: "Image alternate text"
 }
-description: Post description
+description: With this post, we start a series of articles that describe the different aspects of using ASP.NET Identity in your ASP.NET (Core) applications. All the code in the following articles was built for and tested with ASP.NET Core 2.0. However, in most cases, it will work well in earlier versions of .NET framework (4.x) and ASP.NET Identity library (2.x)
 draft: false
 category: ASP.NET
 tags: ["ASP-NET-CORE", "ASP-NET-IDENTITY", "CLAIMS"]

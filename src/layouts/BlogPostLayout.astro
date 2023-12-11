@@ -4,8 +4,12 @@ import TableOfContents from "../components/TOC.astro"
 import {Image} from "astro:assets"
 import {formatDate} from "../js/utils.js";
 import {slugify} from "../js/utils";
+import PostLinks from "../components/PostLinks.astro";
 const { frontmatter, headings } = Astro.props
 const { title, date, author, description, image, draft, category, tags, time = '1 min'} = frontmatter
+const allPosts = await Astro.glob('/src/pages/blog/**/*.md')
+const relatedPosts = allPosts.filter((p)=> p.frontmatter.catecory === category)
+const recentPosts = allPosts.sort((a, b)=>Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date)).slice(0, 5)//.filter(p=>p.frontmatter.title !== title)
 ---
 <PageLayout>
     <hr class="w-100 mt-4"/>
@@ -36,9 +40,29 @@ const { title, date, author, description, image, draft, category, tags, time = '
                 </div>
                 <div class="cell-md-1"></div>
                 <div class="cell-md-3">
-                    <div class="sidebar border-left bd-default p-4">
-                        <h4>Table of Contents</h4>
-                        <TableOfContents headings={headings} />
+                    <div class="sidebar border-left bd-default pl-4 pr-4">
+                        <div>
+                            <div class="text-bold enlarge-1 border-bottom bd-default">Table of Contents</div>
+                            <TableOfContents headings={headings} />
+                        </div>
+                        <div class="mt-6">
+                            <div class="text-bold border-bottom bd-default">Related posts</div>
+                            {
+                                relatedPosts.length === 0 ? <div class="reduce-1 text-muted">No posts</div> : <PostLinks posts={relatedPosts}/>
+                            }
+                        </div>
+                        <div class="mt-6">
+                            <div class="text-bold border-bottom bd-default">Recent posts</div>
+                            {
+                                recentPosts.length === 0 ? <div class="reduce-1 text-muted">No posts</div> : <PostLinks posts={recentPosts}/>
+                            }
+                        </div>
+                        <div class="mt-6">
+                            <div class="text-bold border-bottom bd-default">Tags</div>
+                            <div class="mt-1">
+                                {tags && tags.map(tag => <a class="tag" href=`/tags/${tag}`>{tag}</a>)}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

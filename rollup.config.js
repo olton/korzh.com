@@ -36,7 +36,7 @@ export default {
         commonjs(),
     ],
     output: {
-        file: './src/scripts/metro.js',
+        file: './src/js/metro.js',
         format: 'iife',
         sourcemap,
         plugins: [

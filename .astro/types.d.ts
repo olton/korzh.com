@@ -178,10 +178,27 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		
+		"authors": {
+"oleksandr-melnychenko": {
+	id: "oleksandr-melnychenko";
+  collection: "authors";
+  data: InferEntrySchema<"authors">
+};
+"serhii-korzh": {
+	id: "serhii-korzh";
+  collection: "authors";
+  data: InferEntrySchema<"authors">
+};
+"serhii-pimenov": {
+	id: "serhii-pimenov";
+  collection: "authors";
+  data: InferEntrySchema<"authors">
+};
+};
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = never;
+	type ContentConfig = typeof import("../src/content/config.js");
 }

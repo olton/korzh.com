@@ -4,7 +4,7 @@ title: ASP.NET Identity - Use claims to store additional user's data
 date: 2018-01-22
 author: 
 image: {
-    url: "/images/auth-claims-01.png",
+    src: "/images/auth-claims-01.png",
     alt: "Image alternate text"
 }
 description: With this post, we start a series of articles that describe the different aspects of using ASP.NET Identity in your ASP.NET (Core) applications. All the code in the following articles was built for and tested with ASP.NET Core 2.0. However, in most cases, it will work well in earlier versions of .NET framework (4.x) and ASP.NET Identity library (2.x)
@@ -22,7 +22,7 @@ With this post, we start a series of articles that describe the different aspect
 All the code in the following articles was built for and tested with ASP.NET Core 2.0. However, in most cases, it will work well in earlier versions of .NET framework (4.x) and ASP.NET Identity library (2.x)
 
 One more note. We are NOT going to do an introduction to or describe the basic principles of ASP.NET Core in general or APS.NET Identity in particular. The following material is more for the developers who already have some experience with both of them. If you don't - please start by reading the tutorials on [ASP.NET Core documentation](https://docs.microsoft.com/en-us/aspnet/core/) website and creating your first web app with it.
-
+ 
 <!-- trunc -->
 
 ## Problem

@@ -4,7 +4,7 @@ title: Welcome to Korzh's Blog
 date: 2018-01-01
 author: 
 image: {
-    url: "/images/computer-coffee-01.jpg",
+    src: "/images/computer-coffee-01.jpg",
     alt: "Image alternate text"
 }
 description: We welcome you on the our Blog!

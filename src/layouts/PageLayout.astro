@@ -1,6 +1,6 @@
 ---
 import "../styles/index.less"
-import Header from "../components/Header.astro"
+import Navigation from "../components/Navigation.astro"
 import Footer from "../components/Footer.astro"
 
 const { title } = Astro.props
@@ -11,15 +11,18 @@ const { title } = Astro.props
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 </head>
-<body class="m4-cloak">
-    <Header/>
+<body class="m4-cloak" style={{
+    paddingTop: "52px"
+}}>
+    <Navigation/>
     <slot/>
     <Footer/>
     <script>
-        import "../scripts/metro.js"
-        import "../scripts/slow-loading.js"
+        import "../js/metro.js"
+        import "../js/slow-loading.js"
     </script>
 </body>
 </html>

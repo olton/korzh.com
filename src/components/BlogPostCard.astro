@@ -1,0 +1,23 @@
+---
+import {Image} from "astro:assets";
+import {formatDate} from "../js/utils.js";
+const { post } = Astro.props
+const {title, date, time, image, description, tags, slug} = post.frontmatter
+---
+
+<article class="mb-10">
+    <a class="h3 no-decor" href=`${post.url}`>{title}</a>
+    <div>
+        {formatDate(date)} &bull; {time} read
+    </div>
+    <Image src={image.url} alt={image.alt} width="1200" height="100" class="image-preview-big" format="avif"/>
+    <div class="mt-4 mb-4" set:html={post.compiledContent().split("<!-- trunc -->")[0]}></div>
+    <div class="d-flex flex-row">
+        <div class="">
+            <a href=`${post.url}`>Read More</a>
+        </div>
+        <div class="ml-auto">
+            {tags && tags.map(tag => <a class="tag" href=`/tags/${tag}`>{tag}</a>)}
+        </div>
+    </div>
+</article>

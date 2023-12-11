@@ -19,8 +19,13 @@ img {
     object-fit: fill;
 }
 
-.hero-section {
-    padding: 140px 0 120px;
+.app-bar-menu {
+    &.opened {
+        background: #f8f8f8!important;
+    }
+}
+
+.app-bar .app-bar-menu>li>a {
 }
 
 .hero-section__header {
@@ -31,15 +36,6 @@ img {
 .hero-section__subheader {
     font-size: 18px;
     line-height: 24px;
-}
-
-.app-bar .app-bar-menu {
-    //li, li > a {
-    //    line-height: 32px;
-    //}
-    //& > li, & > li > a {
-    //    border-radius: 4px!important;
-    //}
 }
 
 .top-customers {
@@ -141,10 +137,6 @@ img {
     background-blend-mode: normal, normal;
     color: rgb(255, 255, 255);
     padding: 0;
-
-    img {
-        //background-color: #fff;
-    }
 }
 
 .metroui-hero {
@@ -162,7 +154,7 @@ img {
             linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
     background-blend-mode: normal, normal;
     color: rgb(255, 255, 255);
-    padding: 0px 0 0px;
+    padding: 0;
 }
 
 .login-body {
@@ -270,10 +262,6 @@ img {
     margin-top: 20px;
 }
 
-.answer {
-
-}
-
 .scrollable-container {
     overflow-x: auto;
     table {
@@ -307,6 +295,7 @@ img {
     color: #ffffff;
     padding: 40px 0;
 }
+
 .easyquery-editions-tabs {
     li {
         &.active {
@@ -322,13 +311,6 @@ img {
 .localizer-features {
     .feature-check {
         color: #73cc23;
-    }
-}
-
-.app-bar-menu {
-    li:not(.no-hover):hover {
-        //background-color: #2278ff!important;
-        //color: #fff!important;
     }
 }
 
@@ -374,7 +356,7 @@ img {
 }
 
 .hero-block {
-    padding: 100px 0;
+    padding: 50px 0 80px;
 }
 
 .select .option-list a {
@@ -401,10 +383,48 @@ img {
     img {
         width: 100%;
         min-height: 100%;
+        object-fit: cover;
     }
 
     &:hover {
         transform: scale(1.1);
         z-index: 2;
+    }
+}
+
+.image-preview-big {
+    height: 250px;
+    object-fit: cover;
+}
+
+.tag {
+    display: inline-flex;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-left: 4px;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-decoration: none;
+    background: #eaeaea;
+    color: #000;
+}
+
+.astro-code {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.toc {
+    ul, ol {
+        list-style: none;
+        margin: 0;
+    }
+
+    a {
+        color: #7f8c97!important;
+        font-size: 14px;
     }
 }

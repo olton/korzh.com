@@ -1,0 +1,58 @@
+---
+import {Image} from "astro:assets"
+import PageLayout from "./PageLayout.astro"
+import MoreQuestions from "../components/MoreQuestions.astro"
+const {project} = Astro.props
+import imgDiscontinued from "../images/discontinued.png"
+import imgAdvancedSearch from "../images/eq-ss-advanced-search.png"
+import imgLocalizer from "../images/localizer-1.png"
+import imgPandora from "../images/pandora.jpg"
+---
+<PageLayout>
+    <section class="container-fluid">
+        <div class="container">
+            <div class="d-flex flex-align-center flex-justify-center flex-column" style="margin-top: 100px;">
+                <div class="h1 project-name">{ project }</div>
+                <Image src={imgDiscontinued} alt="Discontinued" class="mt-4 mb-4" style="width: 500px; max-width: 90%"/>
+                <div class="text-leader">Unfortunately, the project <span class="project-name">{ project }</span> is discontinued.</div>
+                <div class="text-leader">Take a look at our current projects</div>
+                <div class="row" style="margin-top: 60px;">
+                    <div class="cell-md-4">
+                        <div class="border bd-default p-10 h-100 d-flex flex-column">
+                            <h3>EASYQUERY</h3>
+                            <Image src={imgAdvancedSearch} alt="Advanced search" class="image-preview-big"/>
+                            <p class="mb-10">
+                                EasyQuery components provide your application with a powerful and easy-to-use interface for visual query building.
+                            </p>
+                            <a class="no-decor mt-auto" href="/easyquery">Learn More...</a>
+                        </div>
+                    </div>
+                    <div class="cell-md-4">
+                        <div class="border bd-default p-10 h-100 d-flex flex-column">
+                            <h3>LOCALIZER</h3>
+                            <Image src={imgLocalizer} alt="Localizer" class="image-preview-big"/>
+                            <p class="mb-10">
+                                Localizer is a set of Delphi components which make your applications multilingual and helps you to translate your programs to other languages.
+                            </p>
+                            <a class="no-decor mt-auto" href="/localizer">Learn More...</a>
+                        </div>
+                    </div>
+                    <div class="cell-md-4">
+                        <div class="border bd-default p-10 h-100 d-flex flex-column">
+                            <h3>METRO-UI</h3>
+                            <Image src={imgPandora} alt="Metro UI Pandora" class="image-preview-big"/>
+                            <p class="mb-10">
+                                MetroUI is an open-source frontend toolkit inspired by Microsoft Fluent (former Metro) design principles.
+                            </p>
+                            <a class="no-decor mt-auto" href="/metroui">Learn More...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br/>
+    <br/>
+    <br/>
+    <MoreQuestions />
+</PageLayout>

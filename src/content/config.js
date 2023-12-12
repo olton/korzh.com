@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content"
+
 const authorsCollection = defineCollection({
     type: 'data',
     schema: z.object({
@@ -9,5 +10,5 @@ const authorsCollection = defineCollection({
 })
 
 export const collections = {
-    'authors': authorsCollection,
+    authors: authorsCollection,
 }

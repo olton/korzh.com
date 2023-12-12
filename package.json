@@ -22,7 +22,6 @@
     "astro": "^4.0.3",
     "autoprefixer": "^10.4.16",
     "less": "^4.2.0",
-    "remark-toc": "^9.0.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-progress": "^1.1.2"
   },

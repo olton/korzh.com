@@ -15,6 +15,8 @@ time: "1 min"
 ---
 import {Image} from "astro:assets";
 import ancIdentityNewAppImage from "./anc-identity-newapp01.png"
+import ancIdentityRegistrationImage from "./anc-identity-registration.png"
+import ancIdentityContactImage from "./anc-identity-contact-name.png"
 
 
 > __NB__: The solution presented in this article will work in version 2.0 of ASP.NET Core only!
@@ -105,7 +107,7 @@ After that, perform the similar steps in
 
 Try to run your project and open the registration page. Now it should look this way:
 
-![Registration form with ContactName field](./anc-identity-registration.png "Registration form with ContactName field")
+<Image src={ancIdentityRegistrationImage} alt="Registration form with ContactName field"/>
 
 Now, when all the preparations are finished we can return back to our main tasks.
 
@@ -167,5 +169,6 @@ with this one:
 ```
 Now you instead of something like `Hello john.doe@yourcompany.com` at the top of your web-page you should see something like this:
 
-![ASP.NET Identity contact name](./anc-identity-contact-name.png "ASP.NET Core - renderring contact name instead of user's ID")
+
+<Image class="mt-4" src={ancIdentityContactImage} alt="ASP.NET Core - renderring contact name instead of user's ID"/>
 

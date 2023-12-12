@@ -1,16 +1,29 @@
 ---
 import { getCollection } from 'astro:content'
 import { Image } from "astro:assets";
-import PageLayout from "../layouts/PageLayout.astro"
-import BlogPostCard from "../components/BlogPostCard.astro"
-import AuthorLinks from "../components/AuthorLinks.astro";
-import PostLinks from "../components/PostLinks.astro";
+import PageLayout from "../../layouts/PageLayout.astro"
+import BlogPostCard from "../../components/BlogPostCard.astro"
+import AuthorLinks from "../../components/AuthorLinks.astro";
+import PostLinks from "../../components/PostLinks.astro";
+import Pagination from "../../components/Pagination.astro";
 
 const allPosts = (await Astro.glob("/src/pages/blog/**/*.md"))
 allPosts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date))
 
 const authors = await getCollection('authors')
-console.log(authors)
+
+export async function getStaticPaths({ paginate }) {
+    const allPosts = await Astro.glob("/src/pages/blog/**/*.md");
+    const formattedPosts = allPosts.sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date)).reverse();
+
+    return paginate(formattedPosts, {
+        pageSize: 5,
+    })
+}
+const { page } = Astro.props;
+console.log(page)
+const pathname = new URL(Astro.request.url).pathname.split('/');
+const firstPath = pathname[1];
 ---
 <PageLayout title="Kozrh's Blog">
     <hr class="w-100"/>
@@ -20,8 +33,18 @@ console.log(authors)
                 <div class="cell-md-9">
                     <div class="pr-10">
                         {
-                            allPosts.map( (post) => <BlogPostCard {post} />)
+                            page.data.map( (post) => <BlogPostCard {post} />)
                         }
+                    </div>
+                    <div>
+                        <Pagination length={page.lastPage}
+                                    currentUrl={page.url.current}
+                                    currentPage={page.currentPage}
+                                    firstUrl={`/${firstPath}`}
+                                    prevUrl={page.url.prev}
+                                    nextUrl={page.url.next}
+                                    lastUrl={`/${firstPath}/${page.lastPage}`}
+                        />
                     </div>
                 </div>
                 <div class="cell-md-3">

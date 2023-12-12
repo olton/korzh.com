@@ -1,6 +1,277 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
+import MoreQuestions from "../../components/MoreQuestions.astro";
+import {Image} from "astro:assets";
+import pandoraImage from "../../images/pandora.jpg"
+import pandoraBannerImage from "../../images/pandora-banner.jpg"
+import mirohostImage from "../../images/mirohost.jpg"
+import startScreenImage from "../../images/start.jpg"
+import minataurImage from "../../images/minataur.png"
+import aistantImage from "../../images/aistant.jpg"
+import githubImage from "../../images/github.jpg"
 ---
 <PageLayout title="Metro UI - Impressive component library for expressive web development!">
+    <section class="container-fluid metroui-hero hero-block">
+        <div class="container">
+            <div class="row">
+                <div class="cell-lg-6">
+                    <div class="h-100 d-flex flex-column flex-justify-center">
+                        <h1 class="hero-section__header">Metro UI</h1>
+                        <h2 class="mt-0">your way to build a web application</h2>
+                        <div class="text-leader2">
+                            <p class="mt-1">
+                                MetroUI includes everything you need to build your frontend app: responsive grid system, 100+ prebuilt components, 500+ incons, and powerful JavaScript plugins.
+                            </p>
+                        </div>
+                        <hr class="thin w-100 mt-6 mb-6 bg-light"/>
+                        <div class="text-bold h2">
+                            <span class="enlarge-4">7K+</span> stars on GitHub
+                        </div>
+                        <div>
+                            <a href="https://github.com/olton/Metro-UI-CSS" class="button info">Try Metro UI</a>
+                            <a href="https://metroui.org.ua/intro.html" class="button info">Read Docs</a>
+                            <a href="#licensing" class="button info">Purchase Support</a>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="cell-lg-1"></div>
+
+                <div class="cell-lg-5 d-none d-flex-lg flex-column flex-justify-center hero-images">
+                    <Image src={pandoraImage} alt="Pandora Image" class="shadow-3"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/>
+    <br/>
+
+    <section class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="cell-lg-3 cell-sm-6">
+                    <div class="border p-4 m-2 h-100">
+                        <img src="/src/images/user-interface.svg" alt="" style="height: 166px">
+                        <h5 class="text-bold">100+ COMPONENTS</h5>
+                        <div>
+                            More than 100 reusable components for all kinds of frontend tasks: navigation, alerts, dropdowns, inputs and much more.
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-lg-3 cell-sm-6">
+                    <div class="border p-4 m-2 h-100">
+                        <img src="/src/images/rocket.svg" alt="" style="height: 166px">
+                        <h5 class="text-bold">DEPENDENCY FREE</h5>
+                        <div>
+                            MetroUI library has no dependencies on any third-party libraries. Everything you might need is included in the toolkit.
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-lg-3 cell-sm-6">
+                    <div class="border p-4 m-2 h-100">
+                        <div class="fg-red ml-1 reduce-4 pos-absolute text-bold" style="right: 20px;">PAID OPTION</div>
+                        <img src="/src/images/bugs.svg" alt="" style="height: 166px">
+                        <h5 class="text-bold">TECHNICAL SUPPORT</h5>
+                        <div>
+                            We will be there for you when you need help. Rapid response and quick fixing of detected problems.
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-lg-3 cell-sm-6">
+                    <div class="border p-4 m-2 h-100">
+                        <img src="/src/images/finance.svg" alt="" style="height: 166px">
+                        <h5 class="text-bold">FREE LICENSE</h5>
+                        <div>
+                            MetroUI is absolutely free both for personal and commercial usage (distributed by <a href="https://github.com/olton/Metro-UI-CSS/blob/master/LICENSE">MIT license</a>).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/>
+    <br/>
+
+    <section class="container-fluid metroui-screens">
+        <div class="container">
+            <div class="row">
+                <div class="cell-lg-6">
+                    <div class="row" data-role="lightbox" data-cls-close="bg-red fg-white" data-icon-close="<span class='mif-cross'>">
+                        <div class="cell-6 p-2">
+                            <div class="image-preview border bd-default">
+                                <Image src={pandoraImage} data-original={pandoraImage.src} alt="" />
+                            </div>
+                        </div>
+                        <div class="cell-6 p-2">
+                            <div class="image-preview border bd-default">
+                                <Image src={mirohostImage} data-original={mirohostImage.src} alt="" />
+                            </div>
+                        </div>
+                        <div class="cell-6 p-2">
+                            <div class="image-preview border bd-default">
+                                <Image src={startScreenImage} data-original={startScreenImage.src} alt="" />
+                            </div>
+                        </div>
+                        <div class="cell-6 p-2">
+                            <div class="image-preview border bd-default">
+                                <Image src={aistantImage} data-original={aistantImage.src} alt="" />
+                            </div>
+                        </div>
+                        <div class="cell-6 p-2">
+                            <div class="image-preview border bd-default">
+                                <Image src={minataurImage} data-original={minataurImage.src} alt="" />
+                            </div>
+                        </div>
+                        <div class="cell-6 p-2">
+                            <div class="image-preview border bd-default">
+                                <Image src={githubImage} data-original={githubImage.src} alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-md-1 d-none d-flex-md flex-align-center">
+                </div>
+                <div class="cell-lg-5 d-flex flex-column flex-justify-center">
+                    <h1 class="text-bold">SCREEN<span>SHOTS</span></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/>
+    <br/>
+
+    <section class="container-fluid metro-in-action">
+        <div class="container">
+            <div class="row mt-10">
+                <div class="cell-lg-6 d-flex flex-column flex-justify-center">
+                    <h2 class="text-bold">PANDORA <span>DEMO</span></h2>
+                    <p class="pr-20">
+                        Pandora - is a Responsive and Clean Admin Dashboard template. This template created with Metro UI with uses native classes, elements, and components. The template contains different types of reusable and professional responsive components with different variations.
+                    </p>
+                    <div class="mt-4 row w-75">
+                        <div class="cell-6">
+                            <a href="https://themes.org.ua/pandora/" class="button large info w-100">Try Demo</a>
+                        </div>
+                        <div class="cell-6">
+                            <a href="https://github.com/olton/Pandora" class="button large success w-100 ml-1">Get Source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-lg-6 d-flex flex-column flex-justify-center">
+                    <a href="https://themes.org.ua/pandora">
+                        <Image src={pandoraBannerImage} alt="Pandora Banner Image" style="transform: scale(1.1)"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <section class="container-fluid license-price" id="licensing">
+        <div class="container">
+            <div class="scrollable-container">
+                <table class="price-table striped table">
+                    <tbody>
+                    <tr>
+                        <td><h2 class="text-bold">SUPPORT <span>PRICE</span></h2></td>
+                        <td>
+                            <div class="text-leader">Community</div>
+                            <small>$</small><span class="price">0</span>
+                        </td>
+                        <td>
+                            <div class="text-leader">Developer</div>
+                            <small>$</small><span class="price">249</span>
+                        </td>
+                        <td>
+                            <div class="text-leader">Team</div>
+                            <small>$</small><span class="price">499</span>
+                        </td>
+                        <td>
+                            <div class="text-leader">Company</div>
+                            <small>$</small><span class="price">999</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="text-leader">Features</span></td>
+                        <td><a href="https://metroui.org.ua/intro.html" target="_blank" class="button success">READ THE DOCS</a></td>
+                        <td><a href="https://account.korzh.com/orderform?c=METROUI-DEV" data-ga-page-path="/checkout/metroui" class="button info" slow-loading>BUY NOW</a></td>
+                        <td><a href="https://account.korzh.com/orderform?c=METROUI-TEAM" data-ga-page-path="/checkout/metroui" class="button info" slow-loading>BUY NOW</a></td>
+                        <td><a href="https://account.korzh.com/orderform?c=METROUI-COMP" data-ga-page-path="/checkout/metroui" class="button info" slow-loading>BUY NOW</a></td>
+                    </tr>
+                    <tr>
+                        <td>Source code</td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Free redistribution with your product</td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Community-driven support <br>
+                            <small>Via GitHub issues and questions on StackOverflow with [metroui] tag</small>
+                        </td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Premium support</td>
+                        <td><span class="fg-red mif-cross"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                        <td><span class="fg-green mif-checkmark"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Number of accounts in the ticketing system</td>
+                        <td><strong class="hours-count">0</strong></td>
+                        <td><strong class="hours-count">1</strong></td>
+                        <td><strong class="hours-count">5</strong></td>
+                        <td><strong>Unlimited</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>Number of support hours</td>
+                        <td>
+                            <span class="hours-count">0</span>
+                            <div class="text-muted text-small">hours</div>
+                        </td>
+                        <td>
+                            <span class="hours-count">10</span>
+                            <div class="text-muted text-small">hours</div>
+                        </td>
+                        <td>
+                            <span class="hours-count">25</span>
+                            <div class="text-muted text-small">hours</div>
+                        </td>
+                        <td>
+                            <span class="hours-count">50</span>
+                            <div class="text-muted text-small">hours</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-leader2">
+                *) MetroUI is absolutely free both for personal and commercial usage (distributed by MIT license).
+                There are paid options for those who need technical support or require quick response to their questions
+                or just want to support this project financially ;)
+            </p>
+
+        </div>
+    </section>
+
+    <MoreQuestions/>
 </PageLayout>

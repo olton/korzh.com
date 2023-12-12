@@ -27,6 +27,7 @@
     "rollup-plugin-progress": "^1.1.2"
   },
   "dependencies": {
+    "@astrojs/mdx": "^2.0.1",
     "@easydata/core": "^1.4.18",
     "@easydata/ui": "^1.4.18",
     "metro4": "^4.5.10"

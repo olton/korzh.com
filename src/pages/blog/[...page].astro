@@ -7,13 +7,13 @@ import AuthorLinks from "../../components/AuthorLinks.astro";
 import PostLinks from "../../components/PostLinks.astro";
 import Pagination from "../../components/Pagination.astro";
 
-const allPosts = (await Astro.glob("/src/pages/blog/**/*.md"))
+const allPosts = (await Astro.glob("/src/pages/blog/**/*.md*"))
 allPosts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date))
 
 const authors = await getCollection('authors')
 
 export async function getStaticPaths({ paginate }) {
-    const allPosts = await Astro.glob("/src/pages/blog/**/*.md");
+    const allPosts = await Astro.glob("/src/pages/blog/**/*.md*");
     const formattedPosts = allPosts.sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date)).reverse();
 
     return paginate(formattedPosts, {

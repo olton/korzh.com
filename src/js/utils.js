@@ -13,6 +13,10 @@ export function formatDate (date) {
     return new Date(date).toLocaleDateString('en-US')
 }
 
+export function sortDate (a, b) {
+    return Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date)
+}
+
 export function buildToc(headings) {
     if (!headings) return []
     const toc = [];

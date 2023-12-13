@@ -6,22 +6,22 @@ import BlogPostCard from "../../components/BlogPostCard.astro"
 import AuthorLinks from "../../components/AuthorLinks.astro";
 import PostLinks from "../../components/PostLinks.astro";
 import Pagination from "../../components/Pagination.astro";
+import {sortDate} from "../../js/utils.js";
 
 const allPosts = (await Astro.glob("/src/pages/blog/**/*.md*"))
-allPosts.sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date))
+allPosts.sort(sortDate)
 
 const authors = await getCollection('authors')
 
 export async function getStaticPaths({ paginate }) {
     const allPosts = await Astro.glob("/src/pages/blog/**/*.md*");
-    const formattedPosts = allPosts.sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date)).reverse();
+    const formattedPosts = allPosts.sort(sortDate);
 
     return paginate(formattedPosts, {
         pageSize: 5,
     })
 }
 const { page } = Astro.props;
-console.log(page)
 const pathname = new URL(Astro.request.url).pathname.split('/');
 const firstPath = pathname[1];
 ---

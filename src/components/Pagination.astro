@@ -3,7 +3,7 @@ const { length, currentUrl, currentPage, firstUrl, prevUrl, nextUrl, lastUrl } =
 const paginationList = Array.from({length: `${length}`}, (_, i) => i + 1);
 ---
 
-<ul aria-label="Blog pages" class="pagination">
+<ul aria-label="Blog pages" class="pagination no-gap">
     { firstUrl == currentUrl ? (
         <li class="page-item disabled">
             <a class="page-link"><span>First</span></a>

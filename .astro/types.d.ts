@@ -184,7 +184,23 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		
+		"blog": {
+"2018-01-22-ASP-NET-Identity-Use-claims-to-store-additional-users-data.mdx": {
+	id: "2018-01-22-ASP-NET-Identity-Use-claims-to-store-additional-users-data.mdx";
+  slug: "aspnet-identity-store-user-data-in-claims";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"welcome.md": {
+	id: "welcome.md";
+  slug: "welcome";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+};
+
 	};
 
 	type DataEntryMap = {

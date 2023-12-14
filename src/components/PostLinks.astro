@@ -2,5 +2,5 @@
 const {posts} = Astro.props
 ---
 <ul class="post-links">
-    {posts.map(p => <li class="post-link"><a class="link-to-post" href=`${p.url}`>{p.frontmatter.title}</a></li>)}
+    {posts.map(p => <li class="post-link"><a class="link-to-post" href=`/blog/${p.slug}`>{p.data.title}</a></li>)}
 </ul>

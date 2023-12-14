@@ -1,0 +1,256 @@
+---
+layout: "../../../layouts/BlogPostLayout.astro"
+title: Add extra user claims in ASP.NET Core webapp
+date: 2019-05-07
+author:
+image: {
+    src: "/images/user-data-migrate.png",
+    alt: "Image alternate text"
+}
+description1: This is a third part of the series of articles about some not-so-well-known features and tricks in ASP.NET Identity.
+draft: false
+category: ASP.NET
+tags: ["ASP-NET-CORE", "ASP-NET-IDENTITY", "CLAIMS"]
+time: "3 min"
+---
+import {Image} from "astro:assets";
+import claim01Image from "./anc22-add-extra-claim01.png"
+import claim02Image from "./anc22-add-extra-claim02.png"
+import claim03Image from "./anc22-add-extra-claim03.png"
+
+This is a second edition of the [previous post on the same topic](/blog/aspnet-identity-store-user-data-in-claims).
+The reason why I wrote this one is because of some drastic changes made in ASP.NET Core Authentication system from version 2.0 to version 2.2 - so most of the code presented in the first article doesn't work with the new version.
+
+So, the code in the following articles was built for and tested with ASP.NET Core 2.2. The main concept, however, is still the same and were not changed since ASP.NET Identity 2.0 (I guess).
+
+As in the previous case, we will start with a description of the problem.
+
+{/* trunc */}
+
+## Problem
+
+Let's suppose we created a new ASP.NET Core project using one of the default templates and chose "Individual user account" option for "Authentication".
+
+<Image src={claim01Image} alt="" />
+
+Now when we start that newly created project and register new user we will see something like `Hello YourEmailAddress@YourCompany.com` in the top right part of the index web-page.
+
+Obviously, such kind of greeting is useless in a real-world application and you would like to see the name of the currently logged user there instead (e.g. `Hello John Doe`).
+Let's figure out how to do it.
+
+## Solution
+
+Here we guess you are already familiar with the claims and [claims-based approach](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/claims) for authorization used in ASP.NET Core Identity. If not - please read [ASP.NET Core Security](https://docs.microsoft.com/en-us/aspnet/core/security/) article first.
+
+To achieve our goal we need to do 2 things:
+
+1. Add necessary information to the list of the claims attached to the user's identity.
+2. Have a simple way of getting that info when needed.
+
+But before implementing these two tasks we will need to add a new ContactName field to our model class and update our registration and user management pages accordingly.
+
+## Step 0: Preparations
+
+Before we can add a new claim to a user object (the one you can access via `HttpContext.User`) we need a place to store that additional info somewhere.
+Here I am going to describe how to get this done for a new ASP.NET Core project built by a default template.
+
+If already you work with your real-world application - you most probably already did similar changes before.
+In this case, you can skip this section and move right to the step #1.
+
+### 0.1 New ApplicationUser class
+
+Add a new  `ApplicationUser` class with `ContactName' property:
+
+```csharp
+    public class ApplicationUser : IdentityUser
+    {
+        public string ContactName { get; set; }
+    }
+```
+
+Of course, you can add more properties to store some additional information with the user account.
+For example: `FirstName`, `LastName`, `Country`, `Address`, etc. All of them can be placed to claims the same way as `ContactName` we discuss here.
+
+### 0.2 Replace `IdentityUser` with `ApplicationUser`
+
+Now you need to replace `IdentityUser` with `ApplicationUser` everywhere in your project.
+
+The default ASP.NET Core template uses predefined `IdentityUser` type everywhere.
+Since we what to use `ApplicationUser` instead of it - we need to search for all inclusions of `IdentityUser` in your project and replace with `ApplicationUser`.
+
+It will include your DbContext class, one line in `Startup` class (in `ConfigureServices` method) and two lines with `@inject` directives in `_LoginPartial.cshtml` view.
+
+Here is how your new `ApplicationDbContext` class will look like after that:
+
+```csharp
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+}
+```
+
+### 0.3. Update your database.
+
+Now you need to add a new migration and then update your DB.
+Just run the following 2 commands from your project's folder:
+
+```powershell
+dotnet ef migrations add AddUserContactName
+
+dotnet ef database update
+```
+
+### 0.4. Update "User Profile" page
+
+Finally, we will need to add our new field to the "User Profile" page to make it possible for users to modify it.
+
+The default ASP.NET Core template uses all identity-related pages directly from a special Razor UI library (`Microsoft.AspNetCore.Identity.UI`).
+The good news is: we can override any of those pages if we want. Here are the steps we need to do:
+
+1. Right-click on your project in VS and select Add | New Scaffolding item.
+
+2. In the "Add Scaffold" dialog select `Identity` on the left side tree and then `Identity` in the main list and click "Add".
+
+3. In the dialog that appears select only `Account\Manage\Index` page and then click on "Add" as well.
+   When the process is finished you will find a new page 'Index.cshtml' in `Areas/Identity/Pages` folder.
+
+4. After that make the following changes to that `Index` page:
+
+In the Index.cshtml itself add the following piece of markup right before `update-profile-button` button.
+
+```html
+<div class="form-group">
+    <label asp-for="Input.ContactName"></label>
+    <input asp-for="Input.ContactName" class="form-control" />
+    <span asp-validation-for="Input.ContactName" class="text-danger"></span>
+</div>
+```
+
+Then, in the code-behind file `Index.cshtml.cs` we need to modify the view model:
+
+```csharp
+public class InputModel
+{
+    .   .   .   .   .   .
+
+    public string ContactName { get; set; }
+}
+```
+
+then the `OnGetAsync` method:
+
+```csharp
+public async Task<IActionResult> OnGetAsync()
+{
+    .   .   .   .   .   .
+
+    Input = new InputModel
+	{
+		Email = email,
+		PhoneNumber = phoneNumber,
+		ContactName = user.ContactName //add this line
+	};
+
+    .   .   .   .   .   .
+
+}
+```
+
+and the `OnPutAsync`:
+
+```csharp
+public async Task<IActionResult> OnPostAsync()
+{
+    .    .    .    .    .    .    .
+
+	if (Input.ContactName != user.ContactName) {
+		user.ContactName = Input.ContactName;
+		await _userManager.UpdateAsync(user);
+	}
+
+	await _signInManager.RefreshSignInAsync(user);
+	StatusMessage = "Your profile has been updated";
+	return RedirectToPage();
+}
+```
+
+So, after all the changes described above your User Profile page after that registration will look like this:
+
+<Image src={claim02Image} alt="" />
+
+Now, all the preparations are finished we can return back to our main task.
+
+
+## Step 1: Adding the contact name to the claims
+A funny thing: the main task is much easier than all the preparations we made before. :)
+Moreover, it became even easier because of some changes in version 2.2 of ASP.NET Core (in comparison with version 2.0 as [we described before](/blog/add-extra-user-claims-aspnet-core-webapp) )
+
+There are only two simple steps:
+
+### Create your own "claims principal" factory
+
+We need an implementation `IUserClaimsPrincipalFactory` which will add necessary information (`ContactName` in our case) to the user claims.
+The simplest way to do it - is to derive our new class from the default implementation of `IUserClaimsPrincipalFactory` and override one method: `GenerateClaimsAsync`:
+
+```csharp
+public class MyUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<ApplicationUser>
+{
+    public MyUserClaimsPrincipalFactory(
+        UserManager<ApplicationUser> userManager,
+        IOptions<IdentityOptions> optionsAccessor)
+        : base(userManager, optionsAccessor)
+    {
+    }
+
+    protected override async Task<ClaimsIdentity> GenerateClaimsAsync(ApplicationUser user)
+    {
+        var identity = await base.GenerateClaimsAsync(user);
+        identity.AddClaim(new Claim("ContactName", user.ContactName ?? "[Click to edit profile]"));
+        return identity;
+    }
+}
+```
+
+### Register new class in DI container
+
+Then we need to register our new class in the dependency injection container.
+The best way for that - to use `AddClaimsPrincipalFactory` extension method:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    .     .     .     .      .
+    services.AddDefaultIdentity<ApplicationUser>()
+        .AddDefaultUI(UIFramework.Bootstrap4)
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddClaimsPrincipalFactory<MyUserClaimsPrincipalFactory>();  //<---- add this line
+}
+```
+
+## Step 2: Accessing new claim from the views
+
+Now we have a new claim associated with our user's identity. That's fine. But how we can get it and render on our view(s)?
+Easy. Any view in your application has access to `User` object which is an instance of `ClaimsPrincipal` class.
+
+This object actually holds the list of all claims associated with the current user and you can call its `FindFirst` method to get the necessary claim and then read the `Value` property of that claim.
+
+So, we just need to open `_LoginPartical.cshtml` file in `Pages/Shared/` (or `Views/Shared/`) folder and replace the following line:
+
+```html
+<a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @User.Identity.Name!</a>
+```
+
+with this one:
+
+```html
+<a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @(User.FindFirst("ContactName").Value)!</a>
+```
+
+Now, instead of something like `Hello john.doe@yourcompany.com` at the top of your web-page you should see something like this:
+
+<Image src={claim03Image} alt="" />
+
+That's all for now. Enjoy!

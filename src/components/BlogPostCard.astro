@@ -1,25 +1,32 @@
 ---
+import {str} from "@olton/string"
+import {datetime} from "@olton/datetime"
 import {Image} from "astro:assets";
-import {formatDate} from "../js/utils.js";
 import {slugify} from "../js/utils.js";
 const { post } = Astro.props
-const {title, date, time, image, description, tags, category} = post.frontmatter
+const {id, slug, body, data, render} = post
+const {title, date, cover, draft, category, tags, time, description} = data
 ---
 
 <article class="mb-5 border-bottom bd-default pb-5">
     <div class="text-muted reduce-1 place-right">
-        <div class="datetime">{formatDate(date)} &bull; {time && `${time} read`}</div>
+        <div class="datetime">{datetime(date).format("DD, MMM YYYY")} &bull; {time && `${time} read`}</div>
     </div>
-    <a class="category" href=`/category/${slugify(category)}`>{category}</a>
-    <Image src={image.src} alt={image.alt} width="1200" height="100" class="blog-cover" format="avif"/>
+
+    <a class="category" href=`/blog/category/${slugify(category)}`>{str(category).capitalize()}</a>
+
+    <Image src={cover.src} alt={cover.alt} width="1200" height="100" class="blog-cover" format="avif"/>
+
     <a class="h3 no-decor d-block mt-4" href=`${post.url}`>{title}</a>
-    <div class="mt-4 mb-4" set:html={description || post.compiledContent().split("{/* trunc */}")[0]}></div>
+
+    <div class="mt-4 mb-4" set:html={description+'...'}></div>
+
     <div class="d-flex flex-row flex-align-center">
         <div class="">
-            <a class="button info" href=`${post.url}`>Read More...</a>
+            <a class="button info" href=`/blog/${slug}`>Read More...</a>
         </div>
         <div class="ml-auto">
-            {tags && tags.map(tag => <a class="tag" href=`/tags/${tag}`>{tag}</a>)}
+            {tags && tags.map(tag => <a class="tag" href=`/blog/tags/${tag}`>{tag}</a>)}
         </div>
     </div>
 </article>

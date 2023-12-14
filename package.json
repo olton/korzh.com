@@ -23,12 +23,12 @@
     "autoprefixer": "^10.4.16",
     "less": "^4.2.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-progress": "^1.1.2"
+    "rollup-plugin-progress": "^1.1.2",
+    "@astrojs/mdx": "^2.0.1",
+    "@olton/datetime": "^3.0.2",
+    "@olton/string": "^0.4.1",
+    "metro4": "^4.5.10"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.0.1",
-    "@easydata/core": "^1.4.18",
-    "@easydata/ui": "^1.4.18",
-    "metro4": "^4.5.10"
   }
 }

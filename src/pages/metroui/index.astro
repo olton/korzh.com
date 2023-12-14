@@ -11,7 +11,7 @@ import aistantImage from "../../images/aistant.jpg"
 import githubImage from "../../images/github.jpg"
 ---
 <PageLayout title="Metro UI - Impressive component library for expressive web development!">
-    <section class="container-fluid metroui-hero hero-block">
+    <section class="container-fluid hero-section hero-block">
         <div class="container">
             <div class="row">
                 <div class="cell-lg-6">
@@ -275,3 +275,32 @@ import githubImage from "../../images/github.jpg"
 
     <MoreQuestions/>
 </PageLayout>
+<style is:global lang="less">
+    .app-bar .app-bar-menu > li:hover, .app-bar .app-bar-menu li:not(.no-hover):hover {
+        background-color: rgba(41,124,255, 1)!important;
+        color: #ffffff;
+        a::before {
+            border-color: #fff;
+        }
+    }
+    .app-bar {
+        .active-toggle {
+            background-color: rgba(41,124,255, 1)!important;
+            color: #ffffff!important;
+            &::before {
+                border-color: #fff;
+            }
+        }
+    }
+</style>
+<style>
+    .metroui-screens {
+        background-color: rgb(123, 171, 255);
+        padding: 40px 0;
+        color: #ffffff;
+        .img-wrap {
+            height: 160px;
+            overflow: hidden;
+        }
+    }
+</style>

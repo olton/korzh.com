@@ -2,18 +2,16 @@
 import PageLayout from "./PageLayout.astro"
 import TableOfContents from "../components/TOC.astro"
 import {Image} from "astro:assets"
-import {formatDate} from "../js/utils.js";
-import {slugify} from "../js/utils";
+import {slugify, sortDate, formatDate} from "../js/utils.js";
 import PostLinks from "../components/PostLinks.astro";
 const { frontmatter, headings } = Astro.props
 const { title, date, author, description, image, draft, category, tags, time = '1 min'} = frontmatter
-const allPosts = await Astro.glob('/src/pages/blog/**/*.md')
-const relatedPosts = allPosts.filter((p)=> p.frontmatter.category === category).filter(p=>p.frontmatter.title !== title)
-const recentPosts = allPosts.sort((a, b)=>Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date)).slice(0, 5).filter(p=>p.frontmatter.title !== title)
+const allPosts = (await Astro.glob('/src/pages/blog/**/*.md')).filter(p=>p.frontmatter.title !== title)
+const relatedPosts = allPosts.filter((p)=> p.frontmatter.category === category)
+const recentPosts = allPosts.sort(sortDate).slice(0, 5)
 ---
-<PageLayout>
-    <hr class="w-100 mt-4"/>
-    <section class="container-fluid mb-4">
+<PageLayout title={title}>
+    <section class="container-fluid mb-4 border-top bd-default">
         <div class="container pl-0 pr-0">
 
             <div class="row mt-4">
@@ -25,18 +23,16 @@ const recentPosts = allPosts.sort((a, b)=>Date.parse(b.frontmatter.date) - Date.
                             <div class="ml-auto">{formatDate(date)} &bull; {time && `${time} read`}</div>
                         </div>
 
-                        <Image class="blog-image"
+                        <Image class="post-cover"
                                src={image.src}
                                alt={image.alt}
                                format="avif"
-                               width="300"
+                               width="1200"
                                height="100"
                         />
 
                         <div class="post-content mt-4">
-                            <div class="content">
-                                <slot/>
-                            </div>
+                            <slot/>
                         </div>
                     </div>
                 </div>
@@ -79,4 +75,6 @@ const recentPosts = allPosts.sort((a, b)=>Date.parse(b.frontmatter.date) - Date.
     .app-bar {
         border-bottom: 1px solid #a6a6a6 !important;
     }
+
+    @import "../styles/blog";
 </style>

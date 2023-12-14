@@ -26,8 +26,7 @@ const pathname = new URL(Astro.request.url).pathname.split('/');
 const firstPath = pathname[1];
 ---
 <PageLayout title="Kozrh's Blog">
-    <hr class="w-100"/>
-    <section class="container-fluid">
+    <section class="container-fluid border-top bd-default pt-10">
         <div class="container">
             <div class="row">
                 <div class="cell-md-9">
@@ -51,19 +50,19 @@ const firstPath = pathname[1];
                     <div class="sidebar border-left bd-default pl-4 pr-4">
                         <h1 class="">Blog</h1>
 
-                        <div class="sidebar-group">
+                        <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Total Posts</div>
                             <div class="h1 text-center">{allPosts.length}</div>
                         </div>
 
-                        <div class="sidebar-group">
+                        <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Popular Posts</div>
                             {
                                 allPosts.length === 0 ? <div class="reduce-1 text-muted">No posts</div> : <PostLinks posts={allPosts}/>
                             }
                         </div>
 
-                        <div class="sidebar-group">
+                        <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Team</div>
                             <div>
                                 <AuthorLinks authors={authors}/>
@@ -75,3 +74,11 @@ const firstPath = pathname[1];
         </div>
     </section>
 </PageLayout>
+<style lang="less">
+    .app-bar {
+        border-bottom: 1px solid #e8e8e8!important;
+    }
+
+    @import "../../styles/blog";
+</style>
+

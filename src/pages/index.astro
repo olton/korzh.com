@@ -372,14 +372,48 @@ import imgMetro03 from "../images/minataur.png"
 </PageLayout>
 
 <style is:global lang="less">
-    .app-bar .app-bar-menu > li a:hover, .app-bar .app-bar-menu li:not(.no-hover):hover {
+    .app-bar .app-bar-menu > li:hover, .app-bar .app-bar-menu li:not(.no-hover):hover {
         background-color: rgba(41,124,255, 1)!important;
         color: #ffffff;
-        &::before {
+        a::before {
             border-color: #fff;
         }
     }
-    .app-bar-menu .d-menu li {
-        background: #fff!important;
+    .app-bar {
+        .active-toggle {
+            background-color: rgba(41,124,255, 1)!important;
+            color: #ffffff!important;
+            &::before {
+                border-color: #fff;
+            }
+        }
+    }
+</style>
+<style lang="less">
+    .why-box {
+        padding: 80px 0 100px;
+        background-color: #a1bae7;
+
+        img {
+            position: absolute;
+            z-index: 0;
+            width: 100px;
+            bottom: 0;
+            right: 0;
+        }
+    }
+    .customers-box {
+        padding: 40px 0 100px;
+
+        img:not(:hover) {
+            filter: grayscale(100%);
+            opacity: .5;
+            transform: scale(.7);
+        }
+
+        img {
+            margin: 10px;
+            transition: all .1s linear;
+        }
     }
 </style>

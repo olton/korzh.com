@@ -1,5 +1,5 @@
 ---
-import "../styles/footer.less"
+
 ---
 <footer class="container-fluid mt-auto">
     <div class="container">
@@ -19,7 +19,7 @@ import "../styles/footer.less"
         <hr class="mt-10 mb-10 thin"/>
 
         <div class="d-flex flex-column flex-align-center">
-            <div>1998-2023 &copy; Korzh.com.</div><span class="ml-4 mute-text">All Rights Reserved.</span>
+            <div>1998-2023 &copy; Korzh.com. Made in Ukraine. All Rights Reserved.</div>
             <div class="mute-text">All product names, logos, and brands are the property of their respective owners.</div>
             <div>
                 Site built with <a class="fg-cyan" href="/metroui">Metro UI</a>
@@ -27,3 +27,37 @@ import "../styles/footer.less"
         </div>
     </div>
 </footer>
+<style lang="less">
+    footer {
+        background: #172b4d;
+        color: #ffffff;
+        font-size: 14px;
+        padding: 20px 0;
+
+        hr {
+            background: #3b4b68;
+        }
+
+        .footer__menu {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            list-style: none inside;
+            font-size: 12px;
+            margin: 20px 0;
+
+            li {
+                margin: 0 10px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #ffffff;
+            }
+        }
+
+        .mute-text {
+            color: #7f8c97!important;
+        }
+    }
+</style>

@@ -1,0 +1,37 @@
+---
+import GTag from "./GTag.astro";
+const { title = 'Astro - Ink', description, permalink, image } = Astro.props
+---
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/ico" sizes="32x32" href="/favicon.ico">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+<title>{title}</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge"  />
+<meta name="title" content={title}/>
+{ description && <meta name="description" content={description}/> }
+
+<!-- Open Graph Tags (Facebook) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+{permalink && <meta property="og:url" content={permalink} /> }
+{description && <meta property="og:description" content={description} /> }
+{image && <meta property="og:image" content={image} /> }
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content={title} />
+{permalink && <meta property="twitter:url" content={permalink} /> }
+{description && <meta property="twitter:description" content={description} /> }
+{image && <meta property="twitter:image" content={image} /> }
+
+<link rel="stylesheet" href="/src/styles/global.less">
+
+<script is:inline src="/src/js/metro.js"></script>
+<script is:inline src="/src/js/slow-loading.js"></script>
+
+<GTag/>

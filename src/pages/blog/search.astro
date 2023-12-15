@@ -39,6 +39,7 @@ import BlogSearch from "../../components/BlogSearch.astro";
 <script>
     import DOMPurify from "dompurify"
     import Fuse from "fuse.js"
+    import {datetime} from "@olton/datetime"
 
     const search = document.querySelector("#search")
     const searchReadout = document.querySelector("#searchReadout")
@@ -97,7 +98,10 @@ import BlogSearch from "../../components/BlogSearch.astro";
                         <a class="" target="blog-preview" href="/blog/${post.item.slug}">
                             ${post.item.title}
                             <div class="text-light reduce-3 mt-1 mb-1">${post.item.description}</div> 
-                            <small class="d-block ${_class}">[Score: ${Math.round(100 - post.score * 100)}%]</small>
+                            <div class="d-flex flex-row flex-nowrap">
+                                <small class="d-block ${_class}">[Score: ${Math.round(100 - post.score * 100)}%]</small>
+                                <span class="ml-auto reduce-1">${datetime(post.item.date).format("DD, MMM YYYY")}</span>                            
+                            </div>                            
                         </a>
                     </li>
                 `

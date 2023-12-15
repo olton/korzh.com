@@ -46,16 +46,12 @@ import BlogSearch from "../../components/BlogSearch.astro";
     const blogPreview = document.querySelector("#blog-preview")
     const postPreview = document.querySelector("#post-preview")
 
+    let q = ''
+
     function updateDocumentTitle(search){
         document.title = search
             ? `Search results for "${search}"`
             : `Search the Blog`
-    }
-
-    function updateSearchReadout(search){
-        searchReadout.textContent = search
-            ? `"${search}"`
-            : ""
     }
 
     async function fetchSearchResults(search){
@@ -88,7 +84,6 @@ import BlogSearch from "../../components/BlogSearch.astro";
                 ]
             })
             const searchResult = fuse.search(search)
-            console.log(searchResult)
             searchResults.innerHTML = searchResult.map(post => {
                 const {score} = post
                 let _class = ''
@@ -119,23 +114,34 @@ import BlogSearch from "../../components/BlogSearch.astro";
         fetchSearchResults(urlParams)
         updateDocumentTitle(urlParams)
 
+        q = urlParams
+
         search.value = urlParams
         search.focus()
     })
 
     search.addEventListener("input", () => {
         const searchTerms = DOMPurify.sanitize(search.value)
-
-        updateDocumentTitle(searchTerms)
     })
 
     blogPreview.addEventListener("load", () => {
         const iframeDocument = blogPreview.contentWindow.document
-        const title = iframeDocument.querySelector(".post-title").innerHTML
-        const html = iframeDocument.querySelector(".post-content").innerHTML
+        let title = iframeDocument.querySelector(".post-title").innerHTML
+        let html = iframeDocument.querySelector(".post-content").innerHTML
         postPreview.innerHTML = `
-            <h1 class="text-bold border-bottom bd-default pb-4 mt-0">${title}</h1>
-            <div>${html}</div>
+            <h1 id="js-post-title" class="text-bold border-bottom bd-default pb-4 mt-0">${title}</h1>
+            <div id="js-post-content">${html}</div>
         `
+
+        const _title = $("#js-post-title")
+        const _post = $("#js-post-content")
+
+        q.split(" ").map( s => {
+            const r = new RegExp(`${s}`, "gi")
+            _title.html(_title.html().replaceAll(r, `<mark>${s}</mark>`))
+            _post.find("div, p, li, h1, h2, h3, h4").each((_, el) => {
+                el.innerHTML = el.innerHTML.replaceAll(r, `<mark>${s}</mark>`)
+            })
+        })
     })
 </script>

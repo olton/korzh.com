@@ -18,7 +18,7 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
             <div class="row mt-4">
                 <div class="cell-md-9">
                     <div class="pr-10">
-                        <h1 class="text-bold">{title}</h1>
+                        <h1 class="post-title text-bold">{title}</h1>
                         <div class="mb-4 text-muted reduce-1 d-flex flex-row">
                             <span>Category: </span><a class="category ml-2" href=`/blog/categories/${slugify(category)}`>{category}</a>
                             <div class="ml-auto">{datetime(date).format("DD, MMM YYYY")} &bull; {time && `${time} read`}</div>

@@ -172,3 +172,33 @@ ol {
         }
     }
 }
+
+#searchResults {
+    list-style: square;
+    font-size: 14px;
+
+    li {
+        line-height: 1.2;
+        margin: 4px 0;
+        padding: 4px 0;
+
+        &:not(:last-child) {
+            border-bottom: 1px dashed #7f8c97;
+        }
+    }
+
+    a {
+        color: #3b4b68;
+        text-decoration: none;
+        font-weight: 500;
+        &:hover {
+            color: #000000;
+        }
+    }
+}
+
+#blog-preview {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}

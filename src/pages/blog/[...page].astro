@@ -4,20 +4,22 @@ import PageLayout from "../../layouts/PageLayout.astro"
 import AuthorLinks from "../../components/AuthorLinks.astro";
 import Pagination from "../../components/Pagination.astro";
 import BlogPostCard from "../../components/BlogPostCard.astro";
-import {shuffleArray, tagsWeight} from "../../js/utils";
+import {filterPosts, shuffleArray, tagsWeight} from "../../js/utils";
 import PostLinks from "../../components/PostLinks.astro";
 import CloudTags from "../../components/CloudTags.astro";
+import BlogSearch from "../../components/BlogSearch.astro";
 
 const authors = await getCollection('authors')
-const allPosts = await getCollection('blog', ({data}) => {
-    return data.draft !== true
-})
+const allPosts = filterPosts(await getCollection('blog'))
 const randomPosts = shuffleArray(allPosts).slice(0, 5)
 const tags = tagsWeight(allPosts)
 export async function getStaticPaths({ paginate }) {
-    const posts = await getCollection('blog', ({data}) => data.draft !== true);
+    const posts = filterPosts(await getCollection('blog'), {
+        filterOutDrafts: false,
+        sortByDate: true
+    });
 
-    posts.sort((a, b)=>b.data.date.valueOf() - a.data.date.valueOf())
+    // posts.sort((a, b)=>b.data.date.valueOf() - a.data.date.valueOf())
 
     return paginate(posts, {
         pageSize: 5,
@@ -49,6 +51,10 @@ const { page } = Astro.props;
                 <div class="cell-md-3">
                     <div class="sidebar border-left bd-default pl-4 pr-4">
                         <h1 class="">Blog</h1>
+
+                        <div class="blog-sidebar-group">
+                            <BlogSearch/>
+                        </div>
 
                         <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Total Posts</div>
@@ -87,7 +93,5 @@ const { page } = Astro.props;
     .app-bar {
         border-bottom: 1px solid #e8e8e8!important;
     }
-
-    @import "../../styles/blog.less";
 </style>
 

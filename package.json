@@ -15,6 +15,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@astrojs/mdx": "^2.0.1",
+    "@olton/datetime": "^3.0.2",
+    "@olton/string": "^0.4.1",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.5",
@@ -22,12 +25,11 @@
     "astro": "^4.0.3",
     "autoprefixer": "^10.4.16",
     "less": "^4.2.0",
+    "metro4": "^4.5.10",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-progress": "^1.1.2",
-    "@astrojs/mdx": "^2.0.1",
-    "@olton/datetime": "^3.0.2",
-    "@olton/string": "^0.4.1",
-    "metro4": "^4.5.10"
+    "dompurify": "^3.0.6",
+    "fuse.js": "^7.0.0"
   },
   "dependencies": {
   }

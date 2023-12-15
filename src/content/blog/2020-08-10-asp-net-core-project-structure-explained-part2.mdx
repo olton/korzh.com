@@ -23,9 +23,7 @@ As we already mentioned in the first article, the Startup class is the entry poi
 By default, any Startup class in the ASP.NET Core application includes three main parts:
 
 * __The constructor__ where you can define some internal variables, set up some configuration settings, or perform application-wide initializations. For example, we suggest our users set here their license keys for our EasyQuery library.
-
 * __ConfigureServices__ method. Here we register all necessary services in the DI (dependency injection) container and define the configuration settings for some of them. In case you are not aware of what Dependency Injection is, here is an article on our blog that explains this concept in simple words.
-
 * __Configure__ method. This is the stage when you set up the middleware pipeline for your project.
 
 Both `ConfigureServices` and `Configure` methods are called automatically while the application starts. You just need to define the services and the middlewares there correspondingly.

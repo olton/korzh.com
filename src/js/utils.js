@@ -1,5 +1,3 @@
-import * as p from "astro/client";
-
 export function slugify(text) {
     return text
         .toString()
@@ -57,4 +55,34 @@ export function tagsWeight(posts){
         tags.push({ name: tag, weight: weight[tag] });
     }
     return tags
+}
+
+export function filterPosts(posts, {
+    filterOutDrafts = true,
+    filterOutFuturePosts = true,
+    sortByDate = true,
+    limit = undefined
+} = {}){
+    const filteredPosts = posts.reduce((acc, post) => {
+        const {draft, date} = post.data
+
+        if (filterOutDrafts && draft) { return acc }
+        if (filterOutFuturePosts && date > new Date()) { return acc }
+
+        acc.push(post)
+
+        return acc
+    }, [])
+
+    if (sortByDate) {
+        filteredPosts.sort((a, b) => b.data.date - a.data.date)
+    } else {
+        filteredPosts.sort((a, b) => b.data.sort - a.data.sort)
+    }
+
+    if (typeof limit === "number" && limit > 0) {
+        return filteredPosts.slice(0, limit)
+    }
+
+    return filteredPosts
 }

@@ -6,6 +6,8 @@ const authors = defineCollection({
         name: z.string(),
         email: z.string(),
         photo: z.string(),
+        role: z.string(),
+        github: z.string(),
     })
 })
 

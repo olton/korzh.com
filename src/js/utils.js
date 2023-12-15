@@ -1,3 +1,5 @@
+import * as p from "astro/client";
+
 export function slugify(text) {
     return text
         .toString()
@@ -7,10 +9,6 @@ export function slugify(text) {
         .replace(/--+/g, '-')
         .replace(/^-+/, '')
         .replace(/-+$/, '')
-}
-
-export function formatDate (date) {
-    return new Date(date).toLocaleDateString('en-US')
 }
 
 export function sortDate (a, b) {
@@ -32,4 +30,31 @@ export function buildToc(headings) {
         }
     });
     return toc;
+}
+
+export function shuffleArray(a){
+    const c = a.slice(0)
+    let current = c.length, temp, rand
+    while (current !== 0) {
+        rand = Math.floor(Math.random() * current);
+        current -= 1;
+        temp = c[current];
+        c[current] = c[rand];
+        c[rand] = temp;
+    }
+    return c
+}
+
+export function tagsWeight(posts){
+    const weight = {}, tags = []
+    posts.map( p => {
+        p.data.tags.forEach(tag => {
+            const tagName = tag.toUpperCase()
+            weight[tagName] = weight[tagName] ? weight[tagName] + 1 : 1;
+        });
+    })
+    for(let tag in weight) {
+        tags.push({ name: tag, weight: weight[tag] });
+    }
+    return tags
 }

@@ -81,11 +81,25 @@
         margin-bottom: 10px;
 
         img {
-            width: 64px;
-            height: 64px;
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
             margin-right: 10px;
         }
+
+        .author-name {
+            font-size: 14px;
+            color: #3b4b68;
+            text-decoration: none;
+            &:hover {
+                color: #000000;
+            }
+        }
+        .author-role {
+            font-size: 12px;
+            color: #969696;
+        }
+        .author-github {}
     }
 }
 
@@ -119,4 +133,42 @@
 
 ol {
     list-style: decimal;
+}
+
+.cloud-tags {
+    margin: 10px 0;
+    padding: 0;
+    list-style: none inside;
+    font-size: 8px;
+    display: flex;
+    flex-flow: row wrap;
+
+    li {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        margin: 2px;
+        border: 1px solid #dadada;
+        border-radius: 4px;
+        padding: 0 4px;
+    }
+
+    li.tag-weight-1 { font-size: 1em; }
+    li.tag-weight-2 { font-size: 1.1em; }
+    li.tag-weight-3 { font-size: 1.2em; }
+    li.tag-weight-4 { font-size: 1.3em; }
+    li.tag-weight-5 { font-size: 1.4em; }
+    li.tag-weight-6 { font-size: 1.5em; }
+    li.tag-weight-7 { font-size: 1.6em; }
+    li.tag-weight-8 { font-size: 1.7em; }
+    li.tag-weight-9 { font-size: 1.8em; }
+    li.tag-weight-10 { font-size: 1.9em; }
+
+    .tag-link {
+        color: #707070;
+        text-decoration: none;
+        &:hover {
+            color: #000000;
+        }
+    }
 }

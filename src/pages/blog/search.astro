@@ -75,11 +75,11 @@ import BlogSearch from "../../components/BlogSearch.astro";
                     },
                     {
                         name: "description",
-                        weight: 0.75
+                        weight: 1
                     },
                     {
                         name: "body",
-                        weight: 0.75
+                        weight: 1
                     },
                 ]
             })
@@ -139,7 +139,7 @@ import BlogSearch from "../../components/BlogSearch.astro";
         q.split(" ").map( s => {
             const r = new RegExp(`${s}`, "gi")
             _title.html(_title.html().replaceAll(r, `<mark>${s}</mark>`))
-            _post.find("div, p, li, h1, h2, h3, h4").each((_, el) => {
+            _post.find("div, p, li, h1, h2, h3, h4, code").each((_, el) => {
                 el.innerHTML = el.innerHTML.replaceAll(r, `<mark>${s}</mark>`)
             })
         })

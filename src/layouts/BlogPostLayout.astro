@@ -68,7 +68,7 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
     </section>
 </PageLayout>
 
-<style lang="less">
+<style is:global lang="less">
     .blog-image {
         max-height: 400px;
         object-fit: cover;
@@ -76,6 +76,4 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
     .app-bar {
         border-bottom: 1px solid #a6a6a6 !important;
     }
-
-    @import "../styles/blog";
 </style>

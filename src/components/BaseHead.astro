@@ -29,9 +29,15 @@ const { title = 'Astro - Ink', description, permalink, image } = Astro.props
 {description && <meta property="twitter:description" content={description} /> }
 {image && <meta property="twitter:image" content={image} /> }
 
-<link rel="stylesheet" href="/src/styles/global.less">
-
-<script is:inline src="/src/js/metro.js"></script>
-<script is:inline src="/src/js/slow-loading.js"></script>
-
 <GTag/>
+
+<script is:inline src="/js/metro.js"></script>
+
+<style is:global lang="less">
+    @import "../styles/global";
+    @import "../styles/blog";
+</style>
+
+<script>
+    import "../js/slow-loading"
+</script>

@@ -1,7 +1,99 @@
-<!DOCTYPE html><html lang="en"> <head><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="icon" type="image/ico" sizes="32x32" href="/favicon.ico"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"><title>Single-file web API services with .NET 5 and ASP.NET Core</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="title" content="Single-file web API services with .NET 5 and ASP.NET Core"><!-- Open Graph Tags (Facebook) --><meta property="og:type" content="website"><meta property="og:title" content="Single-file web API services with .NET 5 and ASP.NET Core"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:title" content="Single-file web API services with .NET 5 and ASP.NET Core"><link rel="stylesheet" href="/src/styles/global.less"><script src="/src/js/metro.js"></script><script src="/src/js/slow-loading.js"></script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-TTN7QK6N6X"></script> <style>footer{background:#172b4d;color:#fff;font-size:14px;padding:20px 0}footer hr{background:#3b4b68}footer .footer__menu{display:flex;flex-flow:row wrap;justify-content:center;list-style:none inside;font-size:12px;margin:20px 0}footer .footer__menu li{margin:0 10px}footer .footer__menu a{text-decoration:none;color:#fff}footer .mute-text{color:#7f8c97!important}
-.blog-image[data-astro-cid-2q5oecfc]{max-height:400px;object-fit:cover}.app-bar[data-astro-cid-2q5oecfc]{border-bottom:1px solid #a6a6a6!important}.toc[data-astro-cid-2q5oecfc] ul[data-astro-cid-2q5oecfc]{list-style:none;margin:0}.toc[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc]{line-height:1.2}.toc[data-astro-cid-2q5oecfc] a[data-astro-cid-2q5oecfc]{color:#7f8c97!important;font-size:14px}.read-more[data-astro-cid-2q5oecfc]{background:#3366be;color:#fff;text-decoration:none;padding:4px 8px;font-size:12px}.category[data-astro-cid-2q5oecfc]{background:#3366be;color:#fff;font-size:12px;text-decoration:none;padding:4px 8px;margin-bottom:8px;border-radius:4px}.datetime[data-astro-cid-2q5oecfc]{font-size:12px;text-decoration:none;margin:0 4px;color:#7f8c97}.blog-cover[data-astro-cid-2q5oecfc]{object-fit:cover;height:200px;margin:10px 0 0;border-radius:10px}.post-links[data-astro-cid-2q5oecfc]{margin:0;padding:0;list-style:square}.post-links[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc]{margin-left:16px;margin-top:4px;line-height:1.2}.post-links[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc] a[data-astro-cid-2q5oecfc]{text-decoration:none;color:#3b4b68}.post-links[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc] a[data-astro-cid-2q5oecfc]:hover{color:#000}.link-to-post[data-astro-cid-2q5oecfc]{font-size:14px;color:#000}.author-links[data-astro-cid-2q5oecfc]{margin:10px 0}.author-links[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc]{display:flex;flex-flow:row;align-items:center;margin-bottom:10px}.author-links[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc] img[data-astro-cid-2q5oecfc]{width:54px;height:54px;border-radius:50%;margin-right:10px}.author-links[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc] .author-name[data-astro-cid-2q5oecfc]{font-size:14px;color:#3b4b68;text-decoration:none}.author-links[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc] .author-name[data-astro-cid-2q5oecfc]:hover{color:#000}.author-links[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc] .author-role[data-astro-cid-2q5oecfc]{font-size:12px;color:#969696}.tag[data-astro-cid-2q5oecfc]{display:inline-flex;padding:4px 8px;font-size:11px;border-radius:4px;margin-left:4px;align-items:center;justify-content:center;line-height:1;text-decoration:none;background:#eaeaea;color:#000;text-transform:uppercase}.post-content[data-astro-cid-2q5oecfc] img[data-astro-cid-2q5oecfc]:not(.post-cover){margin:20px 0;border:1px solid #88c0ff;padding:10px;background-color:#ecf3ff}.blog-sidebar-group[data-astro-cid-2q5oecfc]{margin-top:20px}ol[data-astro-cid-2q5oecfc]{list-style:decimal}.cloud-tags[data-astro-cid-2q5oecfc]{margin:10px 0;padding:0;list-style:none inside;font-size:8px;display:flex;flex-flow:row wrap}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc]{display:flex;align-items:center;white-space:nowrap;margin:2px;border:1px solid #dadada;border-radius:4px;padding:0 4px}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-1{font-size:1em}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-2{font-size:1.1em}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-3{font-size:1.2em}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-4{font-size:1.3em}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-5{font-size:1.4em}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-6{font-size:1.5em}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-7{font-size:1.6em}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-8{font-size:1.7em}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-9{font-size:1.8em}.cloud-tags[data-astro-cid-2q5oecfc] li[data-astro-cid-2q5oecfc].tag-weight-10{font-size:1.9em}.cloud-tags[data-astro-cid-2q5oecfc] .tag-link[data-astro-cid-2q5oecfc]{color:#707070;text-decoration:none}.cloud-tags[data-astro-cid-2q5oecfc] .tag-link[data-astro-cid-2q5oecfc]:hover{color:#000}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/ico" sizes="32x32" href="/favicon.ico">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+<title>Single-file web API services with .NET 5 and ASP.NET Core</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="title" content="Single-file web API services with .NET 5 and ASP.NET Core">
+
+
+<!-- Open Graph Tags (Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Single-file web API services with .NET 5 and ASP.NET Core">
+
+
+
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Single-file web API services with .NET 5 and ASP.NET Core">
+
+
+
+
+<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-TTN7QK6N6X"></script>
+
+
+<script src="/js/metro.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/_astro/_slug_.K3VCqib4.css" />
+<style>.blog-image{max-height:400px;object-fit:cover}.app-bar{border-bottom:1px solid #a6a6a6!important}.toc ul{list-style:none;margin:0}.toc li{line-height:1.2}.toc a{color:#7f8c97!important;font-size:14px}.read-more{background:#3366be;color:#fff;text-decoration:none;padding:4px 8px;font-size:12px}.category{background:#3366be;color:#fff;font-size:12px;text-decoration:none;padding:4px 8px;margin-bottom:8px;border-radius:4px}.datetime{font-size:12px;text-decoration:none;margin:0 4px;color:#7f8c97}.blog-cover{object-fit:cover;height:200px;margin:10px 0 0;border-radius:10px}.post-links{margin:0;padding:0;list-style:square}.post-links li{margin-left:16px;margin-top:4px;line-height:1.2}.post-links li a{text-decoration:none;color:#3b4b68}.post-links li a:hover{color:#000}.link-to-post{font-size:14px;color:#000}.author-links{margin:10px 0}.author-links li{display:flex;flex-flow:row;align-items:center;margin-bottom:10px}.author-links li img{width:54px;height:54px;border-radius:50%;margin-right:10px}.author-links li .author-name{font-size:14px;color:#3b4b68;text-decoration:none}.author-links li .author-name:hover{color:#000}.author-links li .author-role{font-size:12px;color:#969696}.tag{display:inline-flex;padding:4px 8px;font-size:11px;border-radius:4px;margin-left:4px;align-items:center;justify-content:center;line-height:1;text-decoration:none;background:#eaeaea;color:#000;text-transform:uppercase}.post-content img:not(.post-cover){margin:20px 0;border:1px solid #88c0ff;padding:10px;background-color:#ecf3ff}.blog-sidebar-group{margin-top:20px}ol{list-style:decimal}.cloud-tags{margin:10px 0;padding:0;list-style:none inside;font-size:8px;display:flex;flex-flow:row wrap}.cloud-tags li{display:flex;align-items:center;white-space:nowrap;margin:2px;border:1px solid #dadada;border-radius:4px;padding:0 4px}.cloud-tags li.tag-weight-1{font-size:1em}.cloud-tags li.tag-weight-2{font-size:1.1em}.cloud-tags li.tag-weight-3{font-size:1.2em}.cloud-tags li.tag-weight-4{font-size:1.3em}.cloud-tags li.tag-weight-5{font-size:1.4em}.cloud-tags li.tag-weight-6{font-size:1.5em}.cloud-tags li.tag-weight-7{font-size:1.6em}.cloud-tags li.tag-weight-8{font-size:1.7em}.cloud-tags li.tag-weight-9{font-size:1.8em}.cloud-tags li.tag-weight-10{font-size:1.9em}.cloud-tags .tag-link{color:#707070;text-decoration:none}.cloud-tags .tag-link:hover{color:#000}
 </style><script type="module">window.onpageshow=function(a){a.persisted&&window.location.reload()};function n(){Metro.activity.open({type:"cycle",overlayColor:"#fff",overlayAlpha:.6,text:'<div class="mt-2 text-small">Loading...</div>'})}$(()=>{$("body").on("click","a[slow-loading]",function(){n()})});window.dataLayer=window.dataLayer||[];function o(){dataLayer.push(arguments)}o("js",new Date);o("config","G-TTN7QK6N6X");
-</script></head> <body class="m4-cloak" style="padding-top:52px"> <section class="container-fluid bg-white fg-dark pos-fixed z-fixed p-0" style="top: 0; left:0; right: 0;"> <nav class="container bg-transparent pos-relative p-0" data-role="appbar" data-expand-point="xl"> <a href="/" class="brand no-hover"><img src="/_astro/korzh_logo.S67Im8d7_2d6AAJ.webp" alt="Logo" width="270" height="53" loading="lazy" decoding="async"></a> <ul class="app-bar-menu ml-auto"> <li> <a href="#" class="dropdown-toggle">EASYQUERY</a> <ul class="d-menu place-right" data-role="dropdown"> <li><a href="/easyquery">EASYQUERY.NET</a></li> <li><a href="/easyquery/javascript">EASYQUERY.JS</a></li> <li><a href="/easy-report-starter-kit">EASYREPORT STARTER KIT</a></li> </ul> </li> <li><a href="/metroui">METRO UI</a></li> <li><a href="/localizer">LOCALIZER</a></li> <li><a href="/blog">BLOG</a></li> <li><a href="/support" slow-loading>SUPPORT</a></li> <li> <a href="#" class="dropdown-toggle">DOCS</a> <ul class="d-menu place-right" data-role="dropdown"> <li><a href="/easyquery/docs" slow-loading>EASYQUERY.NET</a></li> <li><a href="/easyquery/javascript/docs" slow-loading>EASYQUERY.JS</a></li> <li><a href="/easy-report-starter-kit/docs" slow-loading>EASY REPORT STARTER KIT</a></li> <li class="divider"></li> <li><a href="/localizer/docs" slow-loading>LOCALIZER</a></li> <li class="divider"></li> <li><a href="https://metroui.org.ua/intro.html">METRO UI</a></li> </ul> </li> <li><a href="/account" slow-loading><span class="mif-user mr-2"></span>ACCOUNT</a></li> </ul> </nav> </section> <main>  <section class="container-fluid mb-4 border-top bd-default" data-astro-cid-2q5oecfc> <div class="container pl-0 pr-0" data-astro-cid-2q5oecfc> <div class="row mt-4" data-astro-cid-2q5oecfc> <div class="cell-md-9" data-astro-cid-2q5oecfc> <div class="pr-10" data-astro-cid-2q5oecfc> <h1 class="text-bold" data-astro-cid-2q5oecfc>Single-file web API services with .NET 5 and ASP.NET Core</h1> <div class="mb-4 text-muted reduce-1 d-flex flex-row" data-astro-cid-2q5oecfc> <span data-astro-cid-2q5oecfc>Category: </span><a class="category ml-2" href="/blog/categories/general" data-astro-cid-2q5oecfc>general</a> <div class="ml-auto" data-astro-cid-2q5oecfc>23, May 2021 &bull; 1 min read</div> </div> <img src="/images/computer-coffee.jpg" class="post-cover" alt="Alt text" data-astro-cid-2q5oecfc width="1200" height="100" loading="lazy" decoding="async"> <div class="post-content mt-4" data-astro-cid-2q5oecfc>  <h2 id="introduction">Introduction</h2>
+</script></head>
+<body class="m4-cloak" style="padding-top:52px">
+    <section class="container-fluid bg-white fg-dark pos-fixed z-fixed p-0" style="top: 0; left:0; right: 0;">
+    <nav class="container bg-transparent pos-relative p-0" data-role="appbar" data-expand-point="xl">
+        <a href="/" class="brand no-hover"><img src="/_astro/korzh_logo.S67Im8d7_2d6AAJ.webp" alt="Logo" width="270" height="53" loading="lazy" decoding="async"></a>
+
+        <ul class="app-bar-menu ml-auto">
+            <li>
+                <a href="#" class="dropdown-toggle">EASYQUERY</a>
+                <ul class="d-menu place-right" data-role="dropdown">
+                    <li><a href="/easyquery">EASYQUERY.NET</a></li>
+                    <li><a href="/easyquery/javascript">EASYQUERY.JS</a></li>
+                    <li><a href="/easy-report-starter-kit">EASYREPORT STARTER KIT</a></li>
+                </ul>
+            </li>
+            <li><a href="/metroui">METRO UI</a></li>
+            <li><a href="/localizer">LOCALIZER</a></li>
+            <li><a href="/blog">BLOG</a></li>
+            <li><a href="/support" slow-loading>SUPPORT</a></li>
+            <li>
+                <a href="#" class="dropdown-toggle">DOCS</a>
+                <ul class="d-menu place-right" data-role="dropdown">
+                    <li><a href="/easyquery/docs" slow-loading>EASYQUERY.NET</a></li>
+                    <li><a href="/easyquery/javascript/docs" slow-loading>EASYQUERY.JS</a></li>
+                    <li><a href="/easy-report-starter-kit/docs" slow-loading>EASY REPORT STARTER KIT</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/localizer/docs" slow-loading>LOCALIZER</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://metroui.org.ua/intro.html">METRO UI</a></li>
+                </ul>
+            </li>
+            <li><a href="/account" slow-loading><span class="mif-user mr-2"></span>ACCOUNT</a></li>
+        </ul>
+    </nav>
+</section>
+
+    <main>
+        
+    <section class="container-fluid mb-4 border-top bd-default">
+        <div class="container pl-0 pr-0">
+
+            <div class="row mt-4">
+                <div class="cell-md-9">
+                    <div class="pr-10">
+                        <h1 class="text-bold">Single-file web API services with .NET 5 and ASP.NET Core</h1>
+                        <div class="mb-4 text-muted reduce-1 d-flex flex-row">
+                            <span>Category: </span><a class="category ml-2" href="/blog/categories/general">general</a>
+                            <div class="ml-auto">23, May 2021 &bull; 1 min read</div>
+                        </div>
+
+                        <img src="/images/computer-coffee.jpg" class="post-cover" alt="Alt text" width="1200" height="100" loading="lazy" decoding="async">
+
+                        <div class="post-content mt-4">
+                            
+    <h2 id="introduction">Introduction</h2>
 <p>When you start learning a programming language, one of your first exercises will probably be to write a “Hello World” application to figure out the basic concepts.
 This exercise works well if you’re writing a simple console program that will only print out the greetings on the screen.</p>
 <p>However, once you move onto learning to write web apps using a new framework, such as ASP.NET Core, such a simple code is not enough — partially because web apps are more complex.
@@ -104,6 +196,148 @@ To learn more about the “.settings” files and configuration in ASP.NET Core 
 <li>It defines the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection">middleware pipeline</a> of your web-application.</li>
 </ul>
 <p>This class contains a lot of code (as for a project that has just been created) from the beginning and will become even bigger when you start adding new features to your application.</p>
-<p>We will take a look at it in more detail in the <a href="asp-net-core-project-structure-explained-part2">next article</a>.</p>  </div> </div> </div> <div class="cell-md-3" data-astro-cid-2q5oecfc> <div class="sidebar border-left bd-default pl-4 pr-4" data-astro-cid-2q5oecfc> <div data-astro-cid-2q5oecfc> <div class="text-bold enlarge-1 border-bottom bd-default" data-astro-cid-2q5oecfc>Table of Contents</div> <nav class="toc"> <ul> <li> <a href="#introduction"> Introduction </a>  </li><li> <a href="#creating-a-new-web-project"> Creating a New Web Project </a>  </li><li> <a href="#project-structure"> Project Structure </a> <ul> <li> <a href="#1-connected-services"> 1. Connected Services </a>  </li><li> <a href="#2-dependencies"> 2. Dependencies </a>  </li><li> <a href="#3-properties"> 3. Properties </a>  </li><li> <a href="#4-wwwroot"> 4. wwwroot </a>  </li><li> <a href="#5-areas"> 5. Areas </a>  </li><li> <a href="#6-data"> 6. Data </a>  </li><li> <a href="#7-pages"> 7. Pages </a>  </li><li> <a href="#8-root-folder-files"> 8. Root Folder Files </a> <ul> <li> <a href="#programcs"> Program.cs </a>  </li><li> <a href="#applicationsettings"> application.settings </a>  </li><li> <a href="#startupcs"> Startup.cs </a>  </li> </ul> </li> </ul> </li> </ul> </nav> </div> <div class="mt-6" data-astro-cid-2q5oecfc> <div class="text-bold border-bottom bd-default" data-astro-cid-2q5oecfc>Related posts</div> <ul class="post-links"> <li class="post-link"><a class="link-to-post" href="/blog/asp-net-core-project-structure-explained-part2">ASP.NET Core default project structure explained (part 2)</a></li> </ul> </div> <div class="mt-6" data-astro-cid-2q5oecfc> <div class="text-bold border-bottom bd-default" data-astro-cid-2q5oecfc>Recent posts</div> <ul class="post-links"> <li class="post-link"><a class="link-to-post" href="/blog/aspnet-identity-store-user-data-in-claims">ASP.NET Identity - Use claims to store additional user&#39;s data</a></li><li class="post-link"><a class="link-to-post" href="/blog/aspnet-identity-weakening-password-policies">ASP.NET Identity - Weakening password policies</a></li><li class="post-link"><a class="link-to-post" href="/blog/aspnet-identity-migrate-membership-passwords">ASP.NET Identity - Migrating users&#39; passwords from ASP.NET Membership</a></li><li class="post-link"><a class="link-to-post" href="/blog/aspnet-identity-master-password">ASP.NET Identity - Adding master password</a></li><li class="post-link"><a class="link-to-post" href="/blog/embedded-resources-testing-projects">Using embedded resources in testing projects</a></li> </ul> </div> <div class="mt-6" data-astro-cid-2q5oecfc> <div class="text-bold border-bottom bd-default" data-astro-cid-2q5oecfc>Tags</div> <div class="mt-1" data-astro-cid-2q5oecfc> <a class="tag" href="/blog/tags/ASP-NET-CORE" data-astro-cid-2q5oecfc>ASP-NET-CORE</a><a class="tag" href="/blog/tags/WEB-SERVICE" data-astro-cid-2q5oecfc>WEB-SERVICE</a><a class="tag" href="/blog/tags/TOP-LEVEL-STATEMENTS" data-astro-cid-2q5oecfc>TOP-LEVEL-STATEMENTS</a> </div> </div> </div> </div> </div> </div> </section>  </main> <footer class="container-fluid mt-auto"> <div class="container"> <ul class="footer__menu"> <li><a href="/">HOME</a></li> <li><a href="/easyquery">EASYQUERY.NET</a></li> <li><a href="/metroui">METRO UI</a></li> <li><a href="/localizer">LOCALIZER</a></li> <li><a href="/blog">BLOG</a></li> <li><a href="/support">SUPPORT</a></li> <li><a href="/resellers">RESELLERS FAQ</a></li> <li><a href="/account">YOUR ACCOUNT</a></li> <li><a href="/privacy">PRIVACY</a></li> <li><a href="/terms-of-use">TERMS OF USE</a></li> </ul> <hr class="mt-10 mb-10 thin"> <div class="d-flex flex-column flex-align-center"> <div>1998-2023 &copy; Korzh.com. Made in Ukraine. All Rights Reserved.</div> <div class="mute-text">All product names, logos, and brands are the property of their respective owners.</div> <div>
-Site built with <a class="fg-yellow no-decor" href="/metroui">Metro UI</a>. Powered by <a class="fg-yellow no-decor" href="https://astro.build">Astro</a>.
-</div> </div> </div> </footer>   </body> </html> 
+<p>We will take a look at it in more detail in the <a href="asp-net-core-project-structure-explained-part2">next article</a>.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-md-3">
+                    <div class="sidebar border-left bd-default pl-4 pr-4">
+                        <div>
+                            <div class="text-bold enlarge-1 border-bottom bd-default">Table of Contents</div>
+                            <nav class="toc">
+    <ul>
+        <li>
+    <a href="#introduction">
+        Introduction
+    </a>
+    
+</li><li>
+    <a href="#creating-a-new-web-project">
+        Creating a New Web Project
+    </a>
+    
+</li><li>
+    <a href="#project-structure">
+        Project Structure
+    </a>
+    <ul>
+                <li>
+    <a href="#1-connected-services">
+        1. Connected Services
+    </a>
+    
+</li><li>
+    <a href="#2-dependencies">
+        2. Dependencies
+    </a>
+    
+</li><li>
+    <a href="#3-properties">
+        3. Properties
+    </a>
+    
+</li><li>
+    <a href="#4-wwwroot">
+        4. wwwroot
+    </a>
+    
+</li><li>
+    <a href="#5-areas">
+        5. Areas
+    </a>
+    
+</li><li>
+    <a href="#6-data">
+        6. Data
+    </a>
+    
+</li><li>
+    <a href="#7-pages">
+        7. Pages
+    </a>
+    
+</li><li>
+    <a href="#8-root-folder-files">
+        8. Root Folder Files
+    </a>
+    <ul>
+                <li>
+    <a href="#programcs">
+        Program.cs
+    </a>
+    
+</li><li>
+    <a href="#applicationsettings">
+        application.settings
+    </a>
+    
+</li><li>
+    <a href="#startupcs">
+        Startup.cs
+    </a>
+    
+</li>
+            </ul>
+</li>
+            </ul>
+</li>
+    </ul>
+</nav>
+                        </div>
+                        <div class="mt-6">
+                            <div class="text-bold border-bottom bd-default">Related posts</div>
+                            <ul class="post-links">
+    <li class="post-link"><a class="link-to-post" href="/blog/asp-net-core-project-structure-explained-part2">ASP.NET Core default project structure explained (part 2)</a></li>
+</ul>
+                        </div>
+                        <div class="mt-6">
+                            <div class="text-bold border-bottom bd-default">Recent posts</div>
+                            <ul class="post-links">
+    <li class="post-link"><a class="link-to-post" href="/blog/aspnet-identity-store-user-data-in-claims">ASP.NET Identity - Use claims to store additional user&#39;s data</a></li><li class="post-link"><a class="link-to-post" href="/blog/aspnet-identity-weakening-password-policies">ASP.NET Identity - Weakening password policies</a></li><li class="post-link"><a class="link-to-post" href="/blog/aspnet-identity-migrate-membership-passwords">ASP.NET Identity - Migrating users&#39; passwords from ASP.NET Membership</a></li><li class="post-link"><a class="link-to-post" href="/blog/aspnet-identity-master-password">ASP.NET Identity - Adding master password</a></li><li class="post-link"><a class="link-to-post" href="/blog/embedded-resources-testing-projects">Using embedded resources in testing projects</a></li>
+</ul>
+                        </div>
+                        <div class="mt-6">
+                            <div class="text-bold border-bottom bd-default">Tags</div>
+                            <div class="mt-1">
+                                <a class="tag" href="/blog/tags/ASP-NET-CORE">ASP-NET-CORE</a><a class="tag" href="/blog/tags/WEB-SERVICE">WEB-SERVICE</a><a class="tag" href="/blog/tags/TOP-LEVEL-STATEMENTS">TOP-LEVEL-STATEMENTS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="container-fluid mt-auto">
+    <div class="container">
+        <ul class="footer__menu">
+            <li><a href="/">HOME</a></li>
+            <li><a href="/easyquery">EASYQUERY.NET</a></li>
+            <li><a href="/metroui">METRO UI</a></li>
+            <li><a href="/localizer">LOCALIZER</a></li>
+            <li><a href="/blog">BLOG</a></li>
+            <li><a href="/support">SUPPORT</a></li>
+            <li><a href="/resellers">RESELLERS FAQ</a></li>
+            <li><a href="/account">YOUR ACCOUNT</a></li>
+            <li><a href="/privacy">PRIVACY</a></li>
+            <li><a href="/terms-of-use">TERMS OF USE</a></li>
+        </ul>
+
+        <hr class="mt-10 mb-10 thin">
+
+        <div class="d-flex flex-column flex-align-center">
+            <div>1998-2023 &copy; Korzh.com. Made in Ukraine. All Rights Reserved.</div>
+            <div class="mute-text">All product names, logos, and brands are the property of their respective owners.</div>
+            <div>
+                Site built with <a class="fg-yellow no-decor" href="/metroui">Metro UI</a>. Powered by <a class="fg-yellow no-decor" href="https://astro.build">Astro</a>.
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+</body>
+</html>

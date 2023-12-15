@@ -1,0 +1,111 @@
+---
+title: Single-file web API services with .NET 5 and ASP.NET Core
+tags: ["ASP-NET-CORE", "WEB-SERVICE", "TOP-LEVEL-STATEMENTS"]
+slug: single-file-web-service-aspnetcore
+date: 2021-04-15
+cover: {
+src: '/images/simple-webservice.jpg'
+}
+sort: 5
+description: "There are many ways to create a web application today. We have a lot of different platforms, frameworks, and libraries: PHP, Python, Java, NodeJS, and a dozen of others"
+---
+import {Image} from "astro:assets";
+import postmanImage from "../../images/blog/postman-echo01.png"
+
+## Introduction
+
+There are many ways to create a web application today. We have a lot of different platforms, frameworks, and libraries: PHP, Python, Java, NodeJS, and a dozen of others.
+
+While ASP.NET (Core) was always a good choice for developing enterprise-level web applications (with many complex web pages, some Web API endpoints, static resources, etc.),
+it's never been the best choice for creating a small web service with just a few endpoints to handle REST API requests in JSON or plain text formats.
+
+Well, that was true until .NET 5 was released last year. With support for top-level statements and new features in C# language, .NET 5 allows us to create a solid web service in just a few minutes and with a single code file.
+
+## Single code file ASP.NET Core web service
+
+Below you will find an example of a very basic "echo" web service with only one endpoint that just takes the content of a POST request and returns it back in JSON format. Not quite a real-world task of course, but enough for demonstration purposes.
+
+So, to create our single-code-file web service just open your terminal, create an empty folder and type the following command:
+
+```shell
+dotnet new web
+```
+
+This command will create a simple ASP.NET Core project with two code files: `Program.cs` and `Startup.cs`.
+
+Since our purpose is to get only one file, we remove `Startup.cs`. Yeah, it's that simple.
+
+
+After that just copy/paste the following piece of code into `Program.cs` file:
+
+```csharp
+using System.IO;
+using System.Net.Mime;
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+
+
+Host.CreateDefaultBuilder(args)
+    .ConfigureWebHostDefaults(webBuilder => webBuilder
+        .Configure(app => app.Run(async context => {
+            if (context.Request.Path == "/api/echo" && context.Request.Method == "POST") {
+                //getting the content of our POST request
+                using var reader = new StreamReader(context.Request.Body);
+                var content = await reader.ReadToEndAsync();
+
+                //sending it back in the response
+                context.Response.ContentType = MediaTypeNames.Text.Plain;
+                await context.Response.WriteAsync(content);
+            }
+            else {
+                //Return 404 for any other endpoint
+                context.Response.StatusCode = StatusCodes.Status404NotFound;
+                await context.Response.WriteAsync($"WRONG ENDPOINT: {context.Request.Path.ToString()}. Use POST request to /api/echo instead");
+            }
+        })))
+    .Build().Run();
+```
+
+Let's take a closer look what happens here.
+
+### Top-level statements
+
+Fist we have a block of `using` statement. That's usual for any C# file. Nothing special.
+
+After that, we start straight with an instruction. We call `CreateDefaultBuilder()` method of `Host` class.
+If you've had experience with C# before, you may be a little bit confused by this approach. No namespaces, no class definitions.
+You may even say that this piece of code has the wrong syntax and will not be compiled.
+
+But it will. It's possible to do now with C# 9 and it's called [top-level statements](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/top-level-statements).
+
+
+### Creating a host
+
+As we already mentioned above the only instruction we actually have in our little program is `Host.CreateDefaultBuilder()` call.
+It creates a [generic host builder](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host) with default settings for logging, configuration, and Dependency Injection container.
+
+### Setting up the web application
+
+After that, the `ConfigureWebHostDefaults` method loads the configuration, set Kestrel as the webserver, enables IIS integrations, and adds some default middlewares.
+
+Finally, we call `Configure` method to set up the [middleware pipeline](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/), or, to define the only middleware that will actually process all requests to our web service (with that `app.Run(...)` call).
+
+The next piece of code is self-explanatory. If it's a POST request to `/api/echo` we read the content of the request's body and just write it back to the response stream. Otherwise, we return the 404 code with some error message.
+
+As I mentioned above, this is a very basic example of a microweb service, but I intentionally made it simple to show how everything works in general without going into detail.
+
+
+## Running the app
+
+To run this simple web service just type in the terminal (while you are in the project's directory):
+
+```shell
+dotnet run
+```
+
+Here is what you get in response by sending a POST request to /api/echo using [Postman utility](https://www.postman.com/):
+
+<Image src={postmanImage} alt="POST request to /api/echo via Postman" />

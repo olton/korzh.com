@@ -241,6 +241,41 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"2020-08-10-asp-net-core-project-structure-explained-part2.mdx": {
+	id: "2020-08-10-asp-net-core-project-structure-explained-part2.mdx";
+  slug: "asp-net-core-project-structure-explained-part2";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2021-03-31-crud-asp-net-core-with-easydata.mdx": {
+	id: "2021-03-31-crud-asp-net-core-with-easydata.mdx";
+  slug: "crud-asp-net-core-with-easydata";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2021-04-15-single-file-web-service-aspnetcore.mdx": {
+	id: "2021-04-15-single-file-web-service-aspnetcore.mdx";
+  slug: "single-file-web-service-aspnetcore";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2021-05-23-ASP-NET-Core-default-project-structure-explained-part-1.mdx": {
+	id: "2021-05-23-ASP-NET-Core-default-project-structure-explained-part-1.mdx";
+  slug: "asp-net-core-default-project-structure-explained-part-1";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2022-04-19-using-ts-wp-aspnet-core-proj.mdx": {
+	id: "2022-04-19-using-ts-wp-aspnet-core-proj.mdx";
+  slug: "typescript-webpack-aspnetcore";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "welcome.md": {
 	id: "welcome.md";
   slug: "welcome";

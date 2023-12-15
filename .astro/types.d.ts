@@ -192,6 +192,55 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"2018-02-10-aspnet-identity-weakening-password-policies.mdx": {
+	id: "2018-02-10-aspnet-identity-weakening-password-policies.mdx";
+  slug: "aspnet-identity-weakening-password-policies";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2018-02-22-aspnet-identity-migrate-membership-passwords.mdx": {
+	id: "2018-02-22-aspnet-identity-migrate-membership-passwords.mdx";
+  slug: "aspnet-identity-migrate-membership-passwords";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2018-04-08-aspnet-identity-master-password.mdx": {
+	id: "2018-04-08-aspnet-identity-master-password.mdx";
+  slug: "aspnet-identity-master-password";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2018-05-30-embedded-resources-testing-projects.mdx": {
+	id: "2018-05-30-embedded-resources-testing-projects.mdx";
+  slug: "embedded-resources-testing-projects";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2019-05-07-add-extra-user-claims-aspnet-core-webapp.mdx": {
+	id: "2019-05-07-add-extra-user-claims-aspnet-core-webapp.mdx";
+  slug: "add-extra-user-claims-aspnet-core-webapp";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2020-01-08-dependency-injection-explanation-in-simple-words.mdx": {
+	id: "2020-01-08-dependency-injection-explanation-in-simple-words.mdx";
+  slug: "dependency-injection-explanation-in-simple-words";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"2020-05-01-dotnet-vs-java-what-development-platform-better.mdx": {
+	id: "2020-05-01-dotnet-vs-java-what-development-platform-better.mdx";
+  slug: "dotnet-vs-java-what-development-platform-better";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "welcome.md": {
 	id: "welcome.md";
   slug: "welcome";

@@ -4,6 +4,7 @@ import PageLayout from "../../layouts/PageLayout.astro"
 import AuthorLinks from "../../components/AuthorLinks.astro";
 import Pagination from "../../components/Pagination.astro";
 import BlogPostCard from "../../components/BlogPostCard.astro";
+import {sortDate} from "../../js/utils";
 
 const authors = await getCollection('authors')
 const allPosts = await getCollection('blog', ({data}) => {
@@ -12,6 +13,10 @@ const allPosts = await getCollection('blog', ({data}) => {
 
 export async function getStaticPaths({ paginate }) {
     const posts = await getCollection('blog');
+
+    posts.sort((a, b)=>{
+        return b.data.date.valueOf() - a.data.date.valueOf();
+    })
 
     return paginate(posts, {
         pageSize: 5,

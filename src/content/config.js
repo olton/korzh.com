@@ -25,7 +25,7 @@ const blog = defineCollection({
         tags: z.array(z.string()),
         time: z.string().default('1 min'),
         footnote: z.string().optional(),
-        sort: z.number(),
+        sort: z.number().optional(),
         relatedPosts: z.array(reference('blog')).optional(),
     })
 })

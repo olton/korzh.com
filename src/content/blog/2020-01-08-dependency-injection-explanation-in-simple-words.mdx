@@ -1,0 +1,91 @@
+---
+title: Dependency Injection Put Simply
+tags: ["PROGRAMMING", "DEPENDENCY-INJECTION"]
+slug: dependency-injection-explanation-in-simple-words
+date: 2020-01-08
+cover: {
+    src: '/images/food-app.png'
+}
+sort: 5
+description: "The concept of Dependency Injection can look over complicated especially for beginners. Here, I have tried to explain it by using a very simple example from the real world: a food delivery app on your mobile phone"
+---
+
+import {Image} from "astro:assets";
+import menuImage from "../../images/blog/di-interfaces-as-menu.png"
+import schemaImage from "../../images/blog/dependency-injection-schema.png"
+
+The concept of Dependency Injection can look over complicated especially for beginners. Here, I have tried to explain it by using a very simple example from the real world: a food delivery app on your mobile phone.
+
+So, imagine you open such an app on your smartphone. Let’s see what we have here:
+
+## Menu (interfaces)
+
+<Image src={menuImage} alt="DI concepts: intefaces are like items in a cafe menu" />
+
+Photo by <a href="https://unsplash.com/@elizagalevi23?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Levi Elizaga</a> on <a href="https://unsplash.com/s/photos/menu?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+
+Obviously, this app has a menu with a description of each item available there. To make it more similar to the Dependency Injection (DI) container let’s suppose all items on the menu are more or less generic. So, you have such options as a burger, chips, green salad, a soda drink, coffee, etc. However, you don’t know what meat is used for that burger, how exactly those chips are cooked, and what is the exact soda drink you will get.
+These menu items are your __interfaces__. They describe the main characteristics of each snack but don’t bother you with the exact implementation.
+
+## Actual snacks (implementations)
+
+Then, you have the actual snacks which are delivered to you when you place an order. These are the __implementations__ of your interfaces.
+Obviously, the implementations can differ depending on which particular restaurant they are delivered from.
+
+## Delivery (injection)
+
+Now, let’s suppose that your app, in some magical way, has a zero-time delivery function (OK, almost zero-time).
+So, at whatever place you are now (whatever part of your project), you select the items you need, press the “Order” button, and the chosen snacks instantly appear in your hands.
+We can say that they are __injected__ to the place where you are now :)
+Moreover, if a snack (like breakfast or combo-meal) depends on other snacks, those dependant snacks are created automatically and also “injected” into your combo-meal.
+For example, a Big Mac Combo Meal includes a BigMac burger, some fries, and a drink. You don’t need to order them separately. They will all be created and delivered to you automatically.
+
+## Providers
+
+Now let’s suppose you can choose which restaurant will deliver your snacks.
+You can choose either it will be a McDonald’s or Burger King or your favorite cafe nearby.
+
+Moreover, you can also choose the type of food (with meat, fish only, vegetarian, kosher, etc).
+So, now you can still order a burger but if you selected “vegetarian”,
+our magical app will deliver to you a burger with soy meat or a burger made from that cultured meat popular nowadays.
+
+The main point here is this: with this app, you can easily change the actual provider (so, the implementation)
+of your snacks without changing the simplicity and convenience of the whole process.
+
+## Wrapping up
+
+<Image src={schemaImage} alt="Dependency Injection Schema" />
+
+Your food delivery app here is a __Dependency Injection (DI) Container__. The menu items are __interfaces__ of the services you might need somewhere in your project.
+The actual snacks are the __implementations__ (actual classes that implement those services).
+When you need your some snacks (__services__) you tell your app (__DI container__) what you need and they are delivered (__injected__ in the place you are now) to you immediately.
+
+You may ask, why DI does matter? What is so special about this concept that has made it so popular?
+
+As you can see from this real-word example, dependency injection has a lot of benefits.
+Let’s list the most important ones (again, with a real-world example for each of them):
+
+1.  __Simplicity__
+With DI, you don’t need to write a lot of code just to create an object of a particular class.
+Especially when this object requires several other objects for its work (like a combo-meal in our example).
+You just “tell” your DI container (your food delivery app) what you need and it’s delivered to you right away.
+
+2. __Maintainability__
+n terms of code, your classes become loosely coupled (each of the classes is less dependent on the concrete implementations of other classes),
+so your code will be easier to maintain.
+In terms of our food delivery app, it’s easier to maintain one app and order (inject) necessary snacks,
+instead of thinking where to buy all the ingredients for each of them and then cook everything yourself.
+
+3. __Flexibility__
+With DI, your code becomes loosely coupled and so, more flexible, since you depend on interfaces and it’s very easy to replace the implementation.
+For example, you have a repository interface for storing data about users.
+The initial implementation of this repository will save the data to files. After that, you can decide to use the database.
+The implementation of the repository is changed but all the code that uses it remains the same.
+It’s similar to how you switch the provider of the snacks (or the preferred type of food) in your app. The process of order and delivery remains the same, you just start getting other snacks.
+
+## Conclusions
+
+As you can see, Dependency Injection is a very useful and convenient technique,
+the main principles of which can be applied not only in coding but in some real-world situations.
+In terms of programming, you get more maintainable, more readable, more flexible, and more extensible code.
+These are good enough reasons to get better acquainted with this technology and start using it in your projects.

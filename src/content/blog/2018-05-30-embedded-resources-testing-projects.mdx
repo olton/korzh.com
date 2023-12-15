@@ -1,0 +1,88 @@
+---
+title: Using embedded resources in testing projects
+tags: ["UNIT-TESTING", "INTEGRATION-TESTS", "RESOURCES"]
+slug: embedded-resources-testing-projects
+date: 2018-05-30
+cover: {
+src: '/images/cubes.png'
+}
+sort: 5
+description: Quite often when you are writing tests it's necessary to store some data together with the testing project to make them available in the test functions
+---
+import {Image} from "astro:assets";
+import protectImage from "../../images/blog/vs-project-embres.png"
+
+Quite often when you are writing tests it's necessary to store some data together with the testing project to make them available in the test functions.
+
+The solution is quite simple:
+
+1. You put necessary files to some folder of your testing project (e.g. `Resources`)
+
+2. Mark them as "Embedded Resource"
+
+3. After that, you can access any of these resources in any place of your testing module.
+
+Here is an example of a resource file included in your testing project:
+<Image src={protectImage} alt="" />
+
+
+Here is a static class with extension functions which may help you on step #3:
+
+```csharp
+public static class ResourceUtils
+{
+	public static Stream GetResourceStream(this Assembly assembly, string resourceFolder, string resourceFileName)
+	{
+
+		string[] nameParts = assembly.FullName.Split(',');
+
+		string resourceName = nameParts[0] + "." +  resourceFolder + "." + resourceFileName;
+
+		var resources = new List<string>(assembly.GetManifestResourceNames());
+		if (resources.Contains(resourceName))
+			return assembly.GetManifestResourceStream(resourceName);
+		else
+			return null;
+	}
+
+	public static string GetResourceAsString(this Assembly assembly, string folder, string fileName)
+	{
+		string fileContent;
+		using (StreamReader sr = new StreamReader(GetResourceStream(assembly, folder, fileName))) {
+			fileContent = sr.ReadToEnd();
+		}
+		return fileContent;
+	}
+
+	public static Stream GetResourceStream(this Type type, string resourceFolder, string resourceFileName)
+	{
+		var assembly = type.GetTypeInfo().Assembly;
+		return assembly.GetResourceStream(resourceFolder, resourceFileName);
+	}
+
+	public static string GetResourceAsString(this Type type, string folder, string fileName)
+	{
+		var assembly = type.GetTypeInfo().Assembly;
+		return assembly.GetResourceAsString(folder, fileName);
+	}
+}
+
+public class ResourceUtilsException : Exception {
+	public ResourceUtilsException(string message) : base(message) { }
+}
+```
+
+To make it even simpler - we put these and some other functions to a [Nuget package](https://www.nuget.org/packages/Korzh.Utils/) you can reference in your project.
+
+Finally, here is how your testing function will access the resource file defined on the first step:
+
+```csharp
+[TestMethod]
+public void TestMethod1() {
+	string xml = typeof(UnitTest1).GetResourceAsString("Resources", "XMLFile1.xml");
+	.    .    .    .    .    .
+}
+```
+(here, for the `typeof` function parameter you use any class from the same assembly where your resources are placed)
+
+Enjoy!

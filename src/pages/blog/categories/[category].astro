@@ -4,27 +4,25 @@ import PageLayout from "../../../layouts/PageLayout.astro";
 import BlogPostCard from "../../../components/BlogPostCard.astro";
 import AuthorLinks from "../../../components/AuthorLinks.astro";
 import {filterPosts} from "../../../js/utils";
-import PostLinks from "../../../components/PostLinks.astro";
 
 const authors = await getCollection('authors')
-const recentPosts = filterPosts(await getCollection('blog'), {limit: 5})
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths() {
     const allPosts = filterPosts(await getCollection("blog"))
-    const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
+    const categories = [...new Set(allPosts.map((post) => post.data.category).flat())];
 
-    return uniqueTags.map((tag) => {
+    return categories.map((category) => {
         const filteredPosts = allPosts.filter((post) =>
-            post.data.tags.includes(tag)
+            post.data.category === category
         );
         return {
-            params: { tag },
+            params: { category },
             props: { posts: filteredPosts },
         };
     });
 }
 
-const { tag } = Astro.params;
+const { category } = Astro.params;
 const { posts } = Astro.props;
 ---
 <PageLayout title="Kozrh's Blog">
@@ -32,7 +30,7 @@ const { posts } = Astro.props;
         <div class="container">
             <div class="row">
                 <div class="cell-md-9">
-                    <h2>Posts tagged by <span class="">`{tag}`</span></h2>
+                    <h2>Posts in category <span class="">`{category}`</span></h2>
                     <hr/>
                     <div class="pr-10">
                         {
@@ -47,13 +45,6 @@ const { posts } = Astro.props;
                         <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Tagged Posts</div>
                             <div class="h1 text-center">{posts.length}</div>
-                        </div>
-
-                        <div class="blog-sidebar-group">
-                            <div class="text-bold border-bottom bd-default">Recent Posts</div>
-                            {
-                                recentPosts && <PostLinks posts={recentPosts} />
-                            }
                         </div>
 
                         <div class="blog-sidebar-group">

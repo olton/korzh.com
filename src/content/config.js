@@ -32,4 +32,13 @@ const blog = defineCollection({
     })
 })
 
-export const collections = { authors, blog }
+const news = defineCollection({
+    type: 'content',
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        date: z.date()
+    })
+})
+
+export const collections = { authors, blog, news }

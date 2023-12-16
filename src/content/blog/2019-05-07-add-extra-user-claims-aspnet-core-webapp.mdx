@@ -8,6 +8,8 @@ src: '/images/sec-key.png'
 }
 sort: 5
 description: So, the code in the following articles was built for and tested with ASP.NET Core 2.2. The main concept, however, is still the same and were not changed since ASP.NET Identity 2.0 (I guess)
+relatedPosts:
+- aspnet-identity-store-user-data-in-claims
 ---
 import {Image} from "astro:assets";
 import claim01Image from "../../images/blog/anc22-add-extra-claim01.png"
@@ -180,7 +182,6 @@ Now, all the preparations are finished we can return back to our main task.
 
 ## Step 1: Adding the contact name to the claims
 A funny thing: the main task is much easier than all the preparations we made before. :)
-Moreover, it became even easier because of some changes in version 2.2 of ASP.NET Core (in comparison with version 2.0 as [we described before](../2019-05-07-add-extra-user-claims-aspnet-core-webapp/index.md) )
 
 There are only two simple steps:
 

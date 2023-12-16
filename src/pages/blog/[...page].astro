@@ -78,6 +78,17 @@ const { page } = Astro.props;
                         </div>
 
                         <div class="blog-sidebar-group">
+                            <div class="text-bold border-bottom bd-default">RSS Feeds</div>
+                            <ul class="rss-feeds">
+                                <li><a href="/blog.xml">Blog Posts</a></li>
+                                <li><a href="/news.xml">News Feed</a></li>
+                            </ul>
+                            <div class="text-muted text-small">
+                                Use our RSS feed to stay up to date with what we're sharing.
+                            </div>
+                        </div>
+
+                        <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Team</div>
                             <div>
                                 <AuthorLinks authors={authors}/>

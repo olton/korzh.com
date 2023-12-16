@@ -24,13 +24,14 @@
     "@rollup/plugin-terser": "^0.4.4",
     "astro": "^4.0.6",
     "autoprefixer": "^10.4.16",
+    "dompurify": "^3.0.6",
+    "fuse.js": "^7.0.0",
     "less": "^4.2.0",
     "metro4": "^4.5.10",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-progress": "^1.1.2",
-    "dompurify": "^3.0.6",
-    "fuse.js": "^7.0.0"
+    "rollup-plugin-progress": "^1.1.2"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.1"
   }
 }

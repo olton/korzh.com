@@ -1,6 +1,19 @@
 ---
+import { datetime } from "@olton/datetime"
+import { str } from "@olton/string"
 const {posts} = Astro.props
 ---
 <ul class="post-links">
-    {posts.map(p => <li class="post-link"><a class="link-to-post" href=`/blog/${p.slug}`>{p.data.title}</a></li>)}
+    {posts.map(p => {
+        return <li>
+                <a href=`/blog/${p.slug}`>
+                    {p.data.title}
+                    <div class="text-light reduce-3 mt-1 mb-1">{str(p.data.description).truncateWithAlign(150)}...</div>
+                    <div class="d-flex flex-row flex-nowrap">
+                        <span class="reduce-1">{p.data.time} read</span>
+                        <span class="ml-auto reduce-1">{datetime(p.data.date).format("DD, MMM YYYY")}</span>
+                    </div>
+                </a>
+            </li>
+    })}
 </ul>

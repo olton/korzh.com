@@ -16,7 +16,7 @@ import BlogSearch from "../../components/BlogSearch.astro";
 
                         <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Search Results</div>
-                            <ul id="searchResults"></ul>
+                            <ul id="searchResults" class="post-links"></ul>
                         </div>
 
                     </div>
@@ -40,6 +40,7 @@ import BlogSearch from "../../components/BlogSearch.astro";
     import DOMPurify from "dompurify"
     import Fuse from "fuse.js"
     import {datetime} from "@olton/datetime"
+    import { str } from "@olton/string"
 
     const search = document.querySelector("#search")
     const searchReadout = document.querySelector("#searchReadout")
@@ -97,7 +98,7 @@ import BlogSearch from "../../components/BlogSearch.astro";
                     <li>
                         <a class="" target="blog-preview" href="/blog/${post.item.slug}">
                             ${post.item.title}
-                            <div class="text-light reduce-3 mt-1 mb-1">${post.item.description}</div> 
+                            <div class="text-light reduce-3 mt-1 mb-1">${str(post.item.description).truncateWithAlign(150)}</div> 
                             <div class="d-flex flex-row flex-nowrap">
                                 <small class="d-block ${_class}">[Score: ${Math.round(100 - post.score * 100)}%]</small>
                                 <span class="ml-auto reduce-1">${datetime(post.item.date).format("DD, MMM YYYY")}</span>                            

@@ -1,0 +1,47 @@
+---
+import {datetime} from "@olton/datetime"
+import {getCollection} from "astro:content";
+import PageLayout from "./PageLayout.astro"
+import NewsLinks from "../components/NewsLinks.astro";
+import {filterPosts} from "../js/utils";
+const { frontmatter } = Astro.props
+const { title, date, description} = frontmatter
+const recentNews = filterPosts(await getCollection('news', {limit: 5}))
+---
+<PageLayout title={title}>
+    <section class="container-fluid mb-4 border-top bd-default">
+        <div class="container pl-0 pr-0">
+
+            <div class="row mt-4">
+                <div class="cell-md-9">
+                    <div class="pr-10">
+                        <h1 class="news-title text-bold">{title}</h1>
+                        <div class="news-content mt-4">
+                            <slot/>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell-md-3">
+                    <div class="sidebar border-left bd-default pl-4 pr-4">
+                        <div class="mt-6">
+                            <div class="text-bold border-bottom bd-default">Recent News</div>
+                            {
+                                recentNews.length === 0 ? <div class="reduce-1 text-muted">No posts</div> : <NewsLinks posts={recentNews}/>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</PageLayout>
+
+<style is:global lang="less">
+    .blog-image {
+        max-height: 400px;
+        object-fit: cover;
+    }
+    .app-bar {
+        border-bottom: 1px solid #a6a6a6 !important;
+    }
+</style>

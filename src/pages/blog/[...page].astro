@@ -6,18 +6,17 @@ import Pagination from "../../components/Pagination.astro";
 import BlogPostCard from "../../components/BlogPostCard.astro";
 import {filterPosts, shuffleArray, tagsWeight} from "../../js/utils";
 import PostLinks from "../../components/PostLinks.astro";
+import NewsLinks from "../../components/NewsLinks.astro";
 import CloudTags from "../../components/CloudTags.astro";
 import BlogSearch from "../../components/BlogSearch.astro";
 
 const authors = await getCollection('authors')
 const allPosts = filterPosts(await getCollection('blog'))
+const news = filterPosts(await getCollection('news', {limit: 5}))
 const randomPosts = shuffleArray(allPosts).slice(0, 5)
 const tags = tagsWeight(allPosts)
 export async function getStaticPaths({ paginate }) {
-    const posts = filterPosts(await getCollection('blog'), {
-        filterOutDrafts: false,
-        sortByDate: true
-    });
+    const posts = filterPosts(await getCollection('blog'));
 
     // posts.sort((a, b)=>b.data.date.valueOf() - a.data.date.valueOf())
 
@@ -70,6 +69,9 @@ const { page } = Astro.props;
 
                         <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Newsletter</div>
+                            {
+                                news && <NewsLinks posts={news} />
+                            }
                         </div>
 
                         <div class="blog-sidebar-group">
@@ -83,7 +85,7 @@ const { page } = Astro.props;
                                 <li><a href="/blog.xml">Blog Posts</a></li>
                                 <li><a href="/news.xml">News Feed</a></li>
                             </ul>
-                            <div class="text-muted text-small">
+                            <div class="bg-light text-small p-4 border-radius-10">
                                 Use our RSS feed to stay up to date with what we're sharing.
                             </div>
                         </div>

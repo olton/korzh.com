@@ -44,12 +44,12 @@ const news = defineCollection({
 const docs = defineCollection({
     type: 'content',
     schema: z.object({
-        target: z.string(),
-        title: z.string(),
+        target: z.string().optional(),
+        title: z.string().optional(),
         description: z.string().optional(),
         lastUpdated: z.date().optional(),
-        prev: z.string(),
-        next: z.string(),
+        prev: z.string().optional(),
+        next: z.string().optional(),
     })
 })
 

@@ -1,9 +1,10 @@
 ---
 import {Image} from "astro:assets"
 import logo from "../images/site/korzh_logo.png"
+const {wide} = Astro.props
 ---
-<section class="container-fluid bg-white fg-dark pos-fixed z-fixed p-0" style="top: 0; left:0; right: 0;">
-    <nav class="container bg-transparent pos-relative p-0" data-role="appbar" data-expand-point="xl" >
+<section id="appbar" class="container-fluid">
+    <nav class:list={{container: !wide}} data-role="appbar" data-expand-point="xl" >
         <a href="/" class="brand no-hover"><Image src={logo} alt="Logo"/></a>
 
         <ul class="app-bar-menu ml-auto">

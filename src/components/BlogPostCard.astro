@@ -17,7 +17,7 @@ const {title, date, cover, draft, category, tags, time, description} = data
 
     <Image src={cover.src} alt={cover.alt} width="1200" height="100" class="blog-cover" format="avif"/>
 
-    <a class="h3 no-decor d-block mt-4" href=`${post.url}`>{title}</a>
+    <a class="h3 no-decor d-block mt-4" href=`/blog/${slug}`>{title}</a>
 
     <div class="mt-4 mb-4" set:html={description+'...'}></div>
 

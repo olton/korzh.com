@@ -6,6 +6,7 @@ import TableOfContents from "../components/TOC.astro"
 import {Image} from "astro:assets"
 import {slugify} from "../js/utils.js";
 import PostLinks from "../components/PostLinks.astro";
+import BlogSearch from "../components/BlogSearch.astro";
 const { frontmatter, headings } = Astro.props
 const { title, date, author, description, cover, draft, category, tags, time = '1 min'} = frontmatter
 const relatedPosts = frontmatter.relatedPosts ? await getEntries(frontmatter.relatedPosts) : []
@@ -39,7 +40,13 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
                 </div>
                 <div class="cell-md-3">
                     <div class="sidebar border-left bd-default pl-4 pr-4">
-                        <div>
+                        <h1 class="">Blog</h1>
+
+                        <div class="blog-sidebar-group">
+                            <BlogSearch/>
+                        </div>
+
+                        <div class="mt-4">
                             <div class="text-bold enlarge-1 border-bottom bd-default">Table of Contents</div>
                             <TableOfContents headings={headings} />
                         </div>

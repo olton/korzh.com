@@ -1,6 +1,6 @@
 ---
 import GTag from "./GTag.astro";
-const { title = 'Astro - Ink', description, permalink, image } = Astro.props
+const { title = 'Korzh.com', description = "", permalink = "", image = "" } = Astro.props
 ---
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,21 +13,21 @@ const { title = 'Astro - Ink', description, permalink, image } = Astro.props
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"  />
 <meta name="title" content={title}/>
-{ description && <meta name="description" content={description}/> }
+<meta name="description" content={description}/>
 
 <!-- Open Graph Tags (Facebook) -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
-{permalink && <meta property="og:url" content={permalink} /> }
-{description && <meta property="og:description" content={description} /> }
-{image && <meta property="og:image" content={image} /> }
+<meta property="og:url" content={permalink} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content={title} />
-{permalink && <meta property="twitter:url" content={permalink} /> }
-{description && <meta property="twitter:description" content={description} /> }
-{image && <meta property="twitter:image" content={image} /> }
+<meta property="twitter:url" content={permalink} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
 
 <GTag/>
 

@@ -41,4 +41,21 @@ const news = defineCollection({
     })
 })
 
-export const collections = { authors, blog, news }
+const docs = defineCollection({
+    type: 'content',
+    schema: z.object({
+        target: z.string(),
+        title: z.string(),
+        description: z.string().optional(),
+        lastUpdated: z.date().optional(),
+        prev: z.string(),
+        next: z.string(),
+    })
+})
+
+export const collections = {
+    authors,
+    blog,
+    news,
+    "docs-js": docs,
+}

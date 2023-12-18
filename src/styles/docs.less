@@ -5,17 +5,46 @@ body {
 
 main {
     height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
 }
 
-.sidebar {
+.app-bar {
+    .app-bar-item {
+        height: 32px;
+        line-height: 32px;
+
+        &.square {
+            width: 32px;
+        }
+    }
+}
+
+pre::before {
+    content: attr(data-lang);
     position: absolute;
-    z-index: 0;
-    padding-top: 52px;
+    right: 0.4rem;
+    top: 0.4rem;
 }
 
-@media screen and (min-width: 1024px) {
-    .sidebar {
-        box-shadow: none!important;
-        border-right: 1px solid #ccc;
+#sidebar {
+    flex-basis: 300px;
+    flex-shrink: 0;
+    min-height: max-content;
+    background: #23262f;
+    color: hsl(224, 6%, 77%);
+}
+
+#content {
+    width: 100%;
+    background: hsl(224, 10%, 10%);
+    color: hsl(224, 6%, 77%);
+    overflow-y: auto;
+    padding-left: 1rem;
+}
+
+@media screen and (min-width: 768px){
+    #sidebar {
+
     }
 }

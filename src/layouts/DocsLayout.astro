@@ -1,45 +1,23 @@
 ---
-import Navigation from "../components/Navigation.astro"
 import BaseHead from "../components/BaseHead.astro";
+import DocsNavigation from "../components/DocsNavigation.astro";
 
-const { title } = Astro.props
+const { title, docName, docTitle } = Astro.props
 ---
 <html lang="en">
 <head>
     <BaseHead title={title}/>
 </head>
 <body class="m4-cloak" style={{ paddingTop: "52px" }}>
-<Navigation wide={true}/>
+<DocsNavigation wide={true} {docName} {docTitle}/>
 
 <main>
-    <nav
-            data-role="sidebar"
-            data-toggle="#sidebar-toggle"
-            data-shift=".shifted-content"
-            data-static="md"
-    >
-        <ul class="sidebar-menu">
-            <li><a href="">Introduction</a></li>
-            <li><a href="">EasyQuery Web Service API</a></li>
-            <li>
-                <a href="" class="dropdown-toggle">Tutorials</a>
-                <ul data-role="dropdown" class="d-menu">
-                    <li><a>Replacing default Calendar widget with KendoDatePicker</a></li>
-                    <li><a>How to add a token to EasyQuery HTTP requests</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="" class="dropdown-toggle">API Reference</a>
-                <ul data-role="dropdown" class="d-menu">
-                    <li><a>Replacing default Calendar widget with KendoDatePicker</a></li>
-                    <li><a>How to add a token to EasyQuery HTTP requests</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+    <aside id="sidebar">
 
-    <section class="shifted-content">
-        <slot name="doc-content" />
+    </aside>
+
+    <section id="content">
+        <slot name="content" />
     </section>
 </main>
 

@@ -1,0 +1,33 @@
+---
+title: Introduction
+description: Introduction to EasyQuery.JS documentation
+slug: intro
+---
+# Introduction
+
+As a software development assistant, I'm here to help with any queries or challenges you might have related to your project. Whether it is debugging an issue, optimizing code or explaining concepts, I will strive to provide detailed and tangible solutions. Remember, no question is too straightforward or too complex. Let's make programming a smoother journey together.
+
+In the realm of programming, every challenge presents an opportunity for growth. New code languages, frameworks, and technologies push the boundaries of what's possible, transforming ideas into reality. But the road to mastery isn't always easy. Along the way, you might encounter bugs, obstacles, and puzzles that test your skills. But fear not, for you're not alone. I am here to assist you on this journey, to shed light on any issue and make your coding experience more enjoyable. Together, we can overcome any challenge that stands in our path.
+
+```js
+window.onpageshow = function (event) {
+    if (event.persisted) {
+        window.location.reload()
+    }
+};
+
+function showLoadIndicator() {
+    Metro.activity.open({
+        type: "cycle",
+        overlayColor: "#fff",
+        overlayAlpha: .6,
+        text: '<div class="mt-2 text-small">Loading...</div>'
+    })
+}
+
+$(()=>{
+    $("body").on("click", "a[slow-loading]", function() {
+        showLoadIndicator();
+    })
+})
+```

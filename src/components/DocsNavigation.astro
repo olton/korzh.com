@@ -1,0 +1,28 @@
+---
+import {Image} from "astro:assets"
+import logo from "../images/site/korzhbw.png"
+const {wide, docName, docTitle} = Astro.props
+---
+<section id="appbar" class="container-fluid">
+    <nav class:list={{container: !wide}} data-role="appbar" data-expand-point="xl" >
+        <a href="/easyquery/javascript/docs" class="brand no-hover d-block"><Image src={logo} alt="Logo" style="height: 40px; width: auto"/></a>
+
+        <div class="app-bar-item no-hover">
+            <h5 class="m-0 d-flex flex-align-center"><span class="text-muted">{docName}</span> <span class="ml-2 text-normal">{docTitle}</span></h5>
+        </div>
+
+        <div class="app-bar-item no-hover ml-auto">
+            <input data-role="input" data-search-button="true" placeholder="Enter search..." class="border-radius-10 no-overflow"/>
+        </div>
+
+        <a href="/" class="app-bar-item">
+            <span class="reduce-1">HOME</span>
+        </a>
+        <a href="https://github.com/olton/korzh.com" class="app-bar-item square">
+            <span class="mif-github"></span>
+        </a>
+        <a href="https://github.com/olton/korzh.com" class="app-bar-item square mr-2">
+            <span class="mif-discord"></span>
+        </a>
+    </nav>
+</section>

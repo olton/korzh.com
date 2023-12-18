@@ -43,7 +43,7 @@ const news = defineCollection({
 const docs = defineCollection({
     type: 'content',
     schema: z.object({
-        target: z.string().optional(),
+        part: z.string().optional(),
         title: z.string().optional(),
         description: z.string().optional(),
         lastUpdated: z.date().optional(),
@@ -56,5 +56,5 @@ export const collections = {
     authors,
     blog,
     news,
-    "docs-js": docs,
+    "js-docs": docs,
 }

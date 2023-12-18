@@ -18,8 +18,6 @@ const tags = tagsWeight(allPosts)
 export async function getStaticPaths({ paginate }) {
     const posts = filterPosts(await getCollection('blog'));
 
-    // posts.sort((a, b)=>b.data.date.valueOf() - a.data.date.valueOf())
-
     return paginate(posts, {
         pageSize: 5,
     })
@@ -48,7 +46,7 @@ const { page } = Astro.props;
                     </div>
                 </div>
                 <div class="cell-md-3">
-                    <div class="sidebar border-left bd-default pl-4 pr-4">
+                    <div class="border-left bd-default pl-4 pr-4">
                         <h1 class="">Blog</h1>
 
                         <div class="blog-sidebar-group">

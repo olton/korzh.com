@@ -6,11 +6,12 @@ import {slugify} from "../js/utils.js";
 const { post } = Astro.props
 const {id, slug, body, data, render} = post
 const {title, date, cover, draft, category, tags, time, description} = data
+const { remarkPluginFrontmatter } = await render();
 ---
 
 <article class="mb-5 border-bottom bd-default pb-5">
     <div class="text-muted reduce-1 place-right">
-        <div class="datetime">{datetime(date).format("DD, MMM YYYY")} &bull; {time && `${time} read`}</div>
+        <div class="datetime">{datetime(date).format("DD, MMM YYYY")} &bull; {remarkPluginFrontmatter.time}</div>
     </div>
 
     <a class="category" href=`/blog/categories/${slugify(category)}`>{str(category).capitalize()}</a>

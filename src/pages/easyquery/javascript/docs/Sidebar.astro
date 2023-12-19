@@ -139,11 +139,14 @@
     const links = $(".sidebar-menu a")
     links.each((index, link) => {
         const el = $(link)
-        console.log(link.href, currentURL)
         if (link.href === currentURL && !el.hasClass('group-label')) {
             const li = el.closest("li")
             li.addClass("active")
             li.parents("li").toggleClass("open")
+        }
+        if (link.href === currentURL && el.hasClass('group-label')) {
+            const li = el.closest("li")
+            li.toggleClass("open")
         }
     })
 </script>

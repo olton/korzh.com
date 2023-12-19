@@ -8,7 +8,7 @@ export default defineConfig({
     compressHTML: false,
     markdown: {
         shikiConfig: {
-            theme: 'dracula',
+            theme: 'material-theme',
             langs: [],
             wrap: false
         },

@@ -7,6 +7,7 @@ const toc = buildToc(headings)
 
 <nav class="toc">
     <ul>
+        <li><a href=`${base}#_top`>Overview</a></li>
         {toc.map((heading) => <TableOfContentsHeading heading={heading} {base}/>)}
     </ul>
 </nav>

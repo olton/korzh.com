@@ -1,6 +1,6 @@
 :root {
     --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --border-color: hsl(224, 10%, 23%);
+    --border-color: hsl(0, 0%, 86%);
 }
 
 body {
@@ -29,8 +29,8 @@ main {
     flex-basis: 300px;
     flex-shrink: 0;
     min-height: max-content;
-    background: #23262f;
-    color: hsl(224, 6%, 77%);
+    background: #ffffff;
+    color: rgb(0,0,0);
 }
 
 #sidebar {
@@ -70,7 +70,7 @@ main {
             display: block;
             align-items: center;
             justify-content: flex-start;
-            color: hsl(224, 6%, 77%);
+            color: #3b4b68;
             font-size: 14px;
             line-height: 1.8;
         }
@@ -81,7 +81,7 @@ main {
             margin-inline-start: .5rem;
             padding-inline-start: .5rem;
             &:hover {
-                color: #ffffff;
+                color: #000000;
             }
         }
 
@@ -94,7 +94,7 @@ main {
         }
 
         .group-label {
-            color: #ffffff;
+            color: #000000;
             font-weight: 600;
             font-size: 16px;
             text-decoration: none;
@@ -106,8 +106,8 @@ main {
                     padding: 8px 8px;
                     border-radius: 4px;
                     display: block;
-                    background: hsl(224, 100%, 85%);
-                    color: #23262f;
+                    background: hsl(234, 90%, 60%);;
+                    color: #ffffff;
                     font-weight: 500;
                 }
             }
@@ -140,8 +140,8 @@ main {
 
 #content {
     width: 100%;
-    background: hsl(224, 10%, 10%);
-    color: hsl(224, 6%, 77%);
+    background: #ffffff;
+    color: #353841;
     padding: 0;
     display: flex;
     flex-flow: row nowrap;
@@ -149,20 +149,21 @@ main {
 
 #content-data {
     width: 100%;
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     overflow-y: auto;
     height: 100%;
     scrollbar-width: thin;
     flex-shrink: 1;
+    border-left: 1px solid var(--border-color);
 
     img {
         height: auto;
         padding: 10px;
-        background: #353841;
+        background: #e8e8e8;
     }
 
     a {
-        color: #97bbff;
+        color: #4686ff;
     }
 
     p > code {
@@ -174,16 +175,8 @@ main {
         color: #83daed;
     }
 
-    h1 {
-        padding: 1.5rem 0;
-        border-bottom: 1px solid var(--border-color);
-        font-size: 2.625rem;
-        line-height: 1.2;
-        font-weight: 600;
-    }
-
     h1, h2, h3, h4, h5, h6 {
-        color: #ffffff;
+        color: #353841;
     }
 }
 
@@ -193,8 +186,8 @@ main {
     height: ~"calc(100vh - 52px)";
     flex-basis: 300px;
     flex-shrink: 0;
-    border-left: 1px solid #353841;
-    background: hsl(224, 10%, 10%);
+    border-left: 1px solid var(--border-color);
+    background: #ffffff;
 }
 
 @media screen and (min-width: 768px){

@@ -5,8 +5,9 @@ slug: intro
 ---
 import {Image} from "astro:assets";
 import eqImage from "../../images/docs/easyquery.js/eq-aspcore-razor.png"
+import PageTitle from "../../components/PageTitle.astro"
 
-# {frontmatter.title}
+<PageTitle title={frontmatter.title}/>
 
 EasyQuery.JS is a platform-independent solution that allows you to embed an ad hoc reporting or advanced search functionality to your web application.
 
@@ -15,3 +16,28 @@ It gives you a simple to use but powerful user interface to build a query or a f
 <Image src={eqImage} alt="EasyQuery.js" class="mt-4 mb-4"/>
 
 It doesn't matter what server-side platform/language you use - either Java, PHP, NodeJS or something else. EasyQuery.JS covers them all, requiring a minimum additional code to get things worked.
+
+```javascript
+import {defineConfig} from 'astro/config'
+import mdx from "@astrojs/mdx"
+import {readingTime} from "./src/js/reading-time.js"
+
+// https://astro.build/config
+export default defineConfig({
+    site: 'https://korzh.com',
+    compressHTML: false,
+    markdown: {
+        shikiConfig: {
+            theme: 'github-light',
+            langs: [],
+            wrap: false
+        },
+        remarkPlugins: [
+            readingTime,
+        ],
+    },
+    integrations: [
+        mdx(),
+    ]
+});
+```

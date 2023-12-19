@@ -1,12 +1,8 @@
 ---
-interface Props {
-    stagger?: boolean;
-}
-
-const { stagger = false } = Astro.props;
+const { stagger = false, className = '' } = Astro.props;
 ---
 
-<div class:list={['card-grid', { stagger }]}><slot /></div>
+<div class:list={['card-grid', { stagger }, className]}><slot /></div>
 
 <style>
     .card-grid {

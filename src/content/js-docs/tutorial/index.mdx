@@ -5,10 +5,15 @@ slug: tutorial/index
 ---
 import CardGrid from "../../../components/CardGrid.astro"
 import Card from "../../../components/Card.astro"
+import PageTitle from "../../../components/PageTitle.astro"
+import Leader from "../../../components/Leader.astro"
+import TextBlock from "../../../components/TextBlock.astro"
 
-<h1>{frontmatter.title}</h1>
+<PageTitle title={frontmatter.title} />
 
-<CardGrid>
+<Leader>This section of the documentation provides examples of how to use some aspects of EasyQuery.JS</Leader>
+
+<CardGrid className="mt-10">
     <Card title="Replacing default Calendar widget with KendoDatePicker">
         <div slot="body">
             EasyQuery.JS allows you to replace the default Calendar widget with any other component by your choice. Here we are going to describe how to change it with your Kendo DateTime picker. With the code above QueryPanel widget will use Kendo date/time picker widget instead of the EasyQuery's default one.

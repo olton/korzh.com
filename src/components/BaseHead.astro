@@ -1,7 +1,9 @@
 ---
 import GTag from "./GTag.astro";
-const { title = 'Korzh.com', description = "", permalink = "", image = "" } = Astro.props
+const { title = 'Korzh.com', description = "", permalink = "", image = "", base } = Astro.props
 ---
+{base && <base href={base}>}
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/ico" sizes="32x32" href="/favicon.ico">

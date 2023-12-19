@@ -1,0 +1,51 @@
+---
+const { icon, title } = Astro.props;
+---
+
+<article class="card">
+    <p class="title mb-4">
+        {icon && <span class:list={["icon", {icon}]}></span>}
+        <span set:html={title} />
+    </p>
+    <div class="body">
+        <slot name="body"/>
+    </div>
+    <div class="actions">
+        <slot name="actions"/>
+    </div>
+</article>
+
+<style>
+    :root {
+        --card-border-color: hsl(224, 10%, 23%);
+        --card-background: hsl(224, 10%, 10%);
+    }
+    .card {
+        border: 1px solid var(--card-border-color);
+        background-color: var(--card-background);
+        padding: clamp(1rem, calc(0.125rem + 3vw), 2.5rem);
+        flex-direction: column;
+        gap: clamp(0.5rem, calc(0.125rem + 1vw), 1rem);
+    }
+    .title {
+        font-weight: 600;
+        font-size: 24px;
+        color: hsl(0, 0%, 100%);
+        line-height: 1.2;
+        gap: 1rem;
+        align-items: center;
+    }
+    .card .icon {
+        border: 1px solid var(--card-border-color);
+        background-color: var(--card-background);
+        padding: 0.2em;
+        border-radius: 0.25rem;
+    }
+    .card .body {
+        margin: 0 0 10px 0;
+        font-size: clamp(.875rem, calc(0.5rem + 1vw), 1rem);
+    }
+    .card .actions {
+        margin-top: auto;
+    }
+</style>

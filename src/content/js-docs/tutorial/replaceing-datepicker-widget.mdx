@@ -1,0 +1,89 @@
+---
+title: Replacing default Calendar widget with KendoDatePicker
+description: EasyQuery.JS allows you to replace the default Calendar widget with any other component by your choice. Here we are going to describe how to change it with your Kendo DateTime picker.
+slug: tutorial/replacing-datepicker-widget
+---
+# {frontmatter.title}
+
+EasyQuery.JS allows you to replace the default Calendar widget with any other component by your choice. Here we are going to describe how to change it with your Kendo DateTime picker.
+
+## Step 1: Add Kendo styles and scripts
+
+```html
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.915/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.915/styles/kendo.default.min.css" />
+
+<script src="https://kendo.cdn.telerik.com/2020.3.915/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.all.min.js"></script>
+```
+
+## Step 2: Add a "descendant" of EasyQuery's DateTimePicker class
+
+```js
+<script>
+    function KendoDateTimePicker(options) {
+        Object.getPrototypeOf(KendoDateTimePicker.prototype).constructor.call(this, options);
+    }
+
+    KendoDateTimePicker.prototype = Object.create(easyquery.ui.DateTimePicker.prototype);
+
+    KendoDateTimePicker.prototype.show = function (anchor) {
+
+        var self = this;
+        if (self.options.beforeShow) {
+            self.options.beforeShow();
+        }
+
+        var kendoOptions = {
+            componentType: "modern",
+            value: self.currentDateTime,
+            change: function () {
+                var dateTime = self.kendoPicker.value();
+                self.currentDateTime = dateTime;
+                self.dateTimeChanged();
+            },
+            close: function () {
+                var dateTime = self.kendoPicker.value();
+                self.apply(dateTime);
+            }
+        };
+
+        if (self.options.showCalendar) {
+            if (self.options.showTimePicker) {
+                $(anchor).kendoDateTimePicker(kendoOptions);
+                self.kendoPicker = $(anchor).data("kendoDateTimePicker");
+            }
+            else {
+                $(anchor).kendoDatePicker(kendoOptions);
+                self.kendoPicker = $(anchor).data("kendoDatePicker");
+            }
+        }
+        else {
+            $(anchor).kendoTimePicker(kendoOptions);
+            self.kendoPicker = $(anchor).data("kendoTimePicker");
+        }
+
+        self.kendoPicker.open();
+    }
+
+    KendoDateTimePicker.prototype.destroy = function () {
+        this.kendoPicker.destroy();
+    }
+
+</script>
+```
+
+## Step 3: add a resolver function that returns new date/time picker widget
+
+```js
+var viewOptions = {
+      queryPanel: {
+           dateTimePickerResolver: function (options) { return new KendoDateTimePicker(options)}
+      }
+}
+```
+
+
+## All set!
+
+With the code above, QueryPanel widget will use Kendo date/time picker widget instead of the EasyQuery's default one.

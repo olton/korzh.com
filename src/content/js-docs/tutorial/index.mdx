@@ -1,0 +1,28 @@
+---
+title: Tutorial
+description: EasyQuery.JS Tutorial
+slug: tutorial/index
+---
+import CardGrid from "../../../components/CardGrid.astro"
+import Card from "../../../components/Card.astro"
+
+<h1>{frontmatter.title}</h1>
+
+<CardGrid>
+    <Card title="Replacing default Calendar widget with KendoDatePicker">
+        <div slot="body">
+            EasyQuery.JS allows you to replace the default Calendar widget with any other component by your choice. Here we are going to describe how to change it with your Kendo DateTime picker. With the code above QueryPanel widget will use Kendo date/time picker widget instead of the EasyQuery's default one.
+        </div>
+        <div slot="actions">
+            <a className="button info fg-white" href="tutorial/replacing-datepicker-widget">Read Tutorial...</a>
+        </div>
+    </Card>
+    <Card title="How to add a token to EasyQuery HTTP requests">
+        <div slot="body">
+            It's a very common situation when you need to add some extra headers (e.g. an authorization token) or extra query parameters to each HTTP request sent from EasyQuery.JS widgets to the backend. Here is the detailed instruction on how to do it.
+        </div>
+        <div slot="actions">
+            <a className="button info fg-white" href="tutorial/replacing-datepicker-widget">Read Tutorial...</a>
+        </div>
+    </Card>
+</CardGrid>

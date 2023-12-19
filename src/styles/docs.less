@@ -1,7 +1,12 @@
-body {
-    height: 100vh;
+:root {
+    --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --border-color: hsl(224, 10%, 23%);
 }
 
+body {
+    height: 100vh;
+    font-family: var(--font);
+}
 
 main {
     height: 100%;
@@ -20,13 +25,6 @@ main {
     }
 }
 
-pre::before {
-    content: attr(data-lang);
-    position: absolute;
-    right: 0.4rem;
-    top: 0.4rem;
-}
-
 #sidebar {
     flex-basis: 300px;
     flex-shrink: 0;
@@ -35,12 +33,168 @@ pre::before {
     color: hsl(224, 6%, 77%);
 }
 
+#sidebar {
+    padding: 1rem .5rem;
+
+    .sidebar-menu {
+        list-style: none inside;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        display: block;
+
+        .node-leaf {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+        }
+
+        .node-toggle {
+            width: 14px;
+            height: 14px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            transition: transform .2s linear;
+        }
+
+        li {
+            flex-flow: column;
+        }
+
+        li, a {
+            position: relative;
+            display: block;
+            align-items: center;
+            justify-content: flex-start;
+            color: hsl(224, 6%, 77%);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        a:not(.group-label) {
+            border-inline-start: 1px solid #353841;
+            text-decoration: none;
+            margin-inline-start: .5rem;
+            padding-inline-start: .5rem;
+            &:hover {
+                color: #ffffff;
+            }
+        }
+
+        a {
+            span {
+                display: block;
+                line-height: 1.4;
+                padding: 4px 8px;
+            }
+        }
+
+        .group-label {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        li.active {
+            a {
+                span {
+                    padding: 8px 8px;
+                    border-radius: 4px;
+                    display: block;
+                    background: hsl(224, 100%, 85%);
+                    color: #23262f;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .sidebar-menu {
+            position: relative;
+            top: 100%;
+            left: 0;
+            display: none;
+            margin-left: 1.5rem;
+        }
+
+        .dropdown-toggle {
+            &:before {
+                display: none;
+            }
+        }
+
+        li.open {
+            & > div > .node-toggle {
+                transform: rotate(90deg);
+            }
+            & > .sidebar-menu {
+                display: block;
+            }
+        }
+    }
+}
+
 #content {
     width: 100%;
     background: hsl(224, 10%, 10%);
     color: hsl(224, 6%, 77%);
+    padding: 0;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#content-data {
+    width: 100%;
+    padding: 2rem;
     overflow-y: auto;
-    padding-left: 1rem;
+    height: 100%;
+    scrollbar-width: thin;
+    flex-shrink: 1;
+
+    img {
+        height: auto;
+        padding: 10px;
+        background: #353841;
+    }
+
+    a {
+        color: #97bbff;
+    }
+
+    p > code {
+        padding: 4px 8px;
+        vertical-align: baseline;
+        line-height: 1.4;
+        height: 1.8rem;
+        background: #282a36;
+        color: #83daed;
+    }
+
+    h1 {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 2.625rem;
+        line-height: 1.2;
+        font-weight: 600;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff;
+    }
+}
+
+#content-toc {
+    display: block;
+    position: relative;
+    height: ~"calc(100vh - 52px)";
+    flex-basis: 300px;
+    flex-shrink: 0;
+    border-left: 1px solid #353841;
+    background: hsl(224, 10%, 10%);
 }
 
 @media screen and (min-width: 768px){

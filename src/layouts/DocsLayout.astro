@@ -1,23 +1,33 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import DocsNavigation from "../components/DocsNavigation.astro";
+import Sidebar from "../pages/easyquery/javascript/docs/Sidebar.astro";
+import TableOfContents from "../components/TOC.astro";
 
-const { title, docName, docTitle } = Astro.props
+const { title, docName, docTitle, headings, slug } = Astro.props
 ---
-<html lang="en">
+<html lang="en" class="scrollbar-type-2">
 <head>
-    <BaseHead title={title}/>
+    <BaseHead title={title} base="/easyquery/javascript/docs/"/>
 </head>
 <body class="m4-cloak" style={{ paddingTop: "52px" }}>
 <DocsNavigation wide={true} {docName} {docTitle}/>
 
 <main>
     <aside id="sidebar">
-
+        <Sidebar/>
     </aside>
 
     <section id="content">
-        <slot name="content" />
+        <div id="content-data">
+            <slot name="content" />
+        </div>
+        <div id="content-toc">
+            <div class="p-4">
+                <h5 class="mb-2">On this page</h5>
+                <TableOfContents headings={headings} base={slug}/>
+            </div>
+        </div>
     </section>
 </main>
 
@@ -36,3 +46,6 @@ const { title, docName, docTitle } = Astro.props
 <style lang="less">
     @import "../styles/docs.less";
 </style>
+<script>
+    import "../js/copy-code"
+</script>

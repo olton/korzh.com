@@ -1,0 +1,205 @@
+---
+title: EasyQuery Web Service API
+description: EasyQuery Web Service is a specification of the server-side API that handles requests from the client-side EasyQuery widgets
+slug: web-service-api
+---
+# {frontmatter.title}
+
+## About EasyQuery Web Service
+
+EasyQuery Web Service is a specification of the server-side API that handles requests from the client-side EasyQuery widgets.
+This API includes a few endpoints that allow you (as a developer) to implement some basic scenarios of advanced database search,
+data filtering or ad-hoc reporting.
+
+The only implementation of the API is available for now as a part [EasyQuery for ASP.NET Core](https://korzh.com/easyquery) library.
+
+## Endpoints
+
+### GetModel
+
+`GET /models/{modelId}`
+
+Returns the model by its ID
+
+### GetQuery
+
+`GET /models/{modelId}/queries/{queryId}`
+
+Returns the query by model's ID and query ID
+
+### SaveQuery
+
+`PUT /models/{modelId}/queries/{queryId}`
+
+Saves the query defined by `modelId` and `queryId` to the storage on the server.
+The content of the request is a JSON object that contains the query definition:
+
+```json
+{
+  "query": {
+    "id": "MyQueryID",
+  }
+}
+```
+
+### NewQuery
+
+`POST /models/{modelId}/queries`
+
+Creates a new query for the model defined in `modelId` and returns it to the client
+The content of the request is a JSON object that might contain the query definition (including the preferable ID and name of the new query).
+If there is no `query` property in the request content - a default query with some random ID will be created.
+
+```json lines
+{
+  "query": {
+    "id": "MyQueryID",
+  }
+}
+```
+
+### RemoveQuery
+
+`DELETE /models/{modelId}/queries/{queryId}`
+
+
+### GetQueryList
+
+`GET /models/{modelId}/queries`
+
+Returns the list of the queries for specified model (`modelId`) available for the current user.
+The response is a JSON object with the list of query definitions:
+
+```json
+[
+  {
+    "id":"Query1ID",
+  },
+  {
+    "id":"Query2ID",
+  },
+]
+```
+
+### SyncQuery
+
+`POST /models/{modelId}/queries/{queryId}/sync`
+
+Synchronizes the changes made in the query on the client-side with the server.
+The content of the request is a JSON object which contains the query definition.
+
+```json
+{
+  "query": {
+    "id": "MyQueryID",
+  }
+}
+```
+
+### FetchData
+
+`POST /models/{modelId}/fetch`
+
+This request allows to execute the query passed in the request's body and get the result set in a format, compatible with [Googles DataTable](https://developers.google.com/chart/interactive/docs/datatables_dataviews#javascriptliteral).
+Here `modelId` defines the model this query belongs to and can be used on the server side to specify the database and connection to it (if it's a multi-database application).
+
+The content of the request, as usual, is a JSON object which contains the query definition and chunk (a piece of data) we would like to get.
+Here is an example:
+
+```json
+{
+  "chunk": {
+      "offset": 0,
+      "limit": 1000,
+      "needTotal": true //defines if we need to get the total number of recrods as well
+  },
+  "query": {
+    "id": "MyQueryID",
+  },
+  "options": {
+    "sqlOptions": {
+      "SelectDistinct": true
+    },
+  }
+}
+```
+
+The response contains the result set itself (`resultSet` property) and some meta information (`meta`) field about the returned data. Here is an example:
+
+```json
+{
+  "resultSet": {
+    "cols": [
+      {
+        "id": "col-3g8xzmshiiok",
+        "label": "Name",
+        "type": 1,
+        "originAttrId": "Product.ProductName",
+      },
+      {
+        "id": "col-5f8xzmshiqw3",
+        "isAggr": true,
+        "label": "Freight Sum",
+        "type": 8,
+        "originAttrId": "Order.Freight",
+      }
+    ],
+    "rows": [
+      [
+        "Alice Mutton",
+        219.07
+      ],
+      [
+        "Aniseed Syrup",
+        8.53
+      ],
+    ]
+  },
+  "meta": {
+    "totalRecords": 66,
+    "offset": 0
+  }
+}
+```
+
+
+### GetValueList
+
+`GET /models/{modelId}/valuelists/{editorId}`
+
+Get the list of values by the model specified via `modelId` parameter and the value editor specified via `editorId`.
+The response is a JSON object that contains the list of object with `id` and `text` properties each. Example:
+
+```json
+{
+  "result":"ok",
+	"values":[
+	  {"id":"SouthAmerica", "text": "South America", items: [
+	    {"id":"AR","text":"Argentina"},
+	  ]},
+	  {"id":"Europe", "text": "Europe", items: [
+	    {"id":"AT","text":"Austria"},
+	  ]},
+	]
+}
+```
+
+As you can see the result list can be hirerachical (so, each item can include sub-items).
+
+### Export
+
+`POST /models/{modelId}/export/{format}`
+
+This operation exports the result of the query with indicated `modelId`  to the specified `format` (e.g. "csv" or "pdf").
+
+The content of the request is a JSON object that contains the query definition:
+
+```json
+{
+  "query": {
+    "id": "MyQueryID",
+  }
+}
+```
+
+The response is a stream of the data in a specified format or a JSON object with the error message.

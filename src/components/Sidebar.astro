@@ -1,0 +1,41 @@
+---
+const {sidebar} = Astro.props
+---
+<ul class="sidebar-menu">
+    {
+        sidebar.map( leaf => {
+            if (!leaf.items) {
+                return (<li><a href={leaf.link}><span>{leaf.label}</span></a></li>)
+            } else {
+                return (<li>
+                    <div class="node-leaf">
+                        <span class="node-toggle"><span class="mif-chevron-right"></span></span>
+                        <a href={leaf.link} class="group-label"><span>{leaf.label}</span></a>
+                    </div>
+                    <Astro.self sidebar={leaf.items}/>
+                </li>)
+            }
+        })
+    }
+</ul>
+<script>
+    $(".sidebar-menu").on("click", ".node-toggle", function(e){
+        this.parentNode.parentNode.classList.toggle("open")
+        e.stopPropagation()
+    })
+
+    const currentURL = window.location.href.split("#")[0]
+    const links = $(".sidebar-menu a")
+    links.each((index, link) => {
+        const el = $(link)
+        if (link.href === currentURL && !el.hasClass('group-label')) {
+            const li = el.closest("li")
+            li.addClass("active")
+            li.parents("li").toggleClass("open")
+        }
+        if (link.href === currentURL && el.hasClass('group-label')) {
+            const li = el.closest("li")
+            li.toggleClass("open")
+        }
+    })
+</script>

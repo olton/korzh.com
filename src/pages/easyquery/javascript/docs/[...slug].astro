@@ -8,9 +8,11 @@ export async function getStaticPaths() {
     }));
 }
 
+import sidebar from "./sidebar";
+
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 ---
-<DocsLayout title="EasyQuery.JS" docName="EasyQuery.JS" docTitle={entry.data.title} {headings} slug={entry.slug}>
+<DocsLayout title="EasyQuery.JS" docName="EasyQuery.JS" docTitle={entry.data.title} {headings} slug={entry.slug} {sidebar}>
     <Content slot="content"/>
 </DocsLayout>

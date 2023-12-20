@@ -1,0 +1,32 @@
+---
+const {crumbs} = Astro.props
+---
+<div class="breadcrumbs-container">
+    <span>You here: </span>
+    <ul class="breadcrumbs">
+        {
+            crumbs.map( c => {
+                return (
+                    <li class="page-item"><a class="page-link">{c}</a></li>
+                )
+            })
+        }
+    </ul>
+</div>
+<style lang="less">
+    .breadcrumbs-container {
+        display: flex;
+        align-items: center;
+        flex-flow: row nowrap;
+    }
+
+    .breadcrumbs {
+        margin: 0;
+        padding: 0;
+        a {
+            cursor: default;
+            color: #282a36!important;
+            font-size: 14px;
+        }
+    }
+</style>

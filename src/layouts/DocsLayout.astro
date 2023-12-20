@@ -1,10 +1,10 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import DocsNavigation from "../components/DocsNavigation.astro";
-import Sidebar from "../pages/easyquery/javascript/docs/Sidebar.astro";
 import TableOfContents from "../components/TOC.astro";
+import Sidebar from "../components/Sidebar.astro";
 
-const { title, docName, docTitle, headings, slug } = Astro.props
+const { title, docName, docTitle, headings, slug, sidebar } = Astro.props
 ---
 <html lang="en" class="scrollbar-type-2">
 <head>
@@ -15,7 +15,7 @@ const { title, docName, docTitle, headings, slug } = Astro.props
 
 <main>
     <aside id="sidebar">
-        <Sidebar/>
+        <Sidebar {sidebar}/>
     </aside>
 
     <section id="content">

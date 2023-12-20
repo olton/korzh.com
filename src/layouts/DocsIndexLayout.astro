@@ -1,0 +1,28 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import DocsNavigation from "../components/DocsNavigation.astro";
+
+const { title, docName, docTitle, headings, slug, sidebar, base } = Astro.props
+---
+<html lang="en" class="scrollbar-type-2">
+<head>
+    <BaseHead title={title} {base}/>
+</head>
+<body class="m4-cloak" style={{ paddingTop: "52px" }}>
+    <DocsNavigation wide={true} {docName} {docTitle}/>
+    <section>
+        <slot/>
+    </section>
+</body>
+</html>
+<style is:global>
+    #appbar {
+        border-bottom: 1px solid #cccccc !important;
+    }
+</style>
+<style lang="less">
+    @import "../styles/docs.less";
+</style>
+<script>
+    import "../js/copy-code"
+</script>

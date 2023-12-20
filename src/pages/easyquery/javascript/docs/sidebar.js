@@ -17,7 +17,6 @@ export default [
     },
     {
         label: "API Reference",
-        link: "api-reference",
         items: [
             {
                 label: "@easydata/core",

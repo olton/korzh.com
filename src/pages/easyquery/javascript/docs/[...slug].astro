@@ -13,6 +13,6 @@ import sidebar from "./sidebar";
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 ---
-<DocsLayout title="EasyQuery.JS" docName="EasyQuery.JS" docTitle={entry.data.title} {headings} slug={entry.slug} {sidebar}>
+<DocsLayout title="EasyQuery.JS" docName="EasyQuery.JS" docTitle={entry.data.title} {headings} slug={entry.slug} {sidebar} base="/easyquery/javascript/docs/">
     <Content slot="content"/>
 </DocsLayout>

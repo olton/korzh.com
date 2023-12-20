@@ -79,9 +79,11 @@ EasyQuery.JS allows you to replace the default Calendar widget with any other co
 
 ```js
 var viewOptions = {
-      queryPanel: {
-           dateTimePickerResolver: function (options) { return new KendoDateTimePicker(options)}
-      }
+    queryPanel: {
+       dateTimePickerResolver: function (options) {
+           return new KendoDateTimePicker(options)
+       }
+    }
 }
 ```
 

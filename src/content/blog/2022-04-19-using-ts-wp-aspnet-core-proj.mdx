@@ -47,8 +47,7 @@ We will need 3 configuration files:
 
 For now, you can just copy these files as-is. We will describe each of them later.
 
-*package.json*
-```json
+```json title="package.json"
 {
   "name": "myapp-client-bundle",
   "version": "1.0.0",
@@ -69,8 +68,7 @@ For now, you can just copy these files as-is. We will describe each of them late
 }
 ```
 
-*webpack.config.js*
-```javascript
+```javascript title="webpack.config.js"
 const path = require('path');
 
 module.exports = {
@@ -98,8 +96,7 @@ module.exports = {
 };
 ```
 
-*tsconfig.json*
-```json
+```json title="tsconfig.json"
 {
   "compilerOptions": {
     "outDir": "./dist/",

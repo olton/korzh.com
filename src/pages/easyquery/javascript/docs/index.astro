@@ -1,6 +1,52 @@
 ---
-import DocsLayout from "../../../../layouts/DocsLayout.astro"
+import CardGrid from "../../../../components/CardGrid.astro";
+import Card from "../../../../components/Card.astro";
+import PageTitle from "../../../../components/PageTitle.astro";
+import DocsIndexLayout from "../../../../layouts/DocsIndexLayout.astro";
+import sidebar from "./sidebar";
 ---
-<DocsLayout docName="EasyQuery.JS">
-
-</DocsLayout>
+<DocsIndexLayout  title="EasyQuery.JS" docName="EasyQuery.JS" docTitle="Documentation" base="/easyquery/javascript/docs/">
+    <PageTitle title="EasyQuery.JS Documentation" className="mt-10"/>
+    <CardGrid stagger>
+        <Card title="Welcome">
+            <div slot="body">
+                <ul>
+                    <li><a href="intro">Introduction</a></li>
+                    <li><a href="web-service-api">Web Service API</a></li>
+                    <li><a href="changelog">Changelog</a></li>
+                </ul>
+            </div>
+        </Card>
+        <Card title="Tutorials">
+            <div slot="body">
+                <ul>
+                    <li><a href="tutorial/replacing-datepicker-widget">Replacing DatePicker widget</a></li>
+                    <li><a href="tutorial/how-to-add-token-to-easyquery-http-requests">How to add a token to EasyQuery HTTP request</a></li>
+                </ul>
+            </div>
+        </Card>
+        <Card title="API Reference">
+            <div slot="body">
+                <ul>
+                    <li><a href="">@easydata/core</a></li>
+                    <li><a href="">@easydata/ui</a></li>
+                    <li><a href="">@easyquery/core</a></li>
+                    <li><a href="">@easyquery/enterprise</a></li>
+                    <li><a href="">@easyquery/locales</a></li>
+                    <li><a href="">@easyquery/ui</a></li>
+                    <li><a href="">@easyquery/odata</a></li>
+                </ul>
+            </div>
+        </Card>
+        <Card title="Other Docs">
+            <div slot="body">
+                <ul>
+                    <li><a href="">EasyData.NET</a></li>
+                    <li><a href="">EasyReport Starter KIT</a></li>
+                    <li><a href="">Localizer</a></li>
+                    <li><a href="">Metro UI</a></li>
+                </ul>
+            </div>
+        </Card>
+    </CardGrid>
+</DocsIndexLayout>

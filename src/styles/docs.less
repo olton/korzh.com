@@ -72,11 +72,11 @@ main {
             justify-content: flex-start;
             color: #3b4b68;
             font-size: 14px;
-            line-height: 1.4;
+            line-height: 1.2;
         }
 
         a:not(.group-label) {
-            border-inline-start: 1px solid #353841;
+            border-inline-start: 1px solid var(--border-color);
             text-decoration: none;
             margin-inline-start: .5rem;
             padding-inline-start: .5rem;
@@ -86,10 +86,12 @@ main {
         }
 
         a {
+            display: flex;
+
             span {
-                display: block;
-                line-height: 1.4;
-                padding: 4px 8px;
+                display: inline-block;
+                padding: 0.3em 0.5em;
+                width: 100%;
             }
         }
 
@@ -118,7 +120,7 @@ main {
             top: 100%;
             left: 0;
             display: none;
-            margin-left: 1.5rem;
+            margin-left: 1rem;
         }
 
         .dropdown-toggle {

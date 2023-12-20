@@ -4,7 +4,7 @@ export default [
         items: [
             {label: "Introduction", link: "intro"},
             {label: "Web Service API", link: "web-service-api"},
-            {label: "Changelog", link: "changelog"},
+            {label: "Changelog", link: "changelog", badge: "new"},
         ]
     },
     {

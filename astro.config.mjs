@@ -7,7 +7,7 @@ import expressiveCode from "astro-expressive-code";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://korzh.com',
-  compressHTML: false,
+  compressHTML: true,
   markdown: {
     // shikiConfig: {
     //   theme: 'dracula',

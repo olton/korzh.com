@@ -43,7 +43,10 @@ const { posts } = Astro.props;
                 </div>
                 <div class="cell-md-3 order-1">
                     <div class="sidebar border-right bd-default pl-4 pr-4">
-                        <h1 class="">Blog</h1>
+                        <h1 class="d-flex flex-row flex-align-center">
+                            <a href="/blog" class="fg-dark"><span class="mif-arrow-left mr-4 reduce-4"></span></a>
+                            <span>Blog</span>
+                        </h1>
 
                         <div class="blog-sidebar-group">
                             <BlogSearch/>

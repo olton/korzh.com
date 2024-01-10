@@ -4,6 +4,7 @@ import PageLayout from "../../../layouts/PageLayout.astro";
 import BlogPostCard from "../../../components/BlogPostCard.astro";
 import AuthorLinks from "../../../components/AuthorLinks.astro";
 import {filterPosts} from "../../../js/utils";
+import BlogSearch from "../../../components/BlogSearch.astro";
 
 const authors = await getCollection('authors')
 
@@ -40,7 +41,14 @@ const { posts } = Astro.props;
                 </div>
                 <div class="cell-md-3 order-1">
                     <div class="sidebar border-right bd-default pl-4 pr-4">
-                        <h1 class="">Blog</h1>
+                        <h1 class="d-flex flex-row flex-align-center">
+                            <a href="/blog" class="fg-dark"><span class="mif-arrow-left mr-4 reduce-4"></span></a>
+                            <span>Blog</span>
+                        </h1>
+
+                        <div class="blog-sidebar-group">
+                            <BlogSearch/>
+                        </div>
 
                         <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Tagged Posts</div>

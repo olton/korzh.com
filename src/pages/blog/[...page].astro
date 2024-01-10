@@ -28,8 +28,8 @@ const { page } = Astro.props;
     <section class="container-fluid border-top bd-default pt-4">
         <div class="container">
             <div class="row">
-                <div class="cell-md-9">
-                    <div class="pr-10">
+                <div class="cell-md-9 order-2">
+                    <div class="pl-10">
                         {
                             page.data.map( (post) => <BlogPostCard {post} />)
                         }
@@ -45,8 +45,8 @@ const { page } = Astro.props;
                         />
                     </div>
                 </div>
-                <div class="cell-md-3">
-                    <div class="border-left bd-default pl-4 pr-4">
+                <div class="cell-md-3 order-1">
+                    <div class="border-right bd-default pl-4 pr-4">
                         <h1 class="">Blog</h1>
 
                         <div class="blog-sidebar-group">

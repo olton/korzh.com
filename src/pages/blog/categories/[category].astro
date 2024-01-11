@@ -10,11 +10,13 @@ const authors = await getCollection('authors')
 
 export async function getStaticPaths() {
     const allPosts = filterPosts(await getCollection("blog"))
-    const categories = [...new Set(allPosts.map((post) => post.data.category).flat())];
+    const categories = [...new Set(allPosts.map((post) => post.data.category).flat())].map(c => c.toLowerCase());
+
+    console.log(categories)
 
     return categories.map((category) => {
         const filteredPosts = allPosts.filter((post) =>
-            post.data.category === category
+            post.data.category.toLowerCase() === category
         );
         return {
             params: { category },

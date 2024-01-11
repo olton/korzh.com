@@ -6,12 +6,14 @@ import TableOfContents from "../components/TOC.astro"
 import {Image} from "astro:assets"
 import {slugify} from "../js/utils.js";
 import PostLinks from "../components/PostLinks.astro";
-import BlogSearch from "../components/BlogSearch.astro";
 import ShareThis from "../components/ShareThis.astro";
+import {filterPosts} from "../js/utils";
+import RecentPosts from "../components/RecentPosts.astro";
+
 const { frontmatter, headings, timeToRead } = Astro.props
 const { title, date, author, description, cover, draft, category, tags, time = '1 min'} = frontmatter
 const relatedPosts = frontmatter.relatedPosts ? await getEntries(frontmatter.relatedPosts) : []
-const recentPosts = (await getCollection('blog')).slice(0, 5)
+const recentPosts = filterPosts(await getCollection('blog'), {limit: 4})
 ---
 <PageLayout title={title}>
     <section class="container-fluid mb-4 border-top bd-default">
@@ -57,12 +59,6 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
                             }
                         </div>
                         <div class="mt-6">
-                            <div class="text-bold border-bottom bd-default">Recent posts</div>
-                            {
-                                recentPosts.length === 0 ? <div class="reduce-1 text-muted">No posts</div> : <PostLinks posts={recentPosts}/>
-                            }
-                        </div>
-                        <div class="mt-6">
                             <div class="text-bold border-bottom bd-default">Tags</div>
                             <div class="mt-1">
                                 {tags && tags.map(tag => <a class="tag" href=`/blog/tags/${tag}`>{tag}</a>)}
@@ -74,6 +70,11 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
             <div class="mt-4 pt-4 border-top bd-default">
                 <ShareThis description={description}/>
             </div>
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="container">
+            <RecentPosts posts={recentPosts} label="Recent posts:"/>
         </div>
     </section>
 </PageLayout>

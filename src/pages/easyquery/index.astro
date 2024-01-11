@@ -21,6 +21,7 @@ import winFormsImage from "../../images/logos/winforms.png"
 import silverlightImage from "../../images/logos/silverlight.png"
 import wpfImage from "../../images/logos/wpf.png"
 import delphiImage from "../../images/logos/delphi.png"
+import ShareThis from "../../components/ShareThis.astro";
 ---
 <PageLayout title="EasyQuery.NET - Build a .NET database application simple and easy">
     <section class="container-fluid hero-section hero-block">
@@ -38,6 +39,9 @@ import delphiImage from "../../images/logos/delphi.png"
                         <a href="#" onclick="getTrial()" class="button fg-white text-bold bg-pink-hover" style="background: #e950b4;">Get Trial</a>
                         <a href="https://demo.korzh.com/easyquery-asp-net-core-razor" class="button fg-white text-bold bg-pink-hover" style="background: #e950b4;">Demo</a>
                         <a href="#licensing" class="button fg-white text-bold bg-pink-hover" style="background: #e950b4;">Purchase</a>
+                    </div>
+                    <div class="mt-4">
+                        <ShareThis />
                     </div>
                 </div>
 
@@ -1051,6 +1055,15 @@ import delphiImage from "../../images/logos/delphi.png"
             }
         }
     }
+    .share-links {
+        a {
+            color: #ffc9e9;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
 </style>
 <script is:inline>
     function trialChangeOptions(val){

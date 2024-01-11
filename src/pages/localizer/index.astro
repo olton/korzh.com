@@ -7,6 +7,7 @@ import localizerSS1Image from "../../images/site/localizer_sshot02.png"
 import localizerSS2Image from "../../images/site/localizer_sshot03.png"
 import localizerSS3Image from "../../images/site/localizer_sshot04.png"
 import localizerSS4Image from "../../images/site/localizer_sshot07.png"
+import ShareThis from "../../components/ShareThis.astro";
 ---
 <PageLayout title="LOCALIZER - Localization Toolkit for Delphi Projects">
     <section class="container-fluid hero-section hero-block">
@@ -25,6 +26,10 @@ import localizerSS4Image from "../../images/site/localizer_sshot07.png"
                         <a href="/localizer/docs" class="button fg-white text-bold bg-green-hover" style="background: #a9d97d;">Read Docs</a>
                         <a href="#licensing" class="button fg-white text-bold bg-green-hover" style="background: #a9d97d;">Purchase</a>
                     </div>
+                    <div class="mt-4">
+                        <ShareThis />
+                    </div>
+
                 </div>
 
                 <div class="cell-lg-1"></div>
@@ -505,5 +510,13 @@ import localizerSS4Image from "../../images/site/localizer_sshot07.png"
     }
     .feature-check {
         color: rgb(154,189,145)!important;
+    }
+    .share-links {
+        a {
+            color: rgb(154,189,145);
+            &:hover {
+                color: #fff;
+            }
+        }
     }
 </style>

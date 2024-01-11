@@ -23,6 +23,7 @@ import imgLocalizer03 from "../images/site/localizer_sshot04.png"
 import imgMetro01 from "../images/site/pandora.jpg"
 import imgMetro02 from "../images/site/mirohost.jpg"
 import imgMetro03 from "../images/site/minataur.png"
+import ShareThis from "../components/ShareThis.astro";
 ---
 <PageLayout title="Korzh.com - Tools from Developers to Developers">
     <section class="container-fluid hero-section hero-block">
@@ -35,11 +36,11 @@ import imgMetro03 from "../images/site/minataur.png"
                         <p class="text-leader2">
                             with our components for .NET, WEB, and DELPHI developers: EASYQUERY, LOCALIZER, and METRO UI
                         </p>
-                        <hr class="thin w-100 mt-6 mb-6 bg-light"/>
+                        <hr class="thin w-100 mt-6 mb-1 bg-light"/>
                         <div class="text-bold h2">
                             <span class="enlarge-4">3K+</span> happy customers
                         </div>
-
+                        <ShareThis/>
                     </div>
                 </div>
 
@@ -388,6 +389,15 @@ import imgMetro03 from "../images/site/minataur.png"
             }
         }
     }
+    .share-links {
+        a {
+            color: rgb(161, 199, 255);
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
 </style>
 <style lang="less">
     .why-box {

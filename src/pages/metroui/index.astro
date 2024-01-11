@@ -13,6 +13,7 @@ import userInterfaceImage from "../../images/site/user-interface.svg"
 import rocketImage from "../../images/site/rocket.svg"
 import bugsImage from "../../images/site/bugs.svg"
 import financeImage from "../../images/site/finance.svg"
+import ShareThis from "../../components/ShareThis.astro";
 ---
 <PageLayout title="Metro UI - Impressive component library for expressive web development!">
     <section class="container-fluid hero-section hero-block">
@@ -27,7 +28,7 @@ import financeImage from "../../images/site/finance.svg"
                                 MetroUI includes everything you need to build your frontend app: responsive grid system, 100+ prebuilt components, 500+ incons, and powerful JavaScript plugins.
                             </p>
                         </div>
-                        <hr class="thin w-100 mt-6 mb-6 bg-light"/>
+                        <hr class="thin w-100 mt-6 mb-1 bg-light"/>
                         <div class="text-bold h2">
                             <span class="enlarge-4">7K+</span> stars on GitHub
                         </div>
@@ -35,6 +36,9 @@ import financeImage from "../../images/site/finance.svg"
                             <a href="https://github.com/olton/Metro-UI-CSS" class="button info">Try Metro UI</a>
                             <a href="https://metroui.org.ua/intro.html" class="button info">Read Docs</a>
                             <a href="#licensing" class="button info">Purchase Support</a>
+                        </div>
+                        <div class="mt-4">
+                            <ShareThis />
                         </div>
                     </div>
                 </div>
@@ -303,6 +307,14 @@ import financeImage from "../../images/site/finance.svg"
         .img-wrap {
             height: 160px;
             overflow: hidden;
+        }
+    }
+    .share-links {
+        a {
+            color: rgb(161, 199, 255);
+            &:hover {
+                color: #fff;
+            }
         }
     }
 </style>

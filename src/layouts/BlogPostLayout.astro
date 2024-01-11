@@ -7,6 +7,7 @@ import {Image} from "astro:assets"
 import {slugify} from "../js/utils.js";
 import PostLinks from "../components/PostLinks.astro";
 import BlogSearch from "../components/BlogSearch.astro";
+import ShareThis from "../components/ShareThis.astro";
 const { frontmatter, headings, timeToRead } = Astro.props
 const { title, date, author, description, cover, draft, category, tags, time = '1 min'} = frontmatter
 const relatedPosts = frontmatter.relatedPosts ? await getEntries(frontmatter.relatedPosts) : []
@@ -18,7 +19,7 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
 
             <div class="row mt-4">
                 <div class="cell-md-9">
-                    <div class="pr-10">
+                    <div class="pr-10 border-right bd-default">
                         <h1 class="post-title text-bold">{title}</h1>
                         <div class="mb-4 text-muted reduce-1 d-flex flex-row">
                             <span>Category: </span><a class="category ml-2" href=`/blog/categories/${slugify(category)}`>{category}</a>
@@ -39,7 +40,7 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
                     </div>
                 </div>
                 <div class="cell-md-3">
-                    <div class="border-left bd-default pl-4 pr-4">
+                    <div class="pl-4 pr-4">
                         <h1 class="d-flex flex-row flex-align-center">
                             <a href="#" class="history-back fg-dark"><span class="mif-arrow-left mr-4 reduce-4"></span></a>
                             <span>Blog</span>
@@ -70,6 +71,9 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
                     </div>
                 </div>
             </div>
+            <div class="mt-4 pt-4 border-top bd-default">
+                <ShareThis description={description}/>
+            </div>
         </div>
     </section>
 </PageLayout>
@@ -85,5 +89,5 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
 </style>
 
 <script>
-    import "../js/copy-code"
+    import "../js/common"
 </script>

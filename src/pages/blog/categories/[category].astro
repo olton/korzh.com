@@ -25,6 +25,8 @@ export async function getStaticPaths() {
 
 const { category } = Astro.params;
 const { posts } = Astro.props;
+
+console.log(category)
 ---
 <PageLayout title="Kozrh's Blog">
     <section class="container-fluid border-top bd-default pt-10">

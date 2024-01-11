@@ -8,6 +8,7 @@ import report3Image from "../../images/site/easy-report-03.jpg"
 import report4Image from "../../images/site/easy-report-04.jpg"
 import report5Image from "../../images/site/easy-report-05.jpg"
 import report6Image from "../../images/site/easy-report-06.jpg"
+import ShareThis from "../../components/ShareThis.astro";
 ---
 <PageLayout title="EASYREPORT STARTER KIT - ASP.NET Core solution template for ad-hoc reporting (ERSK)">
     <section class="container-fluid hero-section hero-block">
@@ -33,13 +34,16 @@ import report6Image from "../../images/site/easy-report-06.jpg"
                         <a href="#licensing" class="button fg-white text-bold warning" >GET IT NOW</a>
                         <a href="https://easy.report" class="button fg-white text-bold warning" >Live Demo</a>
                     </div>
+                    <div class="mt-4">
+                        <ShareThis />
+                    </div>
                 </div>
 
                 <div class="cell-lg-1"></div>
 
                 <div class="cell-lg-5 d-none d-flex-lg flex-column flex-justify-center hero-images">
-                    <div class="">
-                        <Image src={report1Image} alt="" class="shadow-3"/>
+                    <div class="h-100">
+                        <Image src={report1Image} alt="" class="shadow-3" style="height: 90%"/>
                     </div>
                 </div>
             </div>
@@ -363,4 +367,13 @@ import report6Image from "../../images/site/easy-report-06.jpg"
         padding: 40px 0 40px;
         background-color: #ff6b86;
     }
+    .share-links {
+        a {
+            color: #ff6b86;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
 </style>

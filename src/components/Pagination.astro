@@ -50,15 +50,15 @@ const paginationList = Array.from({length: `${length}`}, (_, i) => i + 1);
         </li>
     )}
 
-    { lastUrl < currentUrl + 1 ? (
-        <li class="page-item disabled">
-            <a class="page-link"><span>Last</span></a>
-        </li>
-    ) : (
+    { currentPage < length ? (
         <li class="page-item">
             <a href={lastUrl} class="page-link">
                 <span>Last</span>
             </a>
+        </li>
+    ) : (
+        <li class="page-item disabled">
+            <a class="page-link"><span>Last</span></a>
         </li>
     )}
 </ul>

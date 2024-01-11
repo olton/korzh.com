@@ -27,7 +27,7 @@
     "dompurify": "^3.0.8",
     "fuse.js": "^7.0.0",
     "less": "^4.2.0",
-    "metro4": "^4.5.10",
+    "metro4": "^4.5.11-rc1",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-progress": "^1.1.2"
   },

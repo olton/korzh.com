@@ -225,3 +225,33 @@ p > code {
     font-weight: 400;
     font-size: 14px;
 }
+
+.share-links {
+    display: flex;
+    flex-flow: row;
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+
+    li {
+        margin-right: 14px;
+    }
+
+    a {
+        text-decoration: none!important;
+        font-size: 22px;
+        color: rgba(75, 75, 75, 0.32);
+        transition: all 0.6s ease;
+        border: 1px rgba(75, 75, 75, 0.32) solid;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+
+        &:hover {
+            color: #282a36;
+        }
+    }
+}

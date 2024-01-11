@@ -32,17 +32,17 @@ const { posts } = Astro.props;
     <section class="container-fluid border-top bd-default pt-10">
         <div class="container">
             <div class="row">
-                <div class="cell-md-9 order-2">
+                <div class="cell-md-9">
                     <h2>Posts tagged by <span class="">`{tag}`</span></h2>
                     <hr/>
-                    <div class="pl-10">
+                    <div class="pr-10">
                         {
                             posts.map( (post) => <BlogPostCard {post} />)
                         }
                     </div>
                 </div>
-                <div class="cell-md-3 order-1">
-                    <div class="sidebar border-right bd-default pl-4 pr-4">
+                <div class="cell-md-3">
+                    <div class="sidebar border-left bd-default pl-4 pr-4">
                         <h1 class="d-flex flex-row flex-align-center">
                             <a href="/blog" class="fg-dark"><span class="mif-arrow-left mr-4 reduce-4"></span></a>
                             <span>Blog</span>

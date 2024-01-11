@@ -40,11 +40,10 @@ const recentPosts = (await getCollection('blog')).slice(0, 5)
                 </div>
                 <div class="cell-md-3">
                     <div class="border-left bd-default pl-4 pr-4">
-                        <h1 class="">Blog</h1>
-
-                        <div class="blog-sidebar-group">
-                            <BlogSearch/>
-                        </div>
+                        <h1 class="d-flex flex-row flex-align-center">
+                            <a href="#" class="history-back fg-dark"><span class="mif-arrow-left mr-4 reduce-4"></span></a>
+                            <span>Blog</span>
+                        </h1>
 
                         <div class="mt-4">
                             <div class="text-bold enlarge-1 border-bottom bd-default">Table of Contents</div>

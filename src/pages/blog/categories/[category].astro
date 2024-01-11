@@ -12,8 +12,6 @@ export async function getStaticPaths() {
     const allPosts = filterPosts(await getCollection("blog"))
     const categories = [...new Set(allPosts.map((post) => post.data.category).flat())].map(c => c.toLowerCase());
 
-    console.log(categories)
-
     return categories.map((category) => {
         const filteredPosts = allPosts.filter((post) =>
             post.data.category.toLowerCase() === category
@@ -57,10 +55,6 @@ console.log(category)
                         <div class="blog-sidebar-group">
                             <div class="text-bold border-bottom bd-default">Tagged Posts</div>
                             <div class="h1 text-center">{posts.length}</div>
-                        </div>
-
-                        <div class="blog-sidebar-group">
-                            <div class="text-bold border-bottom bd-default">Categories</div>
                         </div>
 
                         <div class="blog-sidebar-group">

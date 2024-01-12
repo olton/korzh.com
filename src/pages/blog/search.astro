@@ -6,17 +6,17 @@ import BlogSearch from "../../components/BlogSearch.astro";
     <section class="container-fluid border-top bd-default pt-4">
         <div class="container">
             <div class="row">
-                <div class="cell-md-9">
+                <div class="cell-md-9 border-right bd-default">
                     <div class="pr-10">
                         <iframe name="blog-preview" id="blog-preview"></iframe>
                         <div id="post-preview"></div>
                     </div>
                 </div>
                 <div class="cell-md-3">
-                    <div class="sidebar border-left bd-default pl-4 pr-4">
-                        <h1 class="d-flex flex-row flex-align-center">
-                            <a href="/blog" class="fg-dark"><span class="mif-arrow-left mr-4 reduce-4"></span></a>
+                    <div class="sidebar pl-4 pr-4">
+                        <h1 class="d-flex flex-row flex-nowrap flex-align-center">
                             <span>Blog</span>
+                            <span class="posts-counter ml-auto" id="result-count">0</span>
                         </h1>
 
                         <div class="blog-sidebar-group">
@@ -25,10 +25,6 @@ import BlogSearch from "../../components/BlogSearch.astro";
 
                         <div class="blog-sidebar-group">
                             <div class="text-bold enlarge-2 border-bottom bd-default">Blog Search Results</div>
-                        </div>
-
-                        <div class="blog-sidebar-group">
-                            <div class="h1 text-center" id="result-count">0</div>
                         </div>
 
                         <div class="blog-sidebar-group">

@@ -1,15 +1,15 @@
 ---
-const { url= Astro.request.url, description = 'Awesome Post!', label = 'Share this:', title = 'Korzh.com'} = Astro.props;
+const { url= Astro.request.url, label = 'Share this:', title = 'Korzh.com', className = ''} = Astro.props;
 
 const encoded_url = encodeURIComponent(url);
 
 let facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${url}`
 let linkedinURL = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`
-let twitterURL = `https://twitter.com/intent/tweet?url=${url}&text=${description}`
+let twitterURL = `https://twitter.com/intent/tweet?url=${url}&text=${title}`
 let redditURL = `https://www.reddit.com/submit?url=${encoded_url}&title=${title}`
 let hackernewsURL = `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`
 ---
-<div class="">
+<div class={className}>
     <div class="text-bold reduce-2">{label}</div>
     <ul class="share-links">
         <li><a href={facebookURL} target="_blank" title="Share on Facebook"><span class="mif-facebook"></span></a></li>

@@ -8,7 +8,7 @@ const { remarkPluginFrontmatter } = await render();
 ---
 
 <article class="p-2">
-    <Image src={cover.src} alt={cover.alt} width="1200" height="100" class="blog-cover" format="avif"/>
+    <Image src={cover.src} alt={cover.alt} width="1200" height="100" class="blog-cover border bd-default" format="avif"/>
 
     <a class="h5 no-decor d-block mt-4" href=`/blog/${slug}`>{title}</a>
 

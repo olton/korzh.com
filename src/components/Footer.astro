@@ -1,5 +1,6 @@
 ---
-
+import ShareThis from "./ShareThis.astro";
+const {title} = Astro.props
 ---
 <footer class="container-fluid mt-auto">
     <div class="container">
@@ -16,13 +17,20 @@
             <li><a href="/terms-of-use">TERMS OF USE</a></li>
         </ul>
 
-        <hr class="mt-10 mb-10 thin"/>
+        <hr class="mt-4 mb-4 thin bg-lightSteel"/>
 
-        <div class="d-flex flex-column flex-align-center">
-            <div>1998-2023 &copy; Korzh.com. Made in Ukraine. All Rights Reserved.</div>
-            <div class="mute-text">All product names, logos, and brands are the property of their respective owners.</div>
-            <div>
-                Site built with <a class="fg-yellow no-decor" href="/metroui">Metro UI</a>. Powered by <a class="fg-yellow no-decor" href="https://astro.build">Astro</a>.
+        <div class="row">
+            <div class="cell-md-6">
+                <ShareThis {title}/>
+            </div>
+            <div class="cell-md-6 border-left bd-lightSteel">
+                <div class="d-flex flex-column flex-align-start pl-4">
+                    <div>1998-2023 &copy; Korzh.com. Made in Ukraine. All Rights Reserved.</div>
+                    <div class="mute-text">All product names, logos, and brands are the property of their respective owners.</div>
+                    <div>
+                        Site built with <a class="fg-yellow no-decor" href="/metroui">Metro UI</a>. Powered by <a class="fg-yellow no-decor" href="https://astro.build">Astro</a>.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -58,6 +66,17 @@
 
         .mute-text {
             color: #7f8c97!important;
+        }
+    }
+
+    .share-links {
+        a {
+            color: rgb(161, 199, 255)!important;
+            border-color: #3e6098 !important;
+            &:hover {
+                color: #fff!important;
+                border-color: #fff!important;
+            }
         }
     }
 </style>

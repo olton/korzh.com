@@ -11,7 +11,8 @@ export default defineConfig({
     compressHTML: true,
     output: 'server',
     adapter: netlify({
-        edgeMiddleware: true
+        edgeMiddleware: true,
+        imageCDN: false,
     }),
     experimental: {
         assets: true,

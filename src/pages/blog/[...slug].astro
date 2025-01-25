@@ -8,7 +8,7 @@ export async function getStaticPaths() {
         params: { slug: entry.slug }, props: { entry },
     }));
 }
-
+export const prerender = true;
 const { entry } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 ---

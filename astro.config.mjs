@@ -13,6 +13,12 @@ export default defineConfig({
     adapter: netlify({
         edgeMiddleware: true
     }),
+    experimental: {
+        assets: true,
+    },
+    image: {
+        service: "astro/assets/services/sharp",
+    },
     markdown: {
         remarkPlugins: [readingTime]
     },

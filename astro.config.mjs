@@ -14,12 +14,6 @@ export default defineConfig({
         edgeMiddleware: true,
         imageCDN: false,
     }),
-    experimental: {
-        assets: true,
-    },
-    image: {
-        service: "astro/assets/services/sharp",
-    },
     markdown: {
         remarkPlugins: [readingTime]
     },
